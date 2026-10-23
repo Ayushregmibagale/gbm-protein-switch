@@ -1,0 +1,42 @@
+2026-09-04 11:34:15.665988: W external/xla/xla/hlo/transforms/simplifiers/hlo_rematerialization.cc:3021] Can't reduce memory use below 23.12GiB (24829182692 bytes) by rematerialization; only reduced to 60.25GiB (64697056736 bytes), down from 62.84GiB (67478777740 bytes) originally
+2026-09-04 11:34:56.838643: W external/xla/xla/tsl/framework/bfc_allocator.cc:501] Allocator (GPU_0_bfc) ran out of memory trying to allocate 62.88GiB (rounded to 67518072576)requested by op 
+2026-09-04 11:34:56.839391: W external/xla/xla/tsl/framework/bfc_allocator.cc:512] ***********************__**********_________________________________________________________________
+E0904 11:34:56.839574 3090861 pjrt_stream_executor_client.cc:2839] Execution of replica 0 failed: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 67518072360 bytes. [tf-allocator-allocation-error='']
+Available GPUs:
+NVIDIA GeForce RTX 50901: gpu
+┌───────────────────────────────────────────────────────────────────────────────┐
+│                                  PyRosetta-4                                  │
+│               Created in JHU by Sergey Lyskov and PyRosetta Team              │
+│               (C) Copyright Rosetta Commons Member Institutions               │
+│                                                                               │
+│ NOTE: USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRES PURCHASE OF A LICENSE │
+│          See LICENSE.PyRosetta.md or email license@uw.edu for details         │
+└───────────────────────────────────────────────────────────────────────────────┘
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python310.ubuntu.cxx11thread.serialization 2026.03+releasequarterly.5e498f1409c68ade56c8ce5842bf79e1b02e8db4 2026-01-13T13:24:11] retrieved from: http://www.pyrosetta.org
+Running binder design for target SOX2_SOX9_bridge_miniprotein
+Design settings used: default_4stage_multimer_noanim
+Filtering designs based on default_filters
+Starting trajectory: bridge_SOX2_SOX9_l74_s451634
+Stage 1: Test Logits
+jax.errors.SimplifiedTraceback: For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ayushregmibagale/projects/BindCraft/bindcraft.py", line 109, in <module>
+    trajectory = binder_hallucination(design_name, target_settings["starting_pdb"], target_settings["chains"],
+  File "/home/ayushregmibagale/projects/BindCraft/functions/colabdesign_utils.py", line 97, in binder_hallucination
+    af_model.design_logits(iters=50, e_soft=0.9, models=design_models, num_models=1, sample_models=advanced_settings["sample_models"], save_best=True)
+  File "/home/ayushregmibagale/miniconda3/envs/BindCraft/lib/python3.10/site-packages/colabdesign/af/design.py", line 354, in design_logits
+    self.design(iters, **kwargs)
+  File "/home/ayushregmibagale/miniconda3/envs/BindCraft/lib/python3.10/site-packages/colabdesign/af/design.py", line 348, in design
+    self.step(lr_scale=lr_scale, num_recycles=num_recycles,
+  File "/home/ayushregmibagale/miniconda3/envs/BindCraft/lib/python3.10/site-packages/colabdesign/af/design.py", line 214, in step
+    self.run(num_recycles=num_recycles, num_models=num_models, sample_models=sample_models,
+  File "/home/ayushregmibagale/miniconda3/envs/BindCraft/lib/python3.10/site-packages/colabdesign/af/design.py", line 96, in run
+    auxs.append(self._recycle(p, num_recycles=num_recycles, backprop=backprop))
+  File "/home/ayushregmibagale/miniconda3/envs/BindCraft/lib/python3.10/site-packages/colabdesign/af/design.py", line 197, in _recycle
+    aux = self._single(model_params, backprop)
+  File "/home/ayushregmibagale/miniconda3/envs/BindCraft/lib/python3.10/site-packages/colabdesign/af/design.py", line 140, in _single
+    (loss, aux), grad = self._model["grad_fn"](*flags)
+jaxlib.xla_extension.XlaRuntimeError: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 67518072360 bytes.

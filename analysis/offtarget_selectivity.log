@@ -1,0 +1,84 @@
+=== Bridge_48_s01 off-target selectivity screen ===
+Bridge: 69 aa
+Panel: ['SOX2', 'SOX9', 'SOX3', 'SOX4', 'SOX11', 'SOX17', 'SRY', 'HMGB1']
+Seeds: [0, 1, 2]
+
+[1/24] SOX2 (97 aa) seed=0
+  ipTM=0.232
+[2/24] SOX2 (97 aa) seed=1
+  ipTM=0.105
+[3/24] SOX2 (97 aa) seed=2
+  ipTM=0.149
+  → SOX2: mean ipTM=0.162  [ON-TARGET]
+
+[4/24] SOX9 (72 aa) seed=0
+  ipTM=0.488
+[5/24] SOX9 (72 aa) seed=1
+  ipTM=0.397
+[6/24] SOX9 (72 aa) seed=2
+  ipTM=0.322
+  → SOX9: mean ipTM=0.402  [ON-TARGET]
+
+[7/24] SOX3 (69 aa) seed=0
+  ipTM=0.296
+[8/24] SOX3 (69 aa) seed=1
+  ipTM=0.461
+[9/24] SOX3 (69 aa) seed=2
+  ipTM=0.351
+  → SOX3: mean ipTM=0.369  [PASS (non-reactive)]
+
+[10/24] SOX4 (69 aa) seed=0
+  ipTM=0.549
+[11/24] SOX4 (69 aa) seed=1
+  ipTM=0.233
+[12/24] SOX4 (69 aa) seed=2
+  ipTM=0.228
+  → SOX4: mean ipTM=0.336  [PASS (non-reactive)]
+
+[13/24] SOX11 (69 aa) seed=0
+  ipTM=0.450
+[14/24] SOX11 (69 aa) seed=1
+  ipTM=0.391
+[15/24] SOX11 (69 aa) seed=2
+  ipTM=0.577
+  → SOX11: mean ipTM=0.473  [FAIL (cross-reactive!)]
+
+[16/24] SOX17 (69 aa) seed=0
+  ipTM=0.139
+[17/24] SOX17 (69 aa) seed=1
+  ipTM=0.538
+[18/24] SOX17 (69 aa) seed=2
+  ipTM=0.224
+  → SOX17: mean ipTM=0.300  [PASS (non-reactive)]
+
+[19/24] SRY (69 aa) seed=0
+  ipTM=0.532
+[20/24] SRY (69 aa) seed=1
+  ipTM=0.644
+[21/24] SRY (69 aa) seed=2
+  ipTM=0.672
+  → SRY: mean ipTM=0.616  [FAIL (cross-reactive!)]
+
+[22/24] HMGB1 (71 aa) seed=0
+  ipTM=0.426
+[23/24] HMGB1 (71 aa) seed=1
+  ipTM=0.338
+[24/24] HMGB1 (71 aa) seed=2
+  ipTM=0.481
+  → HMGB1: mean ipTM=0.415  [FAIL (cross-reactive!)]
+
+
+=================================================================
+  Target    Mean ipTM     Min     Max  Verdict
+  ---------------------------------------------------------------
+  SRY           0.616   0.532   0.672  FAIL — CROSS-REACTIVE
+  SOX11         0.473   0.391   0.577  FAIL — CROSS-REACTIVE
+  HMGB1         0.415   0.338   0.481  FAIL — CROSS-REACTIVE
+  SOX9          0.402   0.322   0.488  ON-TARGET
+  SOX3          0.369   0.296   0.461  PASS
+  SOX4          0.336   0.228   0.549  PASS
+  SOX17         0.300   0.139   0.538  PASS
+  SOX2          0.162   0.105   0.232  ON-TARGET
+=================================================================
+
+Results saved to /home/ayushregmibagale/gbm-protein-switch/analysis/offtarget_selectivity_results.tsv

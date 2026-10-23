@@ -1,0 +1,74 @@
+=== Bridge_48_s01 — 3-chain selectivity screen ===
+On-target baseline (cached): SOX2+SOX9+bridge ipTM = 0.471
+Pass threshold (selective): ipTM < 0.35 (<75% of on-target)
+
+[1/21] SOX2+SOX9 | seed 0
+  ipTM=0.249
+[2/21] SOX2+SOX9 | seed 1
+  ipTM=0.647
+[3/21] SOX2+SOX9 | seed 2
+  ipTM=0.148
+  → SOX2+SOX9: mean=0.348  [ON-TARGET (baseline)]
+
+[4/21] SOX11+SOX9 | seed 0
+  ipTM=0.162
+[5/21] SOX11+SOX9 | seed 1
+  ipTM=0.241
+[6/21] SOX11+SOX9 | seed 2
+  ipTM=0.230
+  → SOX11+SOX9: mean=0.211  [SELECTIVE (drop=0.260, 55%)]
+
+[7/21] HMGB1+SOX9 | seed 0
+  ipTM=0.333
+[8/21] HMGB1+SOX9 | seed 1
+  ipTM=0.236
+[9/21] HMGB1+SOX9 | seed 2
+  ipTM=0.504
+  → HMGB1+SOX9: mean=0.358  [CROSS-REACTIVE (drop=0.113, 24%)]
+
+[10/21] SRY+SOX9 | seed 0
+  ipTM=0.346
+[11/21] SRY+SOX9 | seed 1
+  ipTM=0.200
+[12/21] SRY+SOX9 | seed 2
+  ipTM=0.207
+  → SRY+SOX9: mean=0.251  [SELECTIVE (drop=0.220, 47%)]
+
+[13/21] SOX2+SOX11 | seed 0
+  ipTM=0.192
+[14/21] SOX2+SOX11 | seed 1
+  ipTM=0.197
+[15/21] SOX2+SOX11 | seed 2
+  ipTM=0.235
+  → SOX2+SOX11: mean=0.208  [SELECTIVE (drop=0.263, 56%)]
+
+[16/21] SOX2+HMGB1 | seed 0
+  ipTM=0.331
+[17/21] SOX2+HMGB1 | seed 1
+  ipTM=0.247
+[18/21] SOX2+HMGB1 | seed 2
+  ipTM=0.293
+  → SOX2+HMGB1: mean=0.290  [SELECTIVE (drop=0.181, 38%)]
+
+[19/21] SOX2+SRY | seed 0
+  ipTM=0.189
+[20/21] SOX2+SRY | seed 1
+  ipTM=0.159
+[21/21] SOX2+SRY | seed 2
+  ipTM=0.169
+  → SOX2+SRY: mean=0.172  [SELECTIVE (drop=0.299, 63%)]
+
+
+========================================================================
+  Condition        Mean ipTM     Min     Max   Drop vs on-target  Verdict
+  ----------------------------------------------------------------------
+  HMGB1+SOX9           0.358   0.236   0.504        -0.113 (24%)  CROSS-REACTIVE
+  SOX2+SOX9            0.348   0.148   0.647                   —  ON-TARGET
+  SOX2+HMGB1           0.290   0.247   0.331        -0.181 (38%)  SELECTIVE
+  SRY+SOX9             0.251   0.200   0.346        -0.220 (47%)  SELECTIVE
+  SOX11+SOX9           0.211   0.162   0.241        -0.260 (55%)  SELECTIVE
+  SOX2+SOX11           0.208   0.192   0.235        -0.263 (56%)  SELECTIVE
+  SOX2+SRY             0.172   0.159   0.189        -0.299 (63%)  SELECTIVE
+========================================================================
+
+Results saved to /home/ayushregmibagale/gbm-protein-switch/analysis/bridge_3chain_selectivity_results.tsv

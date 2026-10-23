@@ -1,0 +1,52 @@
+
+[bridge_48_s01]
+  bridge_48_s01: bridge_len=69, chain C resid 170-238
+    SOX2=97 CA, SOX9=72 CA, bridge=69 CA
+  SOX2 mean=0.376  SOX9 mean=0.166
+  thr=0.05: dual=100.0%  sox2only=0.0%  sox9only=0.0%  neither=0.0%
+  thr=0.10: dual=99.4%  sox2only=0.6%  sox9only=0.0%  neither=0.0%
+  thr=0.15: dual=69.2%  sox2only=30.8%  sox9only=0.0%  neither=0.0%
+
+[bridge_73_s09]
+  bridge_73_s09: bridge_len=83, chain C resid 170-252
+    SOX2=97 CA, SOX9=72 CA, bridge=83 CA
+  SOX2 mean=0.218  SOX9 mean=0.229
+  thr=0.05: dual=100.0%  sox2only=0.0%  sox9only=0.0%  neither=0.0%
+  thr=0.10: dual=99.5%  sox2only=0.0%  sox9only=0.5%  neither=0.0%
+  thr=0.15: dual=92.3%  sox2only=0.4%  sox9only=7.3%  neither=0.0%
+
+[bridge_136_s01]
+  bridge_136_s01: bridge_len=73, chain C resid 170-242
+    SOX2=97 CA, SOX9=72 CA, bridge=73 CA
+  SOX2 mean=0.143  SOX9 mean=0.172
+  thr=0.05: dual=96.9%  sox2only=0.0%  sox9only=3.1%  neither=0.0%
+  thr=0.10: dual=86.8%  sox2only=0.7%  sox9only=12.5%  neither=0.0%
+  thr=0.15: dual=47.3%  sox2only=8.5%  sox9only=40.2%  neither=4.0%
+
+[bridge_101_s06]
+  bridge_101_s06: bridge_len=76, chain C resid 170-245
+    SOX2=97 CA, SOX9=72 CA, bridge=76 CA
+  SOX2 mean=0.274  SOX9 mean=0.255
+  thr=0.05: dual=100.0%  sox2only=0.0%  sox9only=0.0%  neither=0.0%
+  thr=0.10: dual=99.9%  sox2only=0.1%  sox9only=0.0%  neither=0.0%
+  thr=0.15: dual=99.0%  sox2only=1.0%  sox9only=0.0%  neither=0.0%
+
+[bridge_90_s01]
+  bridge_90_s01: bridge_len=90, chain C resid 170-259
+    SOX2=97 CA, SOX9=72 CA, bridge=90 CA
+  SOX2 mean=0.234  SOX9 mean=0.162
+  thr=0.05: dual=100.0%  sox2only=0.0%  sox9only=0.0%  neither=0.0%
+  thr=0.10: dual=99.8%  sox2only=0.2%  sox9only=0.0%  neither=0.0%
+  thr=0.15: dual=75.4%  sox2only=24.6%  sox9only=0.0%  neither=0.0%
+
+Results saved to /home/ayushregmibagale/gbm-protein-switch/analysis/dual_contact_results.tsv
+
+===========================================================================
+  Design                 SOX2   SOX9  Dual(0.10) Dual(0.05) Dual(0.15)
+  -------------------------------------------------------------------------
+  bridge_48_s01         0.376  0.166        99.4%      100.0%       69.2%
+  bridge_73_s09         0.218  0.229        99.5%      100.0%       92.3%
+  bridge_136_s01        0.143  0.172        86.8%       96.9%       47.3%
+  bridge_101_s06        0.274  0.255        99.9%      100.0%       99.0%
+  bridge_90_s01         0.234  0.162        99.8%      100.0%       75.4%
+===========================================================================

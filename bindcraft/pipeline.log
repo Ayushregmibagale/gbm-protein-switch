@@ -1,0 +1,460 @@
+=== Pipeline launcher started Thu Aug 27 17:12:48 BST 2026 ===
+SOX2 PID=794738 (crystal 6WX8)  SOX9 PID=795002 (crystal 4EUW)  GPU limit=70°C
+17:12 SOX2=running(0acc)  SOX9=running(0acc)  GPU=36°C
+17:17 SOX2=running(0acc)  SOX9=running(0acc)  GPU=60°C
+17:22 SOX2=running(0acc)  SOX9=running(0acc)  GPU=43°C
+17:27 SOX2=running(0acc)  SOX9=running(0acc)  GPU=55°C
+17:31 SOX2=running(0acc)  SOX9=running(0acc)  GPU=38°C
+17:36 SOX2=running(0acc)  SOX9=running(0acc)  GPU=54°C
+17:41 SOX2=running(0acc)  SOX9=running(0acc)  GPU=53°C
+17:46 SOX2=running(0acc)  SOX9=running(0acc)  GPU=44°C
+17:50 SOX2=running(0acc)  SOX9=running(0acc)  GPU=38°C
+17:55 SOX2=running(0acc)  SOX9=running(0acc)  GPU=51°C
+18:00 SOX2=running(0acc)  SOX9=running(0acc)  GPU=38°C
+18:04 SOX2=running(0acc)  SOX9=running(0acc)  GPU=59°C
+18:09 SOX2=running(0acc)  SOX9=running(0acc)  GPU=40°C
+18:14 SOX2=running(0acc)  SOX9=running(0acc)  GPU=42°C
+18:19 SOX2=running(0acc)  SOX9=running(0acc)  GPU=35°C
+18:23 SOX2=running(0acc)  SOX9=running(0acc)  GPU=40°C
+18:28 SOX2=running(0acc)  SOX9=running(0acc)  GPU=53°C
+18:33 SOX2=running(0acc)  SOX9=running(0acc)  GPU=53°C
+18:38 SOX2=running(0acc)  SOX9=running(0acc)  GPU=55°C
+18:42 SOX2=running(0acc)  SOX9=running(0acc)  GPU=40°C
+18:47 SOX2=running(0acc)  SOX9=running(0acc)  GPU=34°C
+18:52 SOX2=running(0acc)  SOX9=running(0acc)  GPU=38°C
+18:57 SOX2=running(0acc)  SOX9=running(0acc)  GPU=48°C
+19:01 SOX2=running(0acc)  SOX9=running(0acc)  GPU=35°C
+19:06 SOX2=running(0acc)  SOX9=running(0acc)  GPU=47°C
+19:11 SOX2=running(0acc)  SOX9=running(0acc)  GPU=51°C
+19:15 SOX2=running(0acc)  SOX9=running(0acc)  GPU=47°C
+19:20 SOX2=running(0acc)  SOX9=running(1acc)  GPU=38°C
+19:25 SOX2=running(0acc)  SOX9=running(2acc)  GPU=43°C
+19:30 SOX2=running(0acc)  SOX9=running(2acc)  GPU=42°C
+19:34 SOX2=running(0acc)  SOX9=running(2acc)  GPU=34°C
+19:39 SOX2=running(0acc)  SOX9=running(2acc)  GPU=49°C
+19:44 SOX2=running(0acc)  SOX9=running(2acc)  GPU=58°C
+19:49 SOX2=running(0acc)  SOX9=running(2acc)  GPU=50°C
+19:54 SOX2=running(0acc)  SOX9=running(2acc)  GPU=43°C
+19:59 SOX2=running(0acc)  SOX9=running(2acc)  GPU=38°C
+20:04 SOX2=running(0acc)  SOX9=running(2acc)  GPU=36°C
+20:09 SOX2=running(0acc)  SOX9=running(2acc)  GPU=54°C
+20:14 SOX2=running(0acc)  SOX9=running(2acc)  GPU=43°C
+20:19 SOX2=running(0acc)  SOX9=running(2acc)  GPU=38°C
+20:24 SOX2=running(0acc)  SOX9=running(2acc)  GPU=35°C
+20:29 SOX2=running(0acc)  SOX9=running(2acc)  GPU=44°C
+20:34 SOX2=running(0acc)  SOX9=running(2acc)  GPU=40°C
+20:39 SOX2=running(0acc)  SOX9=running(2acc)  GPU=39°C
+20:44 SOX2=running(0acc)  SOX9=running(4acc)  GPU=46°C
+20:49 SOX2=running(0acc)  SOX9=running(4acc)  GPU=36°C
+20:54 SOX2=running(0acc)  SOX9=running(4acc)  GPU=46°C
+20:59 SOX2=running(0acc)  SOX9=running(4acc)  GPU=42°C
+21:04 SOX2=running(0acc)  SOX9=running(4acc)  GPU=44°C
+21:09 SOX2=running(0acc)  SOX9=running(4acc)  GPU=45°C
+21:14 SOX2=running(0acc)  SOX9=running(4acc)  GPU=48°C
+21:19 SOX2=running(0acc)  SOX9=running(4acc)  GPU=35°C
+21:24 SOX2=running(0acc)  SOX9=running(4acc)  GPU=34°C
+21:29 SOX2=running(0acc)  SOX9=running(4acc)  GPU=35°C
+21:34 SOX2=running(1acc)  SOX9=running(4acc)  GPU=42°C
+21:39 SOX2=running(1acc)  SOX9=running(4acc)  GPU=36°C
+21:44 SOX2=running(1acc)  SOX9=running(4acc)  GPU=47°C
+21:49 SOX2=running(1acc)  SOX9=running(4acc)  GPU=51°C
+21:54 SOX2=running(1acc)  SOX9=running(4acc)  GPU=38°C
+21:59 SOX2=running(1acc)  SOX9=running(4acc)  GPU=37°C
+22:04 SOX2=running(1acc)  SOX9=running(4acc)  GPU=35°C
+22:09 SOX2=running(1acc)  SOX9=running(4acc)  GPU=58°C
+22:14 SOX2=running(1acc)  SOX9=running(4acc)  GPU=52°C
+22:19 SOX2=running(1acc)  SOX9=running(4acc)  GPU=57°C
+22:24 SOX2=running(1acc)  SOX9=running(4acc)  GPU=36°C
+22:29 SOX2=running(1acc)  SOX9=running(4acc)  GPU=34°C
+22:34 SOX2=running(1acc)  SOX9=running(4acc)  GPU=58°C
+22:39 SOX2=running(1acc)  SOX9=running(4acc)  GPU=59°C
+22:44 SOX2=running(1acc)  SOX9=running(4acc)  GPU=35°C
+22:49 SOX2=running(1acc)  SOX9=running(4acc)  GPU=40°C
+22:54 SOX2=running(1acc)  SOX9=running(5acc)  GPU=37°C
+22:59 SOX2=running(1acc)  SOX9=running(6acc)  GPU=36°C
+23:04 SOX2=running(1acc)  SOX9=running(6acc)  GPU=38°C
+23:09 SOX2=running(1acc)  SOX9=running(6acc)  GPU=36°C
+23:14 SOX2=running(1acc)  SOX9=running(6acc)  GPU=36°C
+23:19 SOX2=running(1acc)  SOX9=running(8acc)  GPU=58°C
+23:24 SOX2=running(1acc)  SOX9=running(8acc)  GPU=54°C
+23:29 SOX2=running(1acc)  SOX9=running(8acc)  GPU=39°C
+23:34 SOX2=running(1acc)  SOX9=running(9acc)  GPU=32°C
+23:39 SOX2=running(1acc)  SOX9=running(9acc)  GPU=39°C
+23:44 SOX2=running(1acc)  SOX9=running(9acc)  GPU=54°C
+23:49 SOX2=running(1acc)  SOX9=running(9acc)  GPU=37°C
+23:54 SOX2=running(1acc)  SOX9=running(9acc)  GPU=33°C
+23:59 SOX2=running(1acc)  SOX9=running(9acc)  GPU=37°C
+00:04 SOX2=running(1acc)  SOX9=running(9acc)  GPU=39°C
+00:09 SOX2=running(1acc)  SOX9=running(9acc)  GPU=51°C
+00:14 SOX2=running(1acc)  SOX9=running(9acc)  GPU=52°C
+00:19 SOX2=running(1acc)  SOX9=running(9acc)  GPU=57°C
+00:24 SOX2=running(1acc)  SOX9=running(9acc)  GPU=55°C
+00:29 SOX2=running(1acc)  SOX9=running(9acc)  GPU=36°C
+00:34 SOX2=running(1acc)  SOX9=running(9acc)  GPU=36°C
+00:39 SOX2=running(1acc)  SOX9=running(9acc)  GPU=48°C
+00:44 SOX2=running(1acc)  SOX9=running(9acc)  GPU=40°C
+00:49 SOX2=running(1acc)  SOX9=running(9acc)  GPU=41°C
+00:54 SOX2=running(1acc)  SOX9=running(9acc)  GPU=53°C
+00:59 SOX2=running(1acc)  SOX9=running(9acc)  GPU=54°C
+01:04 SOX2=running(1acc)  SOX9=running(9acc)  GPU=38°C
+01:09 SOX2=running(1acc)  SOX9=running(9acc)  GPU=37°C
+01:14 SOX2=running(1acc)  SOX9=running(9acc)  GPU=41°C
+01:19 SOX2=running(1acc)  SOX9=running(9acc)  GPU=36°C
+01:24 SOX2=running(1acc)  SOX9=running(9acc)  GPU=43°C
+01:29 SOX2=running(1acc)  SOX9=running(9acc)  GPU=42°C
+01:34 SOX2=running(1acc)  SOX9=running(9acc)  GPU=40°C
+01:39 SOX2=running(1acc)  SOX9=running(9acc)  GPU=39°C
+01:44 SOX2=running(1acc)  SOX9=running(9acc)  GPU=36°C
+01:49 SOX2=running(1acc)  SOX9=running(9acc)  GPU=58°C
+01:54 SOX2=running(1acc)  SOX9=running(10acc)  GPU=40°C
+01:59 SOX2=running(1acc)  SOX9=running(10acc)  GPU=35°C
+02:04 SOX2=running(1acc)  SOX9=running(10acc)  GPU=37°C
+02:09 SOX2=running(1acc)  SOX9=running(10acc)  GPU=35°C
+02:14 SOX2=running(1acc)  SOX9=running(10acc)  GPU=36°C
+02:19 SOX2=running(1acc)  SOX9=running(10acc)  GPU=39°C
+02:24 SOX2=running(1acc)  SOX9=running(11acc)  GPU=38°C
+02:29 SOX2=running(1acc)  SOX9=running(11acc)  GPU=38°C
+02:34 SOX2=running(1acc)  SOX9=running(11acc)  GPU=58°C
+02:38 SOX2=running(1acc)  SOX9=running(11acc)  GPU=34°C
+02:43 SOX2=running(1acc)  SOX9=running(11acc)  GPU=37°C
+02:48 SOX2=running(1acc)  SOX9=running(11acc)  GPU=39°C
+02:53 SOX2=running(1acc)  SOX9=running(11acc)  GPU=38°C
+02:58 SOX2=running(1acc)  SOX9=running(11acc)  GPU=37°C
+03:03 SOX2=running(1acc)  SOX9=running(13acc)  GPU=36°C
+03:08 SOX2=running(1acc)  SOX9=running(13acc)  GPU=36°C
+03:13 SOX2=running(1acc)  SOX9=running(13acc)  GPU=37°C
+03:18 SOX2=running(1acc)  SOX9=running(13acc)  GPU=35°C
+03:23 SOX2=running(1acc)  SOX9=running(14acc)  GPU=38°C
+03:28 SOX2=running(1acc)  SOX9=running(15acc)  GPU=41°C
+03:33 SOX2=running(1acc)  SOX9=running(15acc)  GPU=49°C
+03:37 SOX2=running(1acc)  SOX9=running(15acc)  GPU=35°C
+03:42 SOX2=running(1acc)  SOX9=running(15acc)  GPU=38°C
+03:47 SOX2=running(1acc)  SOX9=running(15acc)  GPU=40°C
+03:52 SOX2=running(1acc)  SOX9=running(15acc)  GPU=41°C
+03:57 SOX2=running(1acc)  SOX9=running(17acc)  GPU=45°C
+04:02 SOX2=running(1acc)  SOX9=running(17acc)  GPU=39°C
+04:07 SOX2=running(1acc)  SOX9=running(17acc)  GPU=37°C
+04:12 SOX2=running(1acc)  SOX9=running(17acc)  GPU=34°C
+04:17 SOX2=running(1acc)  SOX9=running(17acc)  GPU=38°C
+04:22 SOX2=running(1acc)  SOX9=running(17acc)  GPU=36°C
+04:27 SOX2=running(1acc)  SOX9=running(17acc)  GPU=33°C
+04:31 SOX2=running(1acc)  SOX9=running(17acc)  GPU=57°C
+04:36 SOX2=running(1acc)  SOX9=running(17acc)  GPU=38°C
+04:41 SOX2=running(1acc)  SOX9=running(17acc)  GPU=42°C
+04:46 SOX2=running(1acc)  SOX9=running(17acc)  GPU=55°C
+04:51 SOX2=running(1acc)  SOX9=running(17acc)  GPU=38°C
+04:56 SOX2=running(1acc)  SOX9=running(17acc)  GPU=33°C
+05:01 SOX2=running(1acc)  SOX9=running(17acc)  GPU=52°C
+05:06 SOX2=running(1acc)  SOX9=running(17acc)  GPU=36°C
+05:11 SOX2=running(1acc)  SOX9=running(17acc)  GPU=42°C
+05:15 SOX2=running(1acc)  SOX9=running(17acc)  GPU=41°C
+05:20 SOX2=running(1acc)  SOX9=running(17acc)  GPU=39°C
+05:25 SOX2=running(1acc)  SOX9=running(17acc)  GPU=51°C
+05:30 SOX2=running(1acc)  SOX9=running(17acc)  GPU=36°C
+05:35 SOX2=running(1acc)  SOX9=running(17acc)  GPU=39°C
+05:40 SOX2=running(1acc)  SOX9=running(17acc)  GPU=59°C
+05:45 SOX2=running(1acc)  SOX9=running(17acc)  GPU=44°C
+05:50 SOX2=running(1acc)  SOX9=running(17acc)  GPU=35°C
+05:55 SOX2=running(1acc)  SOX9=running(17acc)  GPU=36°C
+05:59 SOX2=running(1acc)  SOX9=running(17acc)  GPU=39°C
+06:04 SOX2=running(1acc)  SOX9=running(18acc)  GPU=35°C
+06:09 SOX2=running(1acc)  SOX9=running(18acc)  GPU=38°C
+06:14 SOX2=running(1acc)  SOX9=running(18acc)  GPU=44°C
+06:19 SOX2=running(1acc)  SOX9=running(18acc)  GPU=36°C
+06:24 SOX2=running(1acc)  SOX9=done(40acc)  GPU=35°C
+06:29 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+06:34 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+06:39 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+06:43 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+06:48 SOX2=running(1acc)  SOX9=done(40acc)  GPU=38°C
+06:53 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+06:58 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+07:03 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+07:08 SOX2=running(1acc)  SOX9=done(40acc)  GPU=45°C
+07:13 SOX2=running(1acc)  SOX9=done(40acc)  GPU=40°C
+07:18 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+07:22 SOX2=running(1acc)  SOX9=done(40acc)  GPU=35°C
+07:27 SOX2=running(1acc)  SOX9=done(40acc)  GPU=35°C
+07:32 SOX2=running(1acc)  SOX9=done(40acc)  GPU=54°C
+07:37 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+07:42 SOX2=running(1acc)  SOX9=done(40acc)  GPU=50°C
+07:47 SOX2=running(1acc)  SOX9=done(40acc)  GPU=38°C
+07:52 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+07:56 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+08:01 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+08:06 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+08:11 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+08:16 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+08:21 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+08:26 SOX2=running(1acc)  SOX9=done(40acc)  GPU=42°C
+08:31 SOX2=running(1acc)  SOX9=done(40acc)  GPU=56°C
+08:35 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+08:40 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+08:45 SOX2=running(1acc)  SOX9=done(40acc)  GPU=45°C
+08:50 SOX2=running(1acc)  SOX9=done(40acc)  GPU=50°C
+08:55 SOX2=running(1acc)  SOX9=done(40acc)  GPU=38°C
+09:00 SOX2=running(1acc)  SOX9=done(40acc)  GPU=39°C
+09:05 SOX2=running(1acc)  SOX9=done(40acc)  GPU=38°C
+09:09 SOX2=running(1acc)  SOX9=done(40acc)  GPU=38°C
+09:14 SOX2=running(1acc)  SOX9=done(40acc)  GPU=44°C
+09:19 SOX2=running(1acc)  SOX9=done(40acc)  GPU=39°C
+09:24 SOX2=running(1acc)  SOX9=done(40acc)  GPU=38°C
+09:29 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+09:34 SOX2=running(1acc)  SOX9=done(40acc)  GPU=39°C
+09:39 SOX2=running(1acc)  SOX9=done(40acc)  GPU=38°C
+09:43 SOX2=running(1acc)  SOX9=done(40acc)  GPU=37°C
+09:48 SOX2=running(1acc)  SOX9=done(40acc)  GPU=40°C
+09:53 SOX2=running(1acc)  SOX9=done(40acc)  GPU=53°C
+09:58 SOX2=running(1acc)  SOX9=done(40acc)  GPU=52°C
+10:03 SOX2=running(1acc)  SOX9=done(40acc)  GPU=40°C
+10:08 SOX2=running(1acc)  SOX9=done(40acc)  GPU=54°C
+10:13 SOX2=running(1acc)  SOX9=done(40acc)  GPU=38°C
+10:17 SOX2=running(1acc)  SOX9=done(40acc)  GPU=39°C
+10:22 SOX2=running(1acc)  SOX9=done(40acc)  GPU=35°C
+10:27 SOX2=running(1acc)  SOX9=done(40acc)  GPU=36°C
+=== Both BindCraft done — Fri Aug 28 10:32:24 BST 2026 ===
+Accepted designs: SOX2=1  SOX9=40
+--- Protein Hunter SOX2 starting Fri Aug 28 10:32:24 BST 2026 ---
+=== Protein Hunter SOX2 binder — Fri Aug 28 10:32:24 BST 2026 ===
+/home/ayushregmibagale/miniconda3/envs/boltz2/lib/python3.10/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+========================================
+Design Configuration:
+gpu_id                        : 0
+grad_enabled                  : False
+name                          : SOX2_binder
+mode                          : binder
+num_designs                   : 50
+num_cycles                    : 7
+cyclic                        : False
+min_protein_length            : 60
+max_protein_length            : 100
+seq                           : 
+refiner_mode                  : False
+protein_seqs                  : MYNMMETELKPPGPQQTSGGGGGNSTAAAAGGNQKNSPDRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPGGNSMASGVGVGAGLGAGVNQRMDSYAHMNGWSNGSYSMMQDQLGYPQHPGLNAHGAAQMQPMHRYDVSALQYNSMTSSQTYMNGSPTYSMSYSQQGTPGMALGSMGSVVKSEASSSPPVVTSSSHSRAPCQAGDLRDMISMYLPGAEVPEPAAPSRLHMSQHYQSGPVPGTAINGTLPLSHM
+msa_mode                      : single
+ligand_smiles                 : 
+ligand_ccd                    : 
+nucleic_type                  : dna
+nucleic_seq                   : 
+template_path                 : 
+template_cif_chain_id         : 
+diffuse_steps                 : 200
+recycling_steps               : 3
+boltz_model_version           : boltz2
+boltz_model_path              : ~/.boltz/boltz2_conf.ckpt
+ccd_path                      : ~/.boltz/mols
+randomly_kill_helix_feature   : False
+negative_helix_constant       : 0.2
+logmd                         : False
+save_dir                      : /home/ayushregmibagale/gbm-protein-switch/protein_hunter/sox2_binder
+omit_AA                       : C
+exclude_P                     : False
+percent_X                     : 90
+plot                          : True
+contact_residues              : 62,70,74,81
+no_contact_filter             : False
+max_contact_filter_retries    : 6
+contact_cutoff                : 15.0
+alphafold_dir                 : /home/ayushregmibagale/alphafold3
+af3_docker_name               : alphafold3_yc
+af3_database_settings         : ~/alphafold3/alphafold3_data_save
+hmmer_path                    : ~/.conda/envs/alphafold3_venv
+use_alphafold3_validation     : False
+use_msa_for_af3               : False
+work_dir                      : 
+temperature                   : 0.1
+alanine_bias_start            : -0.5
+alanine_bias_end              : -0.1
+alanine_bias                  : True
+high_iptm_threshold           : 0.7
+high_plddt_threshold          : 0.7
+========================================
+Using device: cuda:0
+use potentials
+✅ ProteinHunter_Boltz initialized.
+Data dictionary:
+ {'sequences': [{'protein': {'id': ['A'], 'sequence': 'X', 'msa': 'empty', 'cyclic': False}}, {'protein': {'id': ['B'], 'sequence': 'MYNMMETELKPPGPQQTSGGGGGNSTAAAAGGNQKNSPDRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPGGNSMASGVGVGAGLGAGVNQRMDSYAHMNGWSNGSYSMMQDQLGYPQHPGLNAHGAAQMQPMHRYDVSALQYNSMTSSQTYMNGSPTYSMSYSQQGTPGMALGSMGSVVKSEASSSPPVVTSSSHSRAPCQAGDLRDMISMYLPGAEVPEPAAPSRLHMSQHYQSGPVPGTAINGTLPLSHM', 'msa': 'empty'}}], 'constraints': [{'pocket': {'binder': 'A', 'contacts': [['B', 62], ['B', 70], ['B', 74], ['B', 81]]}}]}
+
+=======================================================
+=== Starting Design Run 0/49 ===
+=======================================================
+Binder initial sequence length: 93
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+
+--- Run 0, Cycle 1 ---
+Traceback (most recent call last):
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/design.py", line 133, in <module>
+    main()
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/design.py", line 130, in main
+    protein_hunter.run_pipeline()
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/pipeline.py", line 788, in run_pipeline
+    run_metrics = self._run_design_cycle(data_cp, run_id, pocket_conditioning)
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/pipeline.py", line 491, in _run_design_cycle
+    seq_str, logits = design_sequence(
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/model_utils.py", line 580, in design_sequence
+    seq, logits = designer.run(
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/../LigandMPNN/wrapper.py", line 129, in run
+    raise RuntimeError(
+RuntimeError: LigandMPNN failed with code 2
+STDERR:
+python: can't open file '/home/ayushregmibagale/./LigandMPNN/run.py': [Errno 2] No such file or directory
+
+--- Protein Hunter SOX9 starting Fri Aug 28 10:33:38 BST 2026 ---
+=== Protein Hunter SOX9 binder — Fri Aug 28 10:33:38 BST 2026 ===
+/home/ayushregmibagale/miniconda3/envs/boltz2/lib/python3.10/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+========================================
+Design Configuration:
+gpu_id                        : 0
+grad_enabled                  : False
+name                          : SOX9_binder
+mode                          : binder
+num_designs                   : 50
+num_cycles                    : 7
+cyclic                        : False
+min_protein_length            : 60
+max_protein_length            : 100
+seq                           : 
+refiner_mode                  : False
+protein_seqs                  : MNLLDPFMKMTDEQEKGLSGAPSPTMSEDSAGSPCPSGSGSDTENTRPQENTFPKGEPDLKKESEEDKFPVCIREAVSQVLKGYDWTLVPMPVRVNGSSKNKPHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKYQPRRRKSVKNGQAEAEEATEQTHISPNAIFKALQADSPHSSSGMSEVHSPGEHSGQSQGPPTPPTTPKTDVQPGKADLKREGRPLPEGGRQPPIDFRDVDIGELSSDVISNIETFDVNEFDQYLPPNGHPGVPATHGQVTYTGSYGISSTAATPASAGHVWMSKQQAPPPPPQQPPQAPPAPQAPPQPQAAPPQQPAAPPQQPQAHTLTTLSSEPGQSQRTHIKTEQLSPSHYSEQQQHSPQQIAYSPFNLPHYSPSYPPITRSQYDYTDHQNSSSYYSHAAGQGTGLYSTFTYMNPAQRPMYTPIADTSGVPSIPQTHSPQHWEQPVYTQLTRP
+msa_mode                      : single
+ligand_smiles                 : 
+ligand_ccd                    : 
+nucleic_type                  : dna
+nucleic_seq                   : 
+template_path                 : 
+template_cif_chain_id         : 
+diffuse_steps                 : 200
+recycling_steps               : 3
+boltz_model_version           : boltz2
+boltz_model_path              : ~/.boltz/boltz2_conf.ckpt
+ccd_path                      : ~/.boltz/mols
+randomly_kill_helix_feature   : False
+negative_helix_constant       : 0.2
+logmd                         : False
+save_dir                      : /home/ayushregmibagale/gbm-protein-switch/protein_hunter/sox9_binder
+omit_AA                       : C
+exclude_P                     : False
+percent_X                     : 90
+plot                          : True
+contact_residues              : 148,152,159,166,171
+no_contact_filter             : False
+max_contact_filter_retries    : 6
+contact_cutoff                : 15.0
+alphafold_dir                 : /home/ayushregmibagale/alphafold3
+af3_docker_name               : alphafold3_yc
+af3_database_settings         : ~/alphafold3/alphafold3_data_save
+hmmer_path                    : ~/.conda/envs/alphafold3_venv
+use_alphafold3_validation     : False
+use_msa_for_af3               : False
+work_dir                      : 
+temperature                   : 0.1
+alanine_bias_start            : -0.5
+alanine_bias_end              : -0.1
+alanine_bias                  : True
+high_iptm_threshold           : 0.7
+high_plddt_threshold          : 0.7
+========================================
+Using device: cuda:0
+use potentials
+✅ ProteinHunter_Boltz initialized.
+Data dictionary:
+ {'sequences': [{'protein': {'id': ['A'], 'sequence': 'X', 'msa': 'empty', 'cyclic': False}}, {'protein': {'id': ['B'], 'sequence': 'MNLLDPFMKMTDEQEKGLSGAPSPTMSEDSAGSPCPSGSGSDTENTRPQENTFPKGEPDLKKESEEDKFPVCIREAVSQVLKGYDWTLVPMPVRVNGSSKNKPHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKYQPRRRKSVKNGQAEAEEATEQTHISPNAIFKALQADSPHSSSGMSEVHSPGEHSGQSQGPPTPPTTPKTDVQPGKADLKREGRPLPEGGRQPPIDFRDVDIGELSSDVISNIETFDVNEFDQYLPPNGHPGVPATHGQVTYTGSYGISSTAATPASAGHVWMSKQQAPPPPPQQPPQAPPAPQAPPQPQAAPPQQPAAPPQQPQAHTLTTLSSEPGQSQRTHIKTEQLSPSHYSEQQQHSPQQIAYSPFNLPHYSPSYPPITRSQYDYTDHQNSSSYYSHAAGQGTGLYSTFTYMNPAQRPMYTPIADTSGVPSIPQTHSPQHWEQPVYTQLTRP', 'msa': 'empty'}}], 'constraints': [{'pocket': {'binder': 'A', 'contacts': [['B', 148], ['B', 152], ['B', 159], ['B', 166], ['B', 171]]}}]}
+
+=======================================================
+=== Starting Design Run 0/49 ===
+=======================================================
+Binder initial sequence length: 72
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+
+--- Run 0, Cycle 1 ---
+Traceback (most recent call last):
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/design.py", line 133, in <module>
+    main()
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/design.py", line 130, in main
+    protein_hunter.run_pipeline()
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/pipeline.py", line 788, in run_pipeline
+    run_metrics = self._run_design_cycle(data_cp, run_id, pocket_conditioning)
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/pipeline.py", line 491, in _run_design_cycle
+    seq_str, logits = design_sequence(
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/model_utils.py", line 580, in design_sequence
+    seq, logits = designer.run(
+  File "/home/ayushregmibagale/Protein-Hunter/boltz_ph/../LigandMPNN/wrapper.py", line 129, in run
+    raise RuntimeError(
+RuntimeError: LigandMPNN failed with code 2
+STDERR:
+python: can't open file '/home/ayushregmibagale/./LigandMPNN/run.py': [Errno 2] No such file or directory
+
+=== Full pipeline complete Fri Aug 28 10:34:42 BST 2026 ===
+=== Pipeline launcher started Fri Aug 28 13:39:46 BST 2026 ===
+SOX2 PID=3805685 (crystal 6WX8)  SOX9 PID=795002 (crystal 4EUW)  GPU limit=70°C
+13:39 SOX2=running(4acc)  SOX9=done(40acc)  GPU=37°C
+13:44 SOX2=running(4acc)  SOX9=done(40acc)  GPU=62°C
+13:49 SOX2=running(4acc)  SOX9=done(40acc)  GPU=61°C
+13:54 SOX2=running(4acc)  SOX9=done(40acc)  GPU=38°C
+13:58 SOX2=running(4acc)  SOX9=done(40acc)  GPU=55°C
+14:03 SOX2=running(4acc)  SOX9=done(40acc)  GPU=52°C
+14:08 SOX2=running(4acc)  SOX9=done(40acc)  GPU=48°C
+14:13 SOX2=running(4acc)  SOX9=done(40acc)  GPU=39°C
+14:18 SOX2=running(4acc)  SOX9=done(40acc)  GPU=51°C
+14:22 SOX2=running(4acc)  SOX9=done(40acc)  GPU=39°C
+14:27 SOX2=running(4acc)  SOX9=done(40acc)  GPU=39°C
+14:32 SOX2=running(4acc)  SOX9=done(40acc)  GPU=58°C
+14:37 SOX2=running(4acc)  SOX9=done(40acc)  GPU=40°C
+14:42 SOX2=running(4acc)  SOX9=done(40acc)  GPU=38°C
+14:46 SOX2=running(4acc)  SOX9=done(40acc)  GPU=58°C
+14:51 SOX2=running(4acc)  SOX9=done(40acc)  GPU=39°C
+14:56 SOX2=running(4acc)  SOX9=done(40acc)  GPU=38°C
+15:01 SOX2=running(4acc)  SOX9=done(40acc)  GPU=41°C
+15:05 SOX2=running(4acc)  SOX9=done(40acc)  GPU=44°C
+15:10 SOX2=running(4acc)  SOX9=done(40acc)  GPU=43°C
+15:15 SOX2=running(4acc)  SOX9=done(40acc)  GPU=39°C
+15:20 SOX2=running(4acc)  SOX9=done(40acc)  GPU=48°C
+15:25 SOX2=running(4acc)  SOX9=done(40acc)  GPU=64°C
+15:29 SOX2=running(4acc)  SOX9=done(40acc)  GPU=37°C
+15:34 SOX2=running(4acc)  SOX9=done(40acc)  GPU=36°C
+15:39 SOX2=running(4acc)  SOX9=done(40acc)  GPU=39°C
+15:44 SOX2=running(4acc)  SOX9=done(40acc)  GPU=47°C
+15:49 SOX2=running(4acc)  SOX9=done(40acc)  GPU=37°C
+15:53 SOX2=running(4acc)  SOX9=done(40acc)  GPU=36°C
+15:58 SOX2=running(4acc)  SOX9=done(40acc)  GPU=36°C
+16:03 SOX2=running(4acc)  SOX9=done(40acc)  GPU=61°C
+16:08 SOX2=running(4acc)  SOX9=done(40acc)  GPU=56°C
+16:12 SOX2=running(4acc)  SOX9=done(40acc)  GPU=55°C
+16:17 SOX2=running(4acc)  SOX9=done(40acc)  GPU=58°C
+16:22 SOX2=running(4acc)  SOX9=done(40acc)  GPU=37°C
+16:27 SOX2=running(4acc)  SOX9=done(40acc)  GPU=39°C
+16:31 SOX2=running(6acc)  SOX9=done(40acc)  GPU=37°C
+16:36 SOX2=running(6acc)  SOX9=done(40acc)  GPU=41°C
+16:41 SOX2=running(6acc)  SOX9=done(40acc)  GPU=40°C
+16:46 SOX2=running(6acc)  SOX9=done(40acc)  GPU=54°C
+16:51 SOX2=running(6acc)  SOX9=done(40acc)  GPU=60°C
+16:55 SOX2=running(6acc)  SOX9=done(40acc)  GPU=56°C
+17:00 SOX2=running(6acc)  SOX9=done(40acc)  GPU=50°C
+17:05 SOX2=running(6acc)  SOX9=done(40acc)  GPU=36°C
+17:10 SOX2=running(6acc)  SOX9=done(40acc)  GPU=45°C
+17:14 SOX2=running(6acc)  SOX9=done(40acc)  GPU=43°C
+17:19 SOX2=running(6acc)  SOX9=done(40acc)  GPU=45°C
+17:24 SOX2=running(6acc)  SOX9=done(40acc)  GPU=38°C
+17:29 SOX2=running(6acc)  SOX9=done(40acc)  GPU=52°C
+17:33 SOX2=running(6acc)  SOX9=done(40acc)  GPU=42°C
+17:38 SOX2=running(6acc)  SOX9=done(40acc)  GPU=38°C
+17:43 SOX2=running(6acc)  SOX9=done(40acc)  GPU=38°C
+17:48 SOX2=running(6acc)  SOX9=done(40acc)  GPU=43°C
+17:52 SOX2=running(6acc)  SOX9=done(40acc)  GPU=34°C
+17:57 SOX2=running(6acc)  SOX9=done(40acc)  GPU=38°C
+18:02 SOX2=running(6acc)  SOX9=done(40acc)  GPU=56°C
+18:07 SOX2=running(6acc)  SOX9=done(40acc)  GPU=43°C
+18:11 SOX2=running(6acc)  SOX9=done(40acc)  GPU=40°C
+18:16 SOX2=running(6acc)  SOX9=done(40acc)  GPU=39°C
+18:21 SOX2=running(6acc)  SOX9=done(40acc)  GPU=44°C
+18:26 SOX2=running(6acc)  SOX9=done(40acc)  GPU=42°C
+18:30 SOX2=running(6acc)  SOX9=done(40acc)  GPU=46°C
+18:35 SOX2=running(6acc)  SOX9=done(40acc)  GPU=57°C
+18:40 SOX2=running(6acc)  SOX9=done(40acc)  GPU=50°C
+18:45 SOX2=running(6acc)  SOX9=done(40acc)  GPU=36°C
+18:49 SOX2=running(6acc)  SOX9=done(40acc)  GPU=51°C
+18:54 SOX2=running(6acc)  SOX9=done(40acc)  GPU=47°C
+18:59 SOX2=running(6acc)  SOX9=done(40acc)  GPU=44°C
+19:04 SOX2=running(6acc)  SOX9=done(40acc)  GPU=45°C

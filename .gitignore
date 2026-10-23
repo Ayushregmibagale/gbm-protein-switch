@@ -1,0 +1,58 @@
+# GROMACS trajectory and binary MD outputs
+*.xtc
+*.trr
+*.edr
+*.cpt
+*.tpr
+*.ndx
+*.top
+posre*.itp
+
+# Large Boltz-2 prediction output directories (results kept in TSVs)
+selection/stage1_boltz_outputs/
+selection/stage2_boltz_outputs/
+selection/stage3_boltz_outputs/
+selection/stage5_caspase_outputs/
+selection/stage5_flipped_outputs/
+selection/stage5_multiseed_outputs/
+selection/stage5_ph_sox2_run18_outputs/
+selection/bridge_linker_outputs/
+analysis/bridge_3chain_selectivity_outputs/
+analysis/offtarget_selectivity_outputs/
+
+# MD simulation output directories (keep input/config, exclude trajectories)
+md/lead_construct/
+md/rep2/
+md/rep3/
+md/bridge_binder_md/
+
+# BindCraft trajectory data (keep Accepted/ PDBs)
+bindcraft/designs/*/Trajectories/
+bindcraft/designs/*/Relaxed/
+bindcraft/logs/
+
+# Protein Hunter raw outputs
+protein_hunter/outputs/
+
+# RFdiffusion raw backbone PDB dumps
+rfdiffusion/sox2_binder/
+rfdiffusion/sox9_binder/
+rfdiffusion/bridge_both_chains/
+rfdiffusion/bridge_mpnn_boltz/
+rfdiffusion/bridge_mpnn_boltz_batch2/
+
+# BoltzGen outputs
+boltzgen/outputs/
+
+# NumPy compressed arrays (large Boltz internals)
+*.npz
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Misc
+*.swp
+.DS_Store
+Thumbs.db
