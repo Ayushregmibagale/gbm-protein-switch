@@ -1,0 +1,48 @@
+{
+  "name": "sox2_sox9_dna_cocomplex",
+  "sequences": [
+    {
+      "protein": {
+        "id": "A",
+        "sequence": "MYNMMETELKPPGPQQTSGGGGGNSTAAAAGGNQKNSPDRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPGGNSMASGVGVGAGLGAGVNQRMDSYAHMNGWSNGSYSMMQDQLGYPQHPGLNAHGAAQMQPMHRYDVSALQYNSMTSSQTYMNGSPTYSMSYSQQGTPGMALGSMGSVVKSEASSSPPVVTSSSHSRAPCQAGDLRDMISMYLPGAEVPEPAAPSRLHMSQHYQSGPVPGTAINGTLPLSHM",
+        "description": "Human SOX2 (UniProt P48431, 317 aa)",
+        "unpairedMsaPath": "/home/ayushregmibagale/gbm-protein-switch/structures/af3_cocomplex/msa/sox2_sox9_cocomplex_0.a3m",
+        "pairedMsa": "",
+        "templates": []
+      }
+    },
+    {
+      "protein": {
+        "id": "B",
+        "sequence": "MNLLDPFMKMTDEQEKGLSGAPSPTMSEDSAGSPCPSGSGSDTENTRPQENTFPKGEPDLKKESEEDKFPVCIREAVSQVLKGYDWTLVPMPVRVNGSSKNKPHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKYQPRRRKSVKNGQAEAEEATEQTHISPNAIFKALQADSPHSSSGMSEVHSPGEHSGQSQGPPTPPTTPKTDVQPGKADLKREGRPLPEGGRQPPIDFRDVDIGELSSDVISNIETFDVNEFDQYLPPNGHPGVPATHGQVTYTGSYGISSTAATPASAGHVWMSKQQAPPPPPQQPPQAPPAPQAPPQPQAAPPQQPAAPPQQPQAHTLTTLSSEPGQSQRTHIKTEQLSPSHYSEQQQHSPQQIAYSPFNLPHYSPSYPPITRSQYDYTDHQNSSSYYSHAAGQGTGLYSTFTYMNPAQRPMYTPIADTSGVPSIPQTHSPQHWEQPVYTQLTRP",
+        "description": "Human SOX9 (UniProt P48436, 509 aa)",
+        "unpairedMsaPath": "/home/ayushregmibagale/gbm-protein-switch/structures/af3_cocomplex/msa/sox2_sox9_cocomplex_1.a3m",
+        "pairedMsa": "",
+        "templates": []
+      }
+    },
+    {
+      "dna": {
+        "id": "C",
+        "sequence": "AGAACAAAGAACAAAGAG",
+        "description": "SOX dimer binding motif, forward strand (two AACAAAG sites with 4 bp spacing)"
+      }
+    },
+    {
+      "dna": {
+        "id": "D",
+        "sequence": "CTCTTTGTTCTTTGTTCT",
+        "description": "SOX dimer binding motif, reverse complement strand"
+      }
+    }
+  ],
+  "modelSeeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "dialect": "alphafold3",
+  "version": 4
+}

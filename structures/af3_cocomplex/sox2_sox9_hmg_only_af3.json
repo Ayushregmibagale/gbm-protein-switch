@@ -1,0 +1,44 @@
+{
+  "name": "SOX2_HMG_SOX9_HMG_DNA",
+  "sequences": [
+    {
+      "protein": {
+        "id": "A",
+        "sequence": "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLM",
+        "unpairedMsaPath": "/home/ayushregmibagale/gbm-protein-switch/structures/af3_cocomplex/hmg_msa/sox2_hmg.a3m",
+        "pairedMsa": "",
+        "templates": []
+      }
+    },
+    {
+      "protein": {
+        "id": "B",
+        "sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+        "unpairedMsaPath": "/home/ayushregmibagale/gbm-protein-switch/structures/af3_cocomplex/hmg_msa/sox9_hmg.a3m",
+        "pairedMsa": "",
+        "templates": []
+      }
+    },
+    {
+      "dna": {
+        "id": "C",
+        "sequence": "CTCTTTGAGAAG"
+      }
+    },
+    {
+      "dna": {
+        "id": "D",
+        "sequence": "CTTCTCAAAGAG"
+      }
+    }
+  ],
+  "modelSeeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "dialect": "alphafold3",
+  "version": 2
+}

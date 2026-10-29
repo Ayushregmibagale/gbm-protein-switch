@@ -1,0 +1,337 @@
+{
+  "source_root": "/mnt/d/gbm-protein-switch",
+  "files": [
+    {
+      "path": "md/run_lead_md.py",
+      "sha256": "677c4f5604ecc2dff0d205fcb9f440bc69b1ebe8349eecd911f5c0ac50f4604d",
+      "bytes": 12463
+    },
+    {
+      "path": "md/run_replicates.py",
+      "sha256": "b3336b048f94dcf07b418ae9798b3549724c2d3bccb264896a3ce1beb06125ec",
+      "bytes": 6966
+    },
+    {
+      "path": "md/run_unbound_md.py",
+      "sha256": "57cc95d7828e7422a330f1dd628f79df2a9297523d514be6ef80dc6026aa24a0",
+      "bytes": 13460
+    },
+    {
+      "path": "md/watch_and_analyse.sh",
+      "sha256": "f108347f8b531a0f4faca4e4ee8c4d4709d5d6e9955cd65b666511b33837db7e",
+      "bytes": 863
+    },
+    {
+      "path": "md/mdp/em.mdp",
+      "sha256": "055f693c9e29ab677363be0c152da1fa0c1ce3450cad243b8c6aa9322fbfb3a5",
+      "bytes": 385
+    },
+    {
+      "path": "md/mdp/npt.mdp",
+      "sha256": "95b04f647993629155a8b5707ebe05c35693eb15c528bdcf41e851473658d067",
+      "bytes": 944
+    },
+    {
+      "path": "md/mdp/nvt.mdp",
+      "sha256": "0827a1b0b04f26faafa47fb5f7faad290b50590ed94a3bf320c1e927cbcba820",
+      "bytes": 823
+    },
+    {
+      "path": "md/mdp/prod_20ns.mdp",
+      "sha256": "e9a8fea275ef4e7c6aa7d331b203369d4ace843690b8bd49d5688e7bf826d0f2",
+      "bytes": 1068
+    },
+    {
+      "path": "md/mdp/prod_20ns_newvel.mdp",
+      "sha256": "15e992b2b3ac8ff19615f813bc3b5b76389f0998520663d2b445f99196c0f6f0",
+      "bytes": 1182
+    },
+    {
+      "path": "selection/bridge_linker_screen.py",
+      "sha256": "fdaf4ec2b1fbc051d0e9a059dc52d3f50126c086ac63a03a80b49fb87db132dd",
+      "bytes": 7702
+    },
+    {
+      "path": "selection/run_stage5_ph_sox2_run18.py",
+      "sha256": "d540f5b91f1697bb06296af9543cc6d7e5558a55086536faec7e5677298c7383",
+      "bytes": 6324
+    },
+    {
+      "path": "selection/stage1_reprediction.py",
+      "sha256": "a00c2152f83dd696ecf3f3944828982e83ff2376c19596c3c846474ec62c3182",
+      "bytes": 9542
+    },
+    {
+      "path": "selection/stage1_results.tsv",
+      "sha256": "6cbaead7e74f9a0770a0656df772de09b91c8b9c29e27bff0f6cc244d4184a2d",
+      "bytes": 36433
+    },
+    {
+      "path": "selection/stage2_andgate_geometry.py",
+      "sha256": "ad2ab8dc2f71b9015919bef4f766dd912811ce1c7bbf107afbd9b894504f0365",
+      "bytes": 6145
+    },
+    {
+      "path": "selection/stage2_results.tsv",
+      "sha256": "43b21a1ed29f3867bcfa7007bacdec27e880c391fd7bfe7c6ecc20bb9bda2bfc",
+      "bytes": 220172
+    },
+    {
+      "path": "selection/stage3_results.tsv",
+      "sha256": "5768e4193a70f9e6fb2d80756e0e287c02df71b6218ad8e03113ca916dc7eaf7",
+      "bytes": 6084
+    },
+    {
+      "path": "selection/stage3_selectivity.py",
+      "sha256": "7f6c929654c73a6ddb077b68d0917eb28416d95a28190f29caebad4140c149e2",
+      "bytes": 6908
+    },
+    {
+      "path": "selection/stage4_composite_ranking.py",
+      "sha256": "96106451e3b806418fd40cac2b223090b4244cb61723d4816da9699dcbca93c5",
+      "bytes": 2577
+    },
+    {
+      "path": "selection/stage4_results.tsv",
+      "sha256": "4d5da1a04b94717e54ff4954493ebf915996b6db43757db8ae7c56691fcc948b",
+      "bytes": 3408
+    },
+    {
+      "path": "selection/stage5_caspase_geometry.py",
+      "sha256": "5855f8d609eab9be1615db53b4f8925e2706ed90b4099a9b3c00039b076ee343",
+      "bytes": 8664
+    },
+    {
+      "path": "selection/stage5_flipped.py",
+      "sha256": "c4dd2e270821a2052453a2f98470b46460aa94359de4ed601e5c148247d9e90e",
+      "bytes": 6920
+    },
+    {
+      "path": "selection/stage5_flipped_results.tsv",
+      "sha256": "1ac88cbe96d78e3d8157019dd978723b0be031a4e350ddd80872d0da281a93c4",
+      "bytes": 3560
+    },
+    {
+      "path": "selection/stage5_multiseed.py",
+      "sha256": "fcbaf6b9fb53d55c30b14f2de1774c25d3e9c093c8cb66b0e2717c38fc9b8f3f",
+      "bytes": 7062
+    },
+    {
+      "path": "selection/stage5_multiseed_results.tsv",
+      "sha256": "cb765e74ec2478ba732850e1f1d572135403a3df4bbce26b1a9ec16efe7e8a04",
+      "bytes": 255
+    },
+    {
+      "path": "selection/stage5_ph_sox2_run18_results.tsv",
+      "sha256": "dbb1bedfbf15c6b259e42176f07df1e2cbda5c016964da323a3f02c960ff1fb6",
+      "bytes": 1189
+    },
+    {
+      "path": "selection/stage5_results.tsv",
+      "sha256": "f8603401257f76e3883e1da574bdf96a54c3ce22564cf162cfddda11714bbfce",
+      "bytes": 6500
+    },
+    {
+      "path": "protein_hunter/run_ph_bridge.sh",
+      "sha256": "169d4010e817ff6117bf4ee1b4b2eb0d6a67730aac58bf724a07b202c49f88e2",
+      "bytes": 1289
+    },
+    {
+      "path": "protein_hunter/run_ph_sox2.sh",
+      "sha256": "6f5a2059352320095f6f73436321ff812e48e4b0209b88a5deff24c2891e9275",
+      "bytes": 1322
+    },
+    {
+      "path": "protein_hunter/run_ph_sox9.sh",
+      "sha256": "6f7a9713884a78c728686fdd497d9c79e6be2a6e88dc6594db8bf20b3c078bbe",
+      "bytes": 1196
+    },
+    {
+      "path": "protein_hunter/run_ph_sox9_nterm.sh",
+      "sha256": "8c97ff2ed3e263fd4058a153eaa71510d1723c50f728b2961a0ea8117ed0386a",
+      "bytes": 1387
+    },
+    {
+      "path": "rfdiffusion/run_mpnn_boltz_bridge.py",
+      "sha256": "85ee91b548c1694cc2f6e3ac0cc6e3d3e5bae92a94af9240cc8c28ceefde5e43",
+      "bytes": 13060
+    },
+    {
+      "path": "rfdiffusion/run_mpnn_boltz_bridge.sh",
+      "sha256": "5b8621652382aee74657941ef1f8f1b5faf704e5bccad3094b114ff779174734",
+      "bytes": 1084
+    },
+    {
+      "path": "rfdiffusion/run_mpnn_boltz_bridge_batch2.py",
+      "sha256": "a0eb70824ccf9653b7db949ff2bb59e4ab10e02a61ab273523ce19e623f1f6cd",
+      "bytes": 11298
+    },
+    {
+      "path": "rfdiffusion/run_rfdiffusion_bridge_both.sh",
+      "sha256": "94f74a43be8a4f67473796b4963fcdf796682154c15bf4405ed5bf2bfa6b9562",
+      "bytes": 1364
+    },
+    {
+      "path": "rfdiffusion/run_rfdiffusion_bridge_round2.sh",
+      "sha256": "217a3be87f6ced1dce031dac5cfee5141a24ce3f67ed09c884c7b1e757c07a9d",
+      "bytes": 1672
+    },
+    {
+      "path": "rfdiffusion/run_rfdiffusion_sox2.sh",
+      "sha256": "786daaa5456ea7417e1cc70abc48f410951d3d27377dc93abc0ec9dc4e92aba0",
+      "bytes": 1145
+    },
+    {
+      "path": "rfdiffusion/run_rfdiffusion_sox9.sh",
+      "sha256": "12173d749ad36111b2922f7ffbe061d751ef364d09ff8cc60aae6e50c8a0e8eb",
+      "bytes": 1109
+    },
+    {
+      "path": "rfdiffusion/run_rfdiffusion_sox9_nterm.sh",
+      "sha256": "0b9c7ef5e0e048444a389a84548cbb261529fddc4c81e673b3cff7d280a9c321",
+      "bytes": 1655
+    },
+    {
+      "path": "mpnn/run_mpnn.sh",
+      "sha256": "12fc57403a9b9fa093ce33cfff076b82639600bd446f3af4a931b0930c52536b",
+      "bytes": 1539
+    },
+    {
+      "path": "structures/af3_cocomplex/prepare_msa.py",
+      "sha256": "d1474c9a9a6fb2f8b881fde002440a3b16327e51feda579f943ef939ce9a3a98",
+      "bytes": 1932
+    },
+    {
+      "path": "structures/af3_cocomplex/sox2_sox9_cocomplex_af3.json",
+      "sha256": "063110bd9fc313a14479a53181b1e70a4a7c70ae81464fd9be11f0a3f39c309e",
+      "bytes": 1624
+    },
+    {
+      "path": "structures/af3_cocomplex/sox2_sox9_cocomplex_af3_withmsa.json",
+      "sha256": "1a896b217446f998a39db2740cddb46fdc8834658dfefff5359cc76b8e5eac29",
+      "bytes": 2001
+    },
+    {
+      "path": "structures/af3_cocomplex/sox2_sox9_hmg_only_af3.json",
+      "sha256": "cb8059800fb9b261be28827b8497495b4db60fb0a277c971de00f9295b3e20c4",
+      "bytes": 992
+    },
+    {
+      "path": "structures/boltz2_cocomplex/sox2_sox9_cocomplex.yaml",
+      "sha256": "9fe566a5876450d51d242064a8210c2a47c359e8431000c71c93beec283b7ba3",
+      "bytes": 1044
+    },
+    {
+      "path": "notes/bridge_binder_campaign_overview.md",
+      "sha256": "831b28ba6949143122088543bc86b4269f3620a688f8058f7559ceda5d20f8cf",
+      "bytes": 6396
+    },
+    {
+      "path": "notes/bridge_binder_rescue_sep06.md",
+      "sha256": "ab2347ad8aef74f9bed00715e99082eb9a39894f1f15ebf6403b34cb748edce1",
+      "bytes": 4736
+    },
+    {
+      "path": "notes/campaign_progress_aug31.md",
+      "sha256": "14ef8ec18a97111022312e7bea15ed296ec3d077fbcd2d1d74d513ca4b564750",
+      "bytes": 4009
+    },
+    {
+      "path": "notes/campaign_progress_sep02.md",
+      "sha256": "b04f5af31d029b845fcfb50f8af9883ebc4692de33b1b64c2cece7b9ac7dfcfe",
+      "bytes": 3318
+    },
+    {
+      "path": "notes/caspase_choice_rationale.md",
+      "sha256": "c83e902efa2e90af1548ea9934d5f5893010aa1e5596e7866c0e74898545a6c2",
+      "bytes": 1694
+    },
+    {
+      "path": "notes/caspase_fusion_workflow.md",
+      "sha256": "9f183061f4c92ab4f9ad7ad3a70c629d54d75a9334e473d956451aa3695788a9",
+      "bytes": 2865
+    },
+    {
+      "path": "notes/caspase_geometry_fix_options.md",
+      "sha256": "1fc36c036cde3a3662ad99bb70a2ecccd17f50e4475beebc6d31e531baed970c",
+      "bytes": 3149
+    },
+    {
+      "path": "notes/caspase_geometry_modelling_plan.md",
+      "sha256": "e4abe9ec88cb00b75f0c96c8973ca9dcc769bb9c136f2fae6666298c1cbc8e16",
+      "bytes": 2420
+    },
+    {
+      "path": "notes/design_selection_pipeline.md",
+      "sha256": "8d3042622dd2c15289f197c61f937675efc88647126e1dc7a5b8d2c106efa7a4",
+      "bytes": 2963
+    },
+    {
+      "path": "notes/full_report_sep15.md",
+      "sha256": "a52db379f9a43d9afdbe08c4d6a85ba637cf72738af6cf42d6ee359616a49dd1",
+      "bytes": 26672
+    },
+    {
+      "path": "notes/hotspot_selection_rationale.md",
+      "sha256": "ab13bc0e5a78e44ca818f6c84d6936c96304a0a92e77b467e3cd478152ae05a5",
+      "bytes": 2945
+    },
+    {
+      "path": "notes/pipeline_summary_sep02.md",
+      "sha256": "6e3e7a3cb74e583d1d77894e6f275b8fb2744aef7f243ff0b79e1447487fd9d8",
+      "bytes": 5249
+    },
+    {
+      "path": "notes/results_lab_readiness_sep06.md",
+      "sha256": "bd17befb75328b1e6d3e7974efbc786f07c95b227c24483a9463f06c279e2e00",
+      "bytes": 10473
+    },
+    {
+      "path": "notes/results_overview_sep15.md",
+      "sha256": "59f46a55bf375d16bf1567c7f27c680463ee13d3faadc643f2b9b458673e716c",
+      "bytes": 4735
+    },
+    {
+      "path": "notes/risks_and_split_sites.md",
+      "sha256": "70ada6592fc35deaea91f084f911a4179a4555e4f71e0afb205b31f4db4fa5f0",
+      "bytes": 3419
+    },
+    {
+      "path": "notes/session_2026-09-06.md",
+      "sha256": "f85df2db0dfa8c1f884377a5f784de22f0c944817f4cdaf0fbac965b4d3bcdff",
+      "bytes": 5136
+    },
+    {
+      "path": "notes/session_2026-09-12.md",
+      "sha256": "681399fdb8e5dd0fbe6e277b0584b74b7b458047f3de4159eb031568e6e718bd",
+      "bytes": 1993
+    },
+    {
+      "path": "notes/session_2026-09-16.md",
+      "sha256": "321a8152e83719df51e8b6a3d583383bd1c96250660a2069a261d7cc840fafdc",
+      "bytes": 3751
+    },
+    {
+      "path": "notes/sox2_bindcraft_strategy.md",
+      "sha256": "9d670a65a5b112daffcb571ee696cfd17865f5cb6056ff648e5b7c3107fb35a0",
+      "bytes": 2866
+    },
+    {
+      "path": "notes/stage3_results_summary.md",
+      "sha256": "7c6c8a1acf76a80993fb9525fbf28262a6efec08974a915bd06b9f00e144d0a6",
+      "bytes": 3978
+    },
+    {
+      "path": "notes/stage5_corrected_results.md",
+      "sha256": "a6f264b8be33335ee84a926a5e305af0940379d3f1870be19d8d79132c3b38e5",
+      "bytes": 3327
+    },
+    {
+      "path": "inputs/reference/P55211.fasta",
+      "source_path": "selection/stage5_caspase_outputs/P55211.fasta",
+      "sha256": "78af5d3d276f37c36d5e00b75b52f4b10a4a79d3ac08ddc9b0f3a9d42c956a03",
+      "bytes": 499
+    }
+  ],
+  "note": "Original recovered bytes. Subsequent repairs are tracked in Git."
+}
