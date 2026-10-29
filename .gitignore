@@ -56,3 +56,11 @@ __pycache__/
 *.swp
 .DS_Store
 Thumbs.db
+
+# Actual generated output names (existing tracked artifacts remain in history)
+bindcraft/designs/*/Trajectory/
+bindcraft/designs/*/MPNN/
+boltzgen/output/
+md/unbound/
+md/*/validated_analysis/
+.*_offsets.lock

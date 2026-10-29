@@ -1,0 +1,113 @@
+{
+  "method": "bridge_dual_contact.py; minimum-image CA distances <8 A; contact fractions strictly >threshold",
+  "source_files": [
+    {
+      "design": "bridge_48_s01",
+      "inputs": [
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_48_s01/start.pdb",
+          "bytes": 147027,
+          "sha256": "570b938329cfdef9481323fb82bb86e942a812f1b646754f88dd67045add2404"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_48_s01/prod.tpr",
+          "bytes": 2558152,
+          "sha256": "973a1ac764ff7efd26a5effa80c98353cd75c8c83b597dcc1da376a097a8fa36"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_48_s01/prod.xtc",
+          "bytes": 497535648,
+          "sha256": "e3462f7b78c32840db5f5c61943097648641e4c0683ea2b44113a0d7a5759fcc"
+        }
+      ]
+    },
+    {
+      "design": "bridge_73_s09",
+      "inputs": [
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_73_s09/start.pdb",
+          "bytes": 151320,
+          "sha256": "b6c68573d64f9c3a0026500eed650e17b9e3217880412b365737818339ae661b"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_73_s09/prod.tpr",
+          "bytes": 2310760,
+          "sha256": "ad2b4fe5b76a6f53beff77e2be4b5994b68c8bf4bd660016ae3eaee4c3434885"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_73_s09/prod.xtc",
+          "bytes": 417921164,
+          "sha256": "c1349cb8218debd53cfec3728f104bcf421a7d6a1ac19dc69f53623e840a2cf7"
+        }
+      ]
+    },
+    {
+      "design": "bridge_136_s01",
+      "inputs": [
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_136_s01/start.pdb",
+          "bytes": 157638,
+          "sha256": "48cb9108810a8274c2959863efcf5f3292b32608724a70a6bcf7216d646c84e6"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_136_s01/prod.tpr",
+          "bytes": 2798700,
+          "sha256": "05ec8614443bc8e6798cc126863ce6519ec3a24881a5278bdc3c4d5eb119ecec"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_136_s01/prod.xtc",
+          "bytes": 548002684,
+          "sha256": "5ebadcb7cea51d0e6e1727b2e6f8e8d2aeed71804fe0902103f82c427c801ef3"
+        }
+      ]
+    },
+    {
+      "design": "bridge_101_s06",
+      "inputs": [
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_101_s06/start.pdb",
+          "bytes": 149376,
+          "sha256": "b0806b48243f7a46755623e0f8bf0f5ee4947f5765ddf3acdbe87581ed96aea5"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_101_s06/prod.tpr",
+          "bytes": 2982904,
+          "sha256": "ab6c7837c6abeaee772f611f9b9fe58f29e3eaea331f05193f977b88319614ad"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_101_s06/prod.xtc",
+          "bytes": 616757648,
+          "sha256": "a58c19a90f4d6e980a76624493881eb556f2d6c99fe2c8be23bc7ba33888a0a7"
+        }
+      ]
+    },
+    {
+      "design": "bridge_90_s01",
+      "inputs": [
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_90_s01/start.pdb",
+          "bytes": 168006,
+          "sha256": "4ba5033f867b5d539e8323b292e76a493beaebab216dfbc322a48e25068cf146"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_90_s01/prod.tpr",
+          "bytes": 4886332,
+          "sha256": "a1ee005bc83d24e4701e5f71c49b9e74b17b28c46309c37053e321727832be63"
+        },
+        {
+          "path": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_90_s01/prod.xtc",
+          "bytes": 1157610440,
+          "sha256": "f73d3bca388bb38851172000084966b07335fd67ada818bc1bb39e3c8faa61c4"
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "bridge_73_s09_dual_contact_timeseries.txt": "c92277398b5646c326f58ec01e2ae13b2e8576fd5baa12a0c0fbf5f7f1c5abc1",
+    "bridge_90_s01_dual_contact_timeseries.txt": "7917557edc03ad8828ac4d37845c5ee02f1c71b711c2ee481a2bc5bef6a0e705",
+    "dual_contact_results.tsv": "ba00184a49ea85d33625013e3aa228462d1e34a9307895859ac5c6012d491f34",
+    "bridge_101_s06_dual_contact_timeseries.txt": "726aa4e036dde1b2035a7a674622016062ad9c773576918191523c2ddb577f92",
+    "bridge_136_s01_dual_contact_timeseries.txt": "d81bfcdb1097ea65ba3ba2952bafc4c3f892986e1507470b97ee952928a636ba",
+    "bridge_48_s01_dual_contact_timeseries.txt": "848b8837a4243821ddae190f25e06bcedb18a98d9c85b0d67d9daa48a5fffad3"
+  }
+}

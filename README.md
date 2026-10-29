@@ -4,7 +4,7 @@ Exploratory computational research on SOX2/SOX9 sensing and a split-caspase actu
 The repository contains design outputs and analysis scripts. Conditional activity,
 normal-cell specificity, and safety remain unestablished.
 
-Start with [the robustness review](ROBUSTNESS_REVIEW.md). [aims.md](aims.md) describes
+Start with [the robustness review](ROBUSTNESS_REVIEW.md) and the [operating instructions](WORKFLOW.md). [aims.md](aims.md) describes
 the original proposal; its numerical criteria are hypotheses and historical choices.
 
 ## Reproduce the evidence audit
@@ -23,8 +23,8 @@ consistent; it does not validate the biological mechanism.
 
 ## Reanalyse existing trajectories
 
-Install `requirements-audit.txt` in an isolated environment. Raw TPR/XTC files are
-external to this checkout. The following example reads them without launching MD:
+Install `requirements-audit.txt` in an isolated environment. Raw TPR/XTC files remain external to this checkout. Missing small workflow files
+have been recovered with hashes in `evidence/recovery_manifest.json`. The following example reads them without launching MD:
 
 ```bash
 python analysis/audit_periodic_distance.py /path/to/md/lead_construct \
@@ -41,11 +41,12 @@ Legacy structure analyses now require `--pdb /path/to/model.pdb` and accept
 `--out-dir /path/to/new/results`. `bridge_dual_contact.py` requires `--out-dir`
 and accepts `--md-root`; it applies periodic boundaries and checks CA counts.
 It retains the historical 97/72 target-residue assumptions: verify these against
-the topology. Historical bridge tables are preserved. A separate periodic reanalysis of
-bridge_48_s01 is saved under `evidence/bridge48_periodic/`; remaining bridge
-designs have not been reanalysed.
+the topology. Historical bridge tables are preserved. Periodic reanalysis of all five recorded
+passing bridge designs is saved under `evidence/bridge_periodic/`, with raw input
+content hashes. Additional bridge replicate trajectories have not been reanalysed.
 
 The three-chain prediction launcher accepts `--base` and `--boltz` (or `BOLTZ_BIN`).
 It can launch expensive inference jobs; it is separate from the read-only audit.
-Remaining campaign launchers depend on workstation paths and external software,
-and are not a portable workflow. Do not interpret them as a documented entry point.
+Recovered MD runners use `GBM_ROOT`, `GMX_BIN`, and `BOLTZ_BIN`, default to status,
+and require `--execute` to run. See `WORKFLOW.md` for checkpoint handling and
+strict control validation. Historical shell launchers remain workstation records.

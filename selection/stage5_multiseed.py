@@ -8,14 +8,17 @@ Reports distribution of reconstitution distances.
 Pass criterion: ≥3/5 seeds give recon dist < 15 Å.
 """
 
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+require_execution(__name__)
+
 import os, json, subprocess, urllib.request
 import numpy as np, pandas as pd
 from pathlib import Path
 from Bio.PDB import PDBParser
 
-BASE      = Path("/mnt/d/gbm-protein-switch")
+BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 OUT_DIR   = BASE / "selection" / "stage5_multiseed_outputs"
-BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
 SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
@@ -31,15 +34,7 @@ pdb_parser = PDBParser(QUIET=True)
 
 
 def fetch_casp9_halves() -> tuple[str, str]:
-    cache = BASE / "selection" / "stage5_caspase_outputs" / "P55211.fasta"
-    if cache.exists():
-        fasta = cache.read_text()
-    else:
-        url = "https://rest.uniprot.org/uniprotkb/P55211.fasta"
-        with urllib.request.urlopen(url, timeout=30) as r:
-            fasta = r.read().decode()
-        cache.write_text(fasta)
-    seq = "".join(fasta.strip().split("\n")[1:])
+    seq = reference_sequence()
     return seq[139:315], seq[315:416]   # N-half (140-315), C-half (316-416)
 
 

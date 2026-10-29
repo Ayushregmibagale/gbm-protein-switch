@@ -26,17 +26,18 @@ Usage:
   python run_lead_md.py --status # print current stage
 """
 
-import os, sys, json, subprocess, argparse
+import os, sys, json, subprocess, argparse, shlex
 import numpy as np
 from pathlib import Path
+from workflow_support import read_state, write_state, run_gmx, production, periodic_analysis
 
-BASE    = Path("/mnt/d/gbm-protein-switch")
+BASE    = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 MD_DIR  = BASE / "md" / "lead_construct"
 MDP_DIR = BASE / "md" / "mdp"
 SRC_PDB = (BASE / "selection" / "stage5_flipped_outputs"
            / "flip_n17_model2_ph_sox9_run18_GGS1_s2"
            / "boltz_results_input" / "predictions" / "input" / "input_model_0.pdb")
-GMX     = "/home/ayushregmibagale/.conda/envs/gromacs/bin/gmx"
+GMX     = os.environ.get("GMX_BIN", "gmx")
 STATE   = MD_DIR / "state.txt"
 
 CHAIN_A_RES = 97   # SOX2
@@ -45,26 +46,19 @@ CHAIN_C_RES = 250  # mpnn17 + GGS + CaspN
 CHAIN_D_RES = 171  # CaspC + GGS + ph_sox9_run18
 
 
-def get_state() -> str:
-    return STATE.read_text().strip() if STATE.exists() else "PENDING"
+def get_state():
+    return read_state(MD_DIR)
 
 
-def set_state(s: str):
-    STATE.write_text(s + "\n")
-    print(f"  → state: {s}")
+
+def set_state(s):
+    write_state(MD_DIR, s)
 
 
-def gmx(args: str, log: Path, stdin: str = None):
-    env = os.environ.copy()
-    env["GMX_MAXBACKUP"] = "-1"
-    cmd = f"{GMX} {args}"
-    with open(log, "a") as f:
-        r = subprocess.run(cmd, shell=True, cwd=MD_DIR, env=env,
-                           input=stdin, text=True,
-                           stdout=f, stderr=subprocess.STDOUT)
-    if r.returncode != 0:
-        print(f"  FAILED (rc={r.returncode}) — see {log.name}")
-        sys.exit(1)
+
+def gmx(args, log, stdin=None):
+    run_gmx(GMX, args, log, MD_DIR, stdin)
+
 
 
 # ── Stage 1: Fix PDB ──────────────────────────────────────────────────────────
@@ -105,7 +99,7 @@ def stage_structure():
 def stage_topology():
     print("  pdb2gmx (AMBER99SB-ILDN, TIP3P)...")
     gmx("pdb2gmx -f start.pdb -o protein.gro -p topol.top -i posre.itp "
-        "-ff amber99sb-ildn -water tip3p -ignh -missing",
+        "-ff amber99sb-ildn -water tip3p -ignh",
         log=MD_DIR / "pdb2gmx.log")
 
     print("  editconf (dodecahedron, 1.2 nm)...")
@@ -117,23 +111,12 @@ def stage_topology():
         log=MD_DIR / "solvate.log")
 
     print("  genion (0.15 M NaCl)...")
-    gmx(f"grompp -f {MDP_DIR}/em.mdp -c solvated.gro -p topol.top "
-        "-o ions.tpr -maxwarn 2",
+    gmx(f"grompp -f {shlex.quote(str(MDP_DIR / 'em.mdp'))} -c solvated.gro -p topol.top "
+        "-o ions.tpr ",
         log=MD_DIR / "grompp_ions.log")
 
-    # Find SOL group index
-    r = subprocess.run(f"{GMX} make_ndx -f solvated.gro -o /dev/null",
-                       shell=True, cwd=MD_DIR, input="q\n", text=True,
-                       capture_output=True, env={**os.environ, "GMX_MAXBACKUP": "-1"})
-    sol_group = "15"
-    for line in (r.stdout + r.stderr).split("\n"):
-        if "SOL" in line and line.strip() and line.strip()[0].isdigit():
-            sol_group = line.strip().split()[0]
-            break
-
-    gmx(f"genion -s ions.tpr -o ions.gro -p topol.top "
-        "-pname NA -nname CL -neutral -conc 0.15",
-        log=MD_DIR / "genion.log", stdin=f"{sol_group}\n")
+    gmx("genion -s ions.tpr -o ions.gro -p topol.top -pname NA -nname CL -neutral -conc 0.15",
+        log=MD_DIR / "genion.log", stdin="SOL\n")
 
     set_state("TOPOLOGY_DONE")
 
@@ -141,7 +124,7 @@ def stage_topology():
 # ── Stage 3: EM ───────────────────────────────────────────────────────────────
 def stage_em():
     print("  Energy minimisation...")
-    gmx(f"grompp -f {MDP_DIR}/em.mdp -c ions.gro -p topol.top -o em.tpr -maxwarn 2",
+    gmx(f"grompp -f {shlex.quote(str(MDP_DIR / 'em.mdp'))} -c ions.gro -p topol.top -o em.tpr ",
         log=MD_DIR / "grompp_em.log")
     gmx("mdrun -v -deffnm em -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu",
         log=MD_DIR / "mdrun_em.log")
@@ -151,8 +134,8 @@ def stage_em():
 # ── Stage 4: NVT ──────────────────────────────────────────────────────────────
 def stage_nvt():
     print("  NVT equilibration (200 ps)...")
-    gmx(f"grompp -f {MDP_DIR}/nvt.mdp -c em.gro -r em.gro -p topol.top "
-        "-o nvt.tpr -maxwarn 2",
+    gmx(f"grompp -f {shlex.quote(str(MDP_DIR / 'nvt.mdp'))} -c em.gro -r em.gro -p topol.top "
+        "-o nvt.tpr ",
         log=MD_DIR / "grompp_nvt.log")
     gmx("mdrun -v -deffnm nvt -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu -pme gpu -bonded gpu",
         log=MD_DIR / "mdrun_nvt.log")
@@ -162,8 +145,8 @@ def stage_nvt():
 # ── Stage 5: NPT ──────────────────────────────────────────────────────────────
 def stage_npt():
     print("  NPT equilibration (500 ps)...")
-    gmx(f"grompp -f {MDP_DIR}/npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt "
-        "-p topol.top -o npt.tpr -maxwarn 2",
+    gmx(f"grompp -f {shlex.quote(str(MDP_DIR / 'npt.mdp'))} -c nvt.gro -r nvt.gro -t nvt.cpt "
+        "-p topol.top -o npt.tpr ",
         log=MD_DIR / "grompp_npt.log")
     gmx("mdrun -v -deffnm npt -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu -pme gpu -bonded gpu",
         log=MD_DIR / "mdrun_npt.log")
@@ -172,100 +155,29 @@ def stage_npt():
 
 # ── Stage 6: Production ───────────────────────────────────────────────────────
 def stage_prod():
-    print("  Production MD (20 ns)...")
-    gmx(f"grompp -f {MDP_DIR}/prod_20ns.mdp -c npt.gro -t npt.cpt "
-        "-p topol.top -o prod.tpr -maxwarn 2",
-        log=MD_DIR / "grompp_prod.log")
-    gmx("mdrun -v -deffnm prod -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu -pme gpu -bonded gpu",
-        log=MD_DIR / "mdrun_prod.log")
-    set_state("PROD_DONE")
+    prepare = ['grompp', '-f', str(MDP_DIR / 'prod_20ns.mdp'), '-c', 'npt.gro', '-t', 'npt.cpt', '-p', 'topol.top', '-o', 'prod.tpr']
+    production(GMX, MD_DIR, prepare, 'production_checked')
+    set_state('PROD_DONE')
+
 
 
 # ── Stage 7: Analysis ─────────────────────────────────────────────────────────
 def stage_analysis():
-    """MDAnalysis: track inter-half distance across all production frames."""
-    try:
-        import MDAnalysis as mda
-    except ImportError:
-        print("  MDAnalysis not found — install with: pip install MDAnalysis")
-        sys.exit(1)
+    metrics = periodic_analysis(MD_DIR, 'resnum 419 and name CA', 'resnum 420 and name CA', 'lead_bound', 'near')
+    temporary = MD_DIR / 'metrics.json.tmp'
+    temporary.write_text(json.dumps(metrics, indent=2) + '\n')
+    temporary.replace(MD_DIR / 'metrics.json')
+    set_state('ANALYSIS_DONE')
 
-    print("  Loading trajectory with MDAnalysis...")
-    u = mda.Universe(str(MD_DIR / "prod.tpr"), str(MD_DIR / "prod.xtc"))
-
-    # After pdb2gmx with renumbered start.pdb:
-    #   Chain C (PROC): residues 170-419 (original per-chain 1-250)
-    #   Chain D (PROD): residues 420-590 (original per-chain 1-171)
-    # But pdb2gmx preserves the *input* residue numbers, which after renumbering are:
-    #   Chain C last residue = 170+250-1 = 419
-    #   Chain D first residue = 420
-    #
-    # MDAnalysis resnum matches PDB residue numbers preserved by pdb2gmx.
-    # segid in GROMACS TPR = PROA/PROB/PROC/PROD in chain order.
-
-    # Try segid selection first
-    c_term = u.select_atoms("segid PROC and resnum 419 and name CA")
-    n_term = u.select_atoms("segid PROD and resnum 420 and name CA")
-
-    # Fallback: use bynum based on cumulative atom count (estimate after H addition)
-    if len(c_term) == 0 or len(n_term) == 0:
-        print("  segid selection failed, trying resnum only...")
-        c_term = u.select_atoms("resnum 419 and name CA")
-        n_term = u.select_atoms("resnum 420 and name CA")
-
-    if len(c_term) == 0 or len(n_term) == 0:
-        print(f"  ERROR: Could not find CA atoms. c_term={len(c_term)}, n_term={len(n_term)}")
-        print("  Segments:", sorted(set(u.atoms.segids)))
-        print("  Residues near junction:")
-        for seg in u.segments:
-            res_ids = [r.resnum for r in seg.residues]
-            if 419 in res_ids or 420 in res_ids:
-                print(f"    segid={seg.segid} resids={min(res_ids)}-{max(res_ids)}")
-        sys.exit(1)
-
-    print(f"  C-term (chain C res 419): {c_term}")
-    print(f"  N-term (chain D res 420): {n_term}")
-
-    dists = []
-    for ts in u.trajectory:
-        d = np.linalg.norm(c_term.positions[0] - n_term.positions[0])
-        dists.append(d)
-
-    arr = np.array(dists)
-    pct_pass = float((arr < 15.0).mean() * 100)
-    metrics = {
-        "n_frames": int(len(arr)),
-        "time_ns": float(u.trajectory.n_frames * u.trajectory.dt / 1000),
-        "mean_dist_A": float(arr.mean()),
-        "min_dist_A":  float(arr.min()),
-        "max_dist_A":  float(arr.max()),
-        "std_dist_A":  float(arr.std()),
-        "pct_below_15A": pct_pass,
-        "pass": bool(pct_pass > 50.0),
-    }
-    (MD_DIR / "metrics.json").write_text(json.dumps(metrics, indent=2))
-
-    # Save raw distances for plotting
-    np.savetxt(MD_DIR / "recon_dist.txt",
-               np.column_stack([np.arange(len(arr)) * u.trajectory.dt / 1000, arr]),
-               header="time_ns  dist_A", fmt="%.3f  %.3f")
-
-    print(f"\n{'='*60}")
-    print(f"  LEAD CONSTRUCT MD RESULTS")
-    print(f"  Frames: {metrics['n_frames']}  ({metrics['time_ns']:.1f} ns)")
-    print(f"  Inter-half dist: {metrics['mean_dist_A']:.1f} ± {metrics['std_dist_A']:.1f} Å")
-    print(f"  Min: {metrics['min_dist_A']:.1f} Å   Max: {metrics['max_dist_A']:.1f} Å")
-    print(f"  % frames < 15 Å: {pct_pass:.1f}%")
-    print(f"  PASS (>50%): {metrics['pass']}")
-    print(f"{'='*60}")
-
-    set_state("ANALYSIS_DONE")
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--status", action="store_true")
+    parser.add_argument('--execute', action='store_true', help='Run or resume stages; otherwise only report status')
     args = parser.parse_args()
+    if not args.execute:
+        args.status = True
 
     state = get_state()
     if args.status:

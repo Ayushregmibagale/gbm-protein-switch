@@ -15,6 +15,28 @@ def function(path, name, namespace=None):
 
 
 class RegressionTests(unittest.TestCase):
+    def test_binder_identity_does_not_depend_on_chain_length(self):
+        try:
+            from Bio.PDB import PDBParser
+        except ImportError:
+            self.skipTest('Optional Biopython dependency is absent')
+        import tempfile
+        extract = function(ROOT/'selection/stage1_reprediction.py', 'extract_binder_seq_pdb',
+                           {'Path': Path, 'pdb_parser': PDBParser(QUIET=True)})
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'complex.pdb'
+            lines = []
+            serial = 1
+            for chain, size in [('A', 2), ('B', 3)]:
+                for resid in range(1, size+1):
+                    lines.append(f'ATOM  {serial:5d}  CA  ALA {chain}{resid:4d}    {resid:8.3f}{0:8.3f}{0:8.3f}  1.00  0.00           C\n')
+                    serial += 1
+            path.write_text(''.join(lines)+'END\n')
+            self.assertEqual(extract(path), 'AAA')
+            path.write_text(''.join(lines[:2])+'END\n')
+            with self.assertRaises(ValueError):
+                extract(path)
+
     def test_first_patch_is_not_duplicated(self):
         patches = function(ROOT / 'analysis/01_analyse_cocomplex.py', 'find_patches')
         self.assertEqual(patches([{'resnum': 1}, {'resnum': 2}, {'resnum': 20}]), [[1, 2], [20]])

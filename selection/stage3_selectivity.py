@@ -10,6 +10,9 @@ SOX9 binders tested vs SOX2 HMG.
 Output: stage3_results.tsv — one row per pair, with selectivity annotations.
 """
 
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+require_execution(__name__)
+
 import os, json, subprocess
 import pandas as pd
 from pathlib import Path
@@ -17,11 +20,11 @@ from pathlib import Path
 SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
 SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
 
-BASE      = Path("/mnt/d/gbm-protein-switch")
-STAGE1    = BASE / "selection" / "stage1_results.tsv"
+BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
+STAGE1    = Path(os.environ.get("GBM_STAGE1_TABLE", BASE / "selection" / "stage1_results.tsv"))
 STAGE2    = BASE / "selection" / "stage2_results.tsv"
 OUT_DIR   = BASE / "selection" / "stage3_boltz_outputs"
-BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 WRONG_IPTM_MAX = 0.40   # binder vs wrong target must be below this
 
@@ -65,6 +68,7 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     df1 = pd.read_csv(STAGE1, sep="\t")
+    validate_recorded_candidates(df1, BASE)
     df2 = pd.read_csv(STAGE2, sep="\t")
     passed = df2[df2["pass_stage2"] == True].copy()
 

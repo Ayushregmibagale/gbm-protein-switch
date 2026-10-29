@@ -1,3 +1,5 @@
 # Optional trajectory audit environment, versions used for the recorded reanalysis.
 MDAnalysis==2.10.0
 numpy==2.4.6
+biopython==1.85
+PyYAML==6.0.2

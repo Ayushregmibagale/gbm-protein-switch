@@ -11,15 +11,16 @@ Usage:
   python run_replicates.py --status # show progress
 """
 
-import os, sys, json, shutil, subprocess, argparse
+import os, sys, json, shutil, subprocess, argparse, shlex
 import numpy as np
 from pathlib import Path
+from workflow_support import read_state, write_state, run_gmx, production, periodic_analysis
 
-BASE     = Path("/mnt/d/gbm-protein-switch")
+BASE     = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 REP1_DIR = BASE / "md" / "lead_construct"
 MD_DIR   = BASE / "md"
 MDP_DIR  = BASE / "md" / "mdp"
-GMX      = "/home/ayushregmibagale/.conda/envs/gromacs/bin/gmx"
+GMX      = os.environ.get("GMX_BIN", "gmx")
 PYTHON   = "/home/ayushregmibagale/.conda/envs/gromacs/bin/python3"
 
 REPLICATES = [
@@ -31,25 +32,19 @@ CHAIN_C_LAST_RESNUM  = 419   # CaspN C-term (chain C, after renumbering)
 CHAIN_D_FIRST_RESNUM = 420   # CaspC N-term (chain D, after renumbering)
 
 
-def get_state(rep_dir: Path) -> str:
-    s = rep_dir / "state.txt"
-    return s.read_text().strip() if s.exists() else "PENDING"
+def get_state(rep_dir):
+    return read_state(rep_dir)
 
 
-def set_state(rep_dir: Path, s: str):
-    (rep_dir / "state.txt").write_text(s + "\n")
-    print(f"  → {s}")
+
+def set_state(rep_dir, s):
+    write_state(rep_dir, s)
 
 
-def gmx_run(args: str, log: Path, cwd: Path, stdin: str = None):
-    env = os.environ.copy()
-    env["GMX_MAXBACKUP"] = "-1"
-    with open(log, "a") as f:
-        r = subprocess.run(f"{GMX} {args}", shell=True, cwd=cwd, env=env,
-                           input=stdin, text=True, stdout=f, stderr=subprocess.STDOUT)
-    if r.returncode != 0:
-        print(f"  FAILED (rc={r.returncode}) — see {log.name}")
-        sys.exit(1)
+
+def gmx_run(args, log, cwd, stdin=None):
+    run_gmx(GMX, args, log, cwd, stdin)
+
 
 
 def setup_rep(rep_dir: Path, seed: int):
@@ -72,87 +67,39 @@ def setup_rep(rep_dir: Path, seed: int):
     set_state(rep_dir, "SETUP_DONE")
 
 
-def run_prod(rep_dir: Path):
-    """Run grompp + mdrun for production."""
-    print("  grompp...")
-    gmx_run(f"grompp -f prod_newvel.mdp -c npt.gro -p topol.top -o prod.tpr -maxwarn 2",
-            log=rep_dir / "grompp_prod.log", cwd=rep_dir)
-    print("  mdrun (20 ns)...")
-    gmx_run(f"mdrun -v -deffnm prod -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu -pme gpu -bonded gpu",
-            log=rep_dir / "mdrun_prod.log", cwd=rep_dir)
-    set_state(rep_dir, "PROD_DONE")
+def run_prod(rep_dir):
+    prepare = ['grompp', '-f', 'prod_newvel.mdp', '-c', 'npt.gro', '-p', 'topol.top', '-o', 'prod.tpr']
+    production(GMX, rep_dir, prepare, 'production_checked')
+    set_state(rep_dir, 'PROD_DONE')
 
 
-def run_analysis(rep_dir: Path):
-    """MDAnalysis: inter-half distance across production frames."""
-    try:
-        import MDAnalysis as mda
-    except ImportError:
-        print("  MDAnalysis not found")
-        sys.exit(1)
 
-    u = mda.Universe(str(rep_dir / "prod.tpr"), str(rep_dir / "prod.xtc"))
+def run_analysis(rep_dir):
+    metrics = periodic_analysis(rep_dir, 'resnum 419 and name CA', 'resnum 420 and name CA', rep_dir.name, 'near')
+    temporary = rep_dir / 'metrics.json.tmp'
+    temporary.write_text(json.dumps(metrics, indent=2) + '\n')
+    temporary.replace(rep_dir / 'metrics.json')
+    set_state(rep_dir, 'ANALYSIS_DONE')
 
-    c_term = u.select_atoms(f"resnum {CHAIN_C_LAST_RESNUM} and name CA")
-    n_term = u.select_atoms(f"resnum {CHAIN_D_FIRST_RESNUM} and name CA")
-
-    if len(c_term) != 1 or len(n_term) != 1:
-        print(f"  ERROR: c_term={len(c_term)}, n_term={len(n_term)}")
-        print("  Segments:", sorted(set(u.atoms.segids)))
-        sys.exit(1)
-
-    dists = [np.linalg.norm(c_term.positions[0] - n_term.positions[0])
-             for _ in u.trajectory]
-
-    arr = np.array(dists)
-    pct = float((arr < 15.0).mean() * 100)
-    metrics = {
-        "n_frames": int(len(arr)),
-        "time_ns": float(u.trajectory.n_frames * u.trajectory.dt / 1000),
-        "mean_dist_A": float(arr.mean()),
-        "min_dist_A":  float(arr.min()),
-        "max_dist_A":  float(arr.max()),
-        "std_dist_A":  float(arr.std()),
-        "pct_below_15A": pct,
-        "pass": bool(pct > 50.0),
-    }
-    (rep_dir / "metrics.json").write_text(json.dumps(metrics, indent=2))
-    np.savetxt(rep_dir / "recon_dist.txt",
-               np.column_stack([np.arange(len(arr)) * u.trajectory.dt / 1000, arr]),
-               header="time_ns  dist_A", fmt="%.3f  %.3f")
-
-    print(f"  Frames: {metrics['n_frames']}  ({metrics['time_ns']:.1f} ns)")
-    print(f"  Inter-half: {metrics['mean_dist_A']:.1f} ± {metrics['std_dist_A']:.1f} Å")
-    print(f"  Min: {metrics['min_dist_A']:.1f} Å   Max: {metrics['max_dist_A']:.1f} Å")
-    print(f"  % < 15 Å: {pct:.1f}%  PASS: {metrics['pass']}")
-    set_state(rep_dir, "ANALYSIS_DONE")
 
 
 def print_summary():
-    """Print combined results across all replicates including rep1."""
-    rows = []
-    for rep_id, rep_dir in [("rep1", REP1_DIR)] + [(r["id"], MD_DIR / r["id"]) for r in REPLICATES]:
-        m_path = rep_dir / "metrics.json"
-        if m_path.exists():
-            m = json.loads(m_path.read_text())
-            rows.append((rep_id, m["mean_dist_A"], m["std_dist_A"],
-                         m["min_dist_A"], m["pct_below_15A"], m["pass"]))
-    if rows:
-        print(f"\n{'='*65}")
-        print(f"  {'Rep':<6} {'Mean±SD':>12}  {'Min':>6}  {'%<15Å':>7}  Pass")
-        print(f"  {'-'*55}")
-        for rep_id, mean, sd, mn, pct, passed in rows:
-            print(f"  {rep_id:<6} {mean:6.1f}±{sd:<5.1f}  {mn:6.1f}  {pct:7.1f}%  {'✓' if passed else '✗'}")
-        all_pct = [r[4] for r in rows]
-        print(f"  {'-'*55}")
-        print(f"  {'Mean':<6} {sum(r[1] for r in rows)/len(rows):>12.1f}         {sum(all_pct)/len(all_pct):7.1f}%")
-        print(f"{'='*65}")
+    for directory in [REP1_DIR] + [MD_DIR / row['id'] for row in REPLICATES]:
+        path = directory / 'metrics.json'
+        if path.exists():
+            metrics = json.loads(path.read_text())
+            method = 'validated periodic' if 'topology_sha256' in metrics else 'LEGACY: requires periodic reanalysis'
+            print(directory.name, method, json.dumps(metrics))
+
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--status", action="store_true")
+    parser.add_argument('--execute', action='store_true', help='Run or resume stages; otherwise only report status')
     args = parser.parse_args()
+    if not args.execute:
+        args.status = True
 
     if args.status:
         for r in REPLICATES:

@@ -15,7 +15,7 @@ Koeber et al. (Nature, 2026 — s41586-026-10329-6) showed that SOX2 and SOX9 fo
   - N-half: residues 140–315 (large subunit only, no CARD) fused to SOX2 binder C-terminus
   - C-half: residues 316–416 (small subunit) fused to SOX9 binder C-terminus
   - CARD deletion prevents N-half from interacting with APAF-1 independently
-  - Split site: D315/G316 — most validated in literature
+  - Split site: D315/A316 — most validated in literature
 - In GSCs: SOX2 and SOX9 are co-complexed (epitopes 45 Å apart) → binder arms forced into proximity → caspase-9 reconstitutes → activates caspase-3/7 → apoptosis + immunogenic antigen release
 - In normal cells: TFs not co-complexed → no reconstitution → no toxicity
 - Construct architecture (single bicistronic AAV):
@@ -84,7 +84,7 @@ Caspase-9 is the initiator; one reconstituted dimer activates many caspase-3/7 m
 - Confirm geometric compatibility across ≥20% of MD frames (equivalent to P_stable criterion from PROTAC work)
 
 ### Aim 4 — Design the full switch construct
-- Split site: D315/G316, CARD-deleted (N-half = residues 140-315; C-half = 316-416)
+- Split site: D315/A316, CARD-deleted (N-half = residues 140-315; C-half = 316-416)
 - Architecture: NLS-[binder]-[GGS linker]-[casp9 half]-T2A-NLS-[binder]-[GGS linker]-[casp9 half]
 - Design and test GGS vs rigid linkers between binder and caspase half
 - Add SV40 NLS to both halves for nuclear localisation

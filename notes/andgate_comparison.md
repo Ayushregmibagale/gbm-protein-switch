@@ -32,7 +32,7 @@ with a different payload**.
 
 | | gbm-protein-switch | gbm-ANDGATE |
 |--|--|--|
-| **Payload** | Split caspase-9 (CARD-deleted, D315/G316) | Split BRD4-binder (ph_r49c2, split pos 19) |
+| **Payload** | Split caspase-9 (CARD-deleted, D315/A316) | Split BRD4-binder (ph_r49c2, split pos 19) |
 | **Mechanism of kill** | Reconstituted caspase-9 → caspase-3/7 → apoptosis | Reconstituted BRD4-binder → sequesters BRD4 from super-enhancers → transcriptional collapse |
 | **Speed** | Hours (direct apoptosis) | Days (transcriptional) |
 | **Signal amplification** | Yes — one reconstituted dimer activates thousands of downstream caspases | No — stoichiometric BRD4 occupancy required |

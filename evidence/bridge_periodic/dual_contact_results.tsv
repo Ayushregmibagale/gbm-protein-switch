@@ -1,0 +1,6 @@
+design	n_frames	bridge_len	sox2_mean	sox9_mean	thr05_dual_pct	thr05_sox2only_pct	thr05_sox9only_pct	thr05_neither_pct	thr10_dual_pct	thr10_sox2only_pct	thr10_sox9only_pct	thr10_neither_pct	thr15_dual_pct	thr15_sox2only_pct	thr15_sox9only_pct	thr15_neither_pct
+bridge_48_s01	2001	69	0.389	0.167	100.0	0.0	0.0	0.0	99.6	0.4	0.0	0.0	72.1	27.9	0.0	0.0
+bridge_73_s09	2001	83	0.228	0.233	100.0	0.0	0.0	0.0	100.0	0.0	0.0	0.0	96.2	0.0	3.8	0.0
+bridge_136_s01	2001	73	0.158	0.177	100.0	0.0	0.0	0.0	97.1	0.0	2.9	0.0	68.0	2.1	29.0	0.9
+bridge_101_s06	2001	76	0.274	0.259	100.0	0.0	0.0	0.0	100.0	0.0	0.0	0.0	100.0	0.0	0.0	0.0
+bridge_90_s01	2001	90	0.234	0.165	100.0	0.0	0.0	0.0	100.0	0.0	0.0	0.0	83.0	17.0	0.0	0.0

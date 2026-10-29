@@ -1,0 +1,360 @@
+{
+  "scope": "Historical table identity audit; affected prediction scores cannot be repaired by relabelling",
+  "checked_bindcraft_rows": 33,
+  "mismatched_rows": 23,
+  "checked": [
+    {
+      "name": "SOX2_mini_l71_s878170_mpnn17_model2",
+      "target": "SOX2",
+      "recorded_length": 71,
+      "chain_B_length": 71,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l71_s878170_mpnn17_model2.pdb",
+      "source_sha256": "580afa6a64a18248e00d87e6a426f22523e74f75e4256edea8237ea7c8945e04"
+    },
+    {
+      "name": "SOX2_mini_l71_s878170_mpnn18_model2",
+      "target": "SOX2",
+      "recorded_length": 71,
+      "chain_B_length": 71,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l71_s878170_mpnn18_model2.pdb",
+      "source_sha256": "a23cd2e2607a355ea7d6f109f5ca9ffb55f787927b50050994ecc2008cc2c3f1"
+    },
+    {
+      "name": "SOX2_mini_l79_s924826_mpnn2_model2",
+      "target": "SOX2",
+      "recorded_length": 79,
+      "chain_B_length": 79,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l79_s924826_mpnn2_model2.pdb",
+      "source_sha256": "f6b96205d403c92b61b7b2557e8f05717de2f1c86ae9e40ddf03330f6f49bdff"
+    },
+    {
+      "name": "SOX2_mini_l79_s924826_mpnn3_model2",
+      "target": "SOX2",
+      "recorded_length": 79,
+      "chain_B_length": 79,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l79_s924826_mpnn3_model2.pdb",
+      "source_sha256": "3421e19579eb2b83dfe144b96c8083c9418fe2e68cd1238bc76bac90e6a35b77"
+    },
+    {
+      "name": "SOX9_mini_l60_s186500_mpnn3_model1",
+      "target": "SOX9",
+      "recorded_length": 60,
+      "chain_B_length": 60,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l60_s186500_mpnn3_model1.pdb",
+      "source_sha256": "41d19378c6df71804f3dcc9e609a418aa2362f0fc090d84cd6169a6c73fb9b95"
+    },
+    {
+      "name": "SOX9_mini_l90_s672683_mpnn19_model2",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 90,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l90_s672683_mpnn19_model2.pdb",
+      "source_sha256": "9188898fb3a4108766325caa6ccb209791a135b8bdf0993633987e77aec5c26a"
+    },
+    {
+      "name": "SOX9_mini_l98_s354252_mpnn3_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 98,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l98_s354252_mpnn3_model1.pdb",
+      "source_sha256": "5179e8e9c891ce29c0a9042b564a1fb0c9ae69f2946c15c219946b81b7fa0bdb"
+    },
+    {
+      "name": "SOX9_mini_l96_s785852_mpnn19_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 96,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l96_s785852_mpnn19_model1.pdb",
+      "source_sha256": "dddbe4254454089c3d0aef299a795aad69829f115d15f003d3fc4f41996683c8"
+    },
+    {
+      "name": "SOX9_mini_l100_s993709_mpnn1_model2",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 100,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l100_s993709_mpnn1_model2.pdb",
+      "source_sha256": "ba7bc4407aed6059076bed95a355155c8433d8c8291e0bf084036897b16ff962"
+    },
+    {
+      "name": "SOX9_mini_l95_s269993_mpnn9_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 95,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l95_s269993_mpnn9_model1.pdb",
+      "source_sha256": "7c33e405e252feccb0520711c66dd9f2e88d8f02722f06ed84816f4e1cab7e7e"
+    },
+    {
+      "name": "SOX9_mini_l100_s929959_mpnn1_model2",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 100,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l100_s929959_mpnn1_model2.pdb",
+      "source_sha256": "8a44c9e61fcaaf30ba4c99ec196bbef559d8d87400cc7e731e151060ded7514e"
+    },
+    {
+      "name": "SOX2_mini_l69_s330110_mpnn16_model2",
+      "target": "SOX2",
+      "recorded_length": 69,
+      "chain_B_length": 69,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l69_s330110_mpnn16_model2.pdb",
+      "source_sha256": "eb76b030ede5d69d851a1b3672707c66e13f78ae495e30b050904be4f472287b"
+    },
+    {
+      "name": "SOX9_mini_l97_s33457_mpnn4_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 97,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l97_s33457_mpnn4_model1.pdb",
+      "source_sha256": "8f76105f6c9d896262d380b76aa6d8d72578137ef9f11643299e0cd0a29cc2e0"
+    },
+    {
+      "name": "SOX9_mini_l100_s993709_mpnn2_model2",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 100,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l100_s993709_mpnn2_model2.pdb",
+      "source_sha256": "860e70e56a2134860d55c8ad3358348f015827c1907727280dd00f960326aa58"
+    },
+    {
+      "name": "SOX9_mini_l98_s354252_mpnn6_model2",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 98,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l98_s354252_mpnn6_model2.pdb",
+      "source_sha256": "44ed8c633d09f1383e20991aff77a41df67e43db17fbf14ab78e9f9118b43812"
+    },
+    {
+      "name": "SOX9_mini_l97_s33457_mpnn10_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 97,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l97_s33457_mpnn10_model1.pdb",
+      "source_sha256": "af9af19fb9a3bdac83cdb4095413bae24c693a67f12e8c60c1c5f74d8588bd38"
+    },
+    {
+      "name": "SOX2_mini_l76_s314828_mpnn3_model2",
+      "target": "SOX2",
+      "recorded_length": 76,
+      "chain_B_length": 76,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l76_s314828_mpnn3_model2.pdb",
+      "source_sha256": "4942db232da65c0b109b19c063c6d4a627a1441bbfea68cee1ad3348bea859d6"
+    },
+    {
+      "name": "SOX9_mini_l94_s688538_mpnn18_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 94,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l94_s688538_mpnn18_model1.pdb",
+      "source_sha256": "0546515decb405893c7efcc37b4a8cd83c690547e4fa7590158ef5744b74d8ad"
+    },
+    {
+      "name": "SOX2_mini_l78_s49412_mpnn6_model2",
+      "target": "SOX2",
+      "recorded_length": 78,
+      "chain_B_length": 78,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l78_s49412_mpnn6_model2.pdb",
+      "source_sha256": "127be1e5566e597d4bf022983dac57e9394de4757b226974953a64a7c8598eb7"
+    },
+    {
+      "name": "SOX9_mini_l72_s907566_mpnn4_model2",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 72,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l72_s907566_mpnn4_model2.pdb",
+      "source_sha256": "0232481f219ed34f0e5f3e35cb8c9639ecf0064de909c56271047a4923ee0997"
+    },
+    {
+      "name": "SOX9_mini_l97_s684734_mpnn3_model2",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 97,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l97_s684734_mpnn3_model2.pdb",
+      "source_sha256": "14c85a16068451d4202952f300e6d7e8ade22f656c9da083005868512008ef03"
+    },
+    {
+      "name": "SOX2_mini_l90_s538724_mpnn3_model2",
+      "target": "SOX2",
+      "recorded_length": 82,
+      "chain_B_length": 90,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l90_s538724_mpnn3_model2.pdb",
+      "source_sha256": "91417316e75a0da3074ec94d1ce7404be3fe35e51fe161de86168bc9789ed60c"
+    },
+    {
+      "name": "SOX9_mini_l60_s186500_mpnn2_model1",
+      "target": "SOX9",
+      "recorded_length": 60,
+      "chain_B_length": 60,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l60_s186500_mpnn2_model1.pdb",
+      "source_sha256": "4c9024b59c26732e0da17eca5f52c029b494fbaf40968b409b0a620a2ef362ea"
+    },
+    {
+      "name": "SOX2_mini_l88_s823247_mpnn7_model1",
+      "target": "SOX2",
+      "recorded_length": 82,
+      "chain_B_length": 88,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l88_s823247_mpnn7_model1.pdb",
+      "source_sha256": "3dec1e4a5be3ab2051bcf64afdb7e75f985604b9c96bd9b30fb5840719776932"
+    },
+    {
+      "name": "SOX9_mini_l94_s688538_mpnn15_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 94,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l94_s688538_mpnn15_model1.pdb",
+      "source_sha256": "b381f16eab50f7c8286f0f7a85ca1ac7576a52edf3fc29eeeb42c8a44bed4b20"
+    },
+    {
+      "name": "SOX2_mini_l94_s203787_mpnn13_model2",
+      "target": "SOX2",
+      "recorded_length": 82,
+      "chain_B_length": 94,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l94_s203787_mpnn13_model2.pdb",
+      "source_sha256": "c1db396fd825e92d08c5235422124185c1048c4176961c5f00a143f2de24cb90"
+    },
+    {
+      "name": "SOX9_mini_l96_s785852_mpnn6_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 96,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l96_s785852_mpnn6_model1.pdb",
+      "source_sha256": "fbb52a366c63c31b66aa618eae8ccfedc01fc9a832de40d0d7770a30f077815a"
+    },
+    {
+      "name": "SOX9_mini_l72_s907566_mpnn7_model2",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 72,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l72_s907566_mpnn7_model2.pdb",
+      "source_sha256": "fe37f2af3bafe3074852b91242368f42b846ccf453614089c7daf4eb5b5aec95"
+    },
+    {
+      "name": "SOX9_mini_l97_s684734_mpnn17_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 97,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l97_s684734_mpnn17_model1.pdb",
+      "source_sha256": "7a8bd5f83c5705098fdba9d9b6ace4faf10ac0c164abde5b43a76dfe39fda1df"
+    },
+    {
+      "name": "SOX9_mini_l100_s929959_mpnn3_model1",
+      "target": "SOX9",
+      "recorded_length": 72,
+      "chain_B_length": 100,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox9_binder_xtal_v3/Accepted/SOX9_mini_l100_s929959_mpnn3_model1.pdb",
+      "source_sha256": "3ceb6932edd1cb78017526aa3722e04013168e508ffa1817cbc88141f4ce33b9"
+    },
+    {
+      "name": "SOX2_mini_l78_s49412_mpnn8_model2",
+      "target": "SOX2",
+      "recorded_length": 78,
+      "chain_B_length": 78,
+      "recorded_sequence_matches_chain_B": true,
+      "recorded_sequence_matches_chain_A": false,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l78_s49412_mpnn8_model2.pdb",
+      "source_sha256": "074243da7e40ecbd906360872226e30772437ebf5c1f193c416c0caed2804d62"
+    },
+    {
+      "name": "SOX2_mini_l82_s14072_mpnn7_model2",
+      "target": "SOX2",
+      "recorded_length": 82,
+      "chain_B_length": 82,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l82_s14072_mpnn7_model2.pdb",
+      "source_sha256": "301dbb5b750a0df0c68a21481ac81f66d225bb2b7c0676de104109deea09a90e"
+    },
+    {
+      "name": "SOX2_mini_l94_s203787_mpnn9_model2",
+      "target": "SOX2",
+      "recorded_length": 82,
+      "chain_B_length": 94,
+      "recorded_sequence_matches_chain_B": false,
+      "recorded_sequence_matches_chain_A": true,
+      "source_path": "bindcraft/designs/sox2_binder_xtal/Accepted/SOX2_mini_l94_s203787_mpnn9_model2.pdb",
+      "source_sha256": "b4dec3470ce5137ba3d5eadb8fd712691aca3f61026dfca4a27c60235e0fe8b1"
+    }
+  ],
+  "downstream_exposure": {
+    "stage2_results.tsv": {
+      "rows": 638,
+      "rows_referencing_mismatched_candidates": 0
+    },
+    "stage3_results.tsv": {
+      "rows": 25,
+      "rows_referencing_mismatched_candidates": 0
+    },
+    "stage4_results.tsv": {
+      "rows": 10,
+      "rows_referencing_mismatched_candidates": 0
+    },
+    "stage5_results.tsv": {
+      "rows": 20,
+      "rows_referencing_mismatched_candidates": 0
+    },
+    "stage5_flipped_results.tsv": {
+      "rows": 36,
+      "rows_referencing_mismatched_candidates": 0
+    }
+  },
+  "stage1_sha256": "6cbaead7e74f9a0770a0656df772de09b91c8b9c29e27bff0f6cc244d4184a2d"
+}

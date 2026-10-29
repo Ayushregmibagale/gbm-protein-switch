@@ -1,0 +1,20 @@
+{
+  "observed_utc": "2026-10-29T11:37:19.217795+00:00",
+  "state_file": "NPT_DONE",
+  "gmx_check": {
+    "returncode": 0,
+    "warning": "Incomplete frame: nr 548 time 5480",
+    "valid_frames": 548,
+    "last_valid_time_ns": 5.47,
+    "source": "/mnt/d/gbm-protein-switch/md/unbound/Track1_unbound/prod_partial_corrupted.xtc",
+    "source_sha256": "24c1891fa40ff389f72d4ee129b9fb79a1eb505fe56324d2bf0e51f43367d1b3"
+  },
+  "resume": {
+    "checkpoint_step": 2286300,
+    "checkpoint_time_ns": 4.5726,
+    "last_observed_log_step": 6709700,
+    "predicted_finish_from_log": "Thu Oct 29 12:19:02 2026",
+    "complete_metrics_available": false
+  },
+  "interpretation": "Unfinished control; no leakiness conclusion. Do not read mutable output as a complete trajectory."
+}

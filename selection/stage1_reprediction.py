@@ -8,6 +8,9 @@ Usage:
   python stage1_reprediction.py [--dry_run]
 """
 
+from selection_support import require_execution, reference_sequence
+require_execution(__name__)
+
 import os, sys, json, shutil, subprocess, argparse
 import pandas as pd
 from pathlib import Path
@@ -22,25 +25,24 @@ IPTM_THRESH  = 0.70
 PLDDT_THRESH = 70.0
 
 # ── Paths ────────────────────────────────────────────────────────────────────
-BASE      = Path("/mnt/d/gbm-protein-switch")
+BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 OUT_DIR   = BASE / "selection" / "stage1_boltz_outputs"
-BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 pdb_parser = PDBParser(QUIET=True)
 ppb        = PPBuilder()
 
 
 def extract_binder_seq_pdb(pdb_path: Path) -> str:
-    """Extract binder sequence from PDB — shortest chain is the binder."""
+    """Read explicit BindCraft binder chain B; target length must not decide identity."""
+    from Bio.Data.PDBData import protein_letters_3to1
     struct = pdb_parser.get_structure("x", pdb_path)
-    chains = list(struct[0].get_chains())
-    seqs = {}
-    for chain in chains:
-        peps = ppb.build_peptides(chain)
-        if peps:
-            seqs[chain.id] = str(peps[0].get_sequence())
-    # binder = shortest chain
-    return min(seqs.values(), key=len)
+    if "B" not in struct[0]:
+        raise ValueError(f"{pdb_path}: expected binder chain B is absent")
+    residues = [r for r in struct[0]["B"] if r.id[0] == " "]
+    if not residues or any("CA" not in r or r.resname not in protein_letters_3to1 for r in residues):
+        raise ValueError(f"{pdb_path}: empty, incomplete or noncanonical binder chain")
+    return "".join(protein_letters_3to1[r.resname] for r in residues)
 
 
 def collect_designs() -> list[dict]:
@@ -156,12 +158,20 @@ def run_boltz(yaml_path: Path, out_dir: Path) -> dict | None:
 
 
 def main():
+    global OUT_DIR
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry_run", action="store_true", help="Collect designs only, don't run Boltz")
+    parser.add_argument("--results", type=Path, help="New output table; historical results are preserved")
+    parser.add_argument("--run-dir", type=Path, help="New inference output directory; prevents stale-cache reuse")
     args = parser.parse_args()
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    results_path = BASE / "selection" / "stage1_results.tsv"
+    if not args.dry_run:
+        if args.results is None or args.run_dir is None:
+            parser.error('--results and --run-dir are required for an inference campaign')
+        if args.results.exists() or args.run_dir.exists():
+            parser.error('Use new result and run directories to preserve history and avoid stale predictions')
+        OUT_DIR = args.run_dir
+    results_path = args.results
 
     print("=== Stage 1: Collecting designs ===")
     designs = collect_designs()
@@ -176,6 +186,8 @@ def main():
         print("\nDry run — exiting before Boltz prediction.")
         return
 
+    OUT_DIR.mkdir(parents=True)
+    results_path.parent.mkdir(parents=True, exist_ok=True)
     print("\n=== Stage 1: Boltz-2 re-prediction ===")
     rows = []
     for i, d in enumerate(designs):
@@ -197,10 +209,10 @@ def main():
         ptm   = conf.get("ptm", None)
 
         passed = (iptm  is not None and iptm  >= IPTM_THRESH and
-                  plddt is not None and plddt >= PLDDT_THRESH)
+                  plddt is not None and 0 <= plddt <= 1 and plddt * 100 >= PLDDT_THRESH)
 
-        print(f"  ipTM={iptm:.3f}  pLDDT={plddt:.1f}  pass={passed}")
-        rows.append({**d, "iptm": iptm, "plddt": plddt, "ptm": ptm, "pass_stage1": passed})
+        print(f"  ipTM={iptm}  pLDDT(fraction)={plddt}  pass={passed}")
+        rows.append({**d, "iptm": iptm, "plddt": plddt, "plddt_percent": plddt * 100 if plddt is not None else None, "ptm": ptm, "pass_stage1": passed})
 
     df = pd.DataFrame(rows).sort_values("iptm", ascending=False)
     df.to_csv(results_path, sep="\t", index=False)

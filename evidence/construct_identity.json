@@ -1,0 +1,81 @@
+{
+  "bound_actuator_matches_unbound": true,
+  "topologies_match_recorded_inputs": true,
+  "reference_length": 416,
+  "reference_315_316": "DA",
+  "observed_bound_segments": [
+    {
+      "segment": "seg_0_Protein_chain_A",
+      "length": 97,
+      "first_resid": 1,
+      "last_resid": 97,
+      "sequence_sha256": "0e6c6e35d49a89c85f303efc4d462ee118b9d64ef6989323ca9b8ef3ba67cb0d",
+      "sequence": "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
+    },
+    {
+      "segment": "seg_1_Protein_chain_B",
+      "length": 72,
+      "first_resid": 98,
+      "last_resid": 169,
+      "sequence_sha256": "6c01dcb39bbc49f6871c692f815b270d5621b50eaa7c214c66d3cc71d343e4a5",
+      "sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
+    },
+    {
+      "segment": "seg_2_Protein_chain_C",
+      "length": 250,
+      "first_resid": 170,
+      "last_resid": 419,
+      "sequence_sha256": "ed77ed1e06ce152b4a6eb05335d5cafebab33e5bfaff99dbd1af4290fe1fceea",
+      "sequence": "PYEIPEEDKEWDEYSFAMVEVHERLMEAERQLRLLSPEEEEKKRELEEEIERARKELEEVHKRGEAIERKMGGSGALESLRGNADLAYILSMEPCGHCLIINNVNFCRESGLRTRTGSNIDCEKLRRRFSSLHFMVEVKGDLTAKKMVLALLELAQQDHGALDCCVVVILSHGCQASHLQFPGAVYGTDGCPVSVEKIVNIFNGTSCPSLGGKPKLFFIQACGGEQKDHGFEVASTSPEDESPGSNPEPD"
+    },
+    {
+      "segment": "seg_3_Protein_chain_D",
+      "length": 171,
+      "first_resid": 420,
+      "last_resid": 590,
+      "sequence_sha256": "a799c32974594c2b17dc6841f747c2ee262571e32ab3ecb06fdae1b3f36c7811",
+      "sequence": "ATPFQEGLRTFDQLDAISSLPTPSDIFVSYSTFPGFVSWRDPKSGSWYVETLDDIFEQWAHSEDLQSLLLRVANAVSVKGIYKQMPGCFNFLRKKLFFKTSGGSMEEVRELLERARELEEKVRELEDDPSKREERERLLEEAERLREEALDLLVEQIREPLLQWMREEGLL"
+    }
+  ],
+  "observed_unbound_segments": [
+    {
+      "segment": "seg_0_Protein_chain_A",
+      "length": 250,
+      "first_resid": 1,
+      "last_resid": 250,
+      "sequence_sha256": "ed77ed1e06ce152b4a6eb05335d5cafebab33e5bfaff99dbd1af4290fe1fceea",
+      "sequence": "PYEIPEEDKEWDEYSFAMVEVHERLMEAERQLRLLSPEEEEKKRELEEEIERARKELEEVHKRGEAIERKMGGSGALESLRGNADLAYILSMEPCGHCLIINNVNFCRESGLRTRTGSNIDCEKLRRRFSSLHFMVEVKGDLTAKKMVLALLELAQQDHGALDCCVVVILSHGCQASHLQFPGAVYGTDGCPVSVEKIVNIFNGTSCPSLGGKPKLFFIQACGGEQKDHGFEVASTSPEDESPGSNPEPD"
+    },
+    {
+      "segment": "seg_1_Protein_chain_B",
+      "length": 171,
+      "first_resid": 251,
+      "last_resid": 421,
+      "sequence_sha256": "a799c32974594c2b17dc6841f747c2ee262571e32ab3ecb06fdae1b3f36c7811",
+      "sequence": "ATPFQEGLRTFDQLDAISSLPTPSDIFVSYSTFPGFVSWRDPKSGSWYVETLDDIFEQWAHSEDLQSLLLRVANAVSVKGIYKQMPGCFNFLRKKLFFKTSGGSMEEVRELLERARELEEKVRELEDDPSKREERERLLEEAERLREEALDLLVEQIREPLLQWMREEGLL"
+    }
+  ],
+  "scope": "Identity of existing simulation inputs only; no activity or safety inference",
+  "inputs": [
+    {
+      "path": "/tmp/gbm-protein-switch/inputs/track1_bound.yaml",
+      "sha256": "0f8cc1551c94df43d2a015dc1c9eb8732c3553d4980f25685aa10e18df9b102e"
+    },
+    {
+      "path": "/tmp/gbm-protein-switch/inputs/track1_unbound.yaml",
+      "sha256": "e14dc10b1d7ede38ca8c34a99353c2e8571a232ec81fc3ab79e1e6bb318fc0ec"
+    },
+    {
+      "path": "/mnt/d/gbm-protein-switch/md/lead_construct/prod.tpr",
+      "sha256": "386ce35c3a02ca1b44a6c268b68912e02dfbaefea25287bd36650caad5683dba"
+    },
+    {
+      "path": "/mnt/d/gbm-protein-switch/md/unbound/Track1_unbound/prod.tpr",
+      "sha256": "0fa878d1b1baf658f3af3d495f946ffa7b77554bc9a78403d1e597a471bff4eb"
+    },
+    {
+      "path": "/tmp/gbm-protein-switch/inputs/reference/P55211.fasta",
+      "sha256": "78af5d3d276f37c36d5e00b75b52f4b10a4a79d3ac08ddc9b0f3a9d42c956a03"
+    }
+  ]
+}

@@ -1,67 +1,64 @@
 #!/usr/bin/env python3
+"""Reproduce the historical ranking heuristic from explicitly supplied recorded data.
+
+Confidence ratios are descriptive model-score ratios, not measured specificity.
 """
-Stage 4: Composite ranking of selective pairs.
-
-Score = pair_iptm
-      × selectivity_ratio_sox2  (correct_iptm / wrong_iptm)
-      × selectivity_ratio_sox9  (correct_iptm / wrong_iptm)
-      × geometry_bonus           exp(-(terminus_dist / 40))
-
-Higher score = better. Output ranked TSV + human-readable summary.
-"""
-
-import pandas as pd
-import numpy as np
+import argparse
+import csv
+import math
 from pathlib import Path
 
-BASE   = Path("/mnt/d/gbm-protein-switch")
-STAGE1 = BASE / "selection" / "stage1_results.tsv"
-STAGE3 = BASE / "selection" / "stage3_results.tsv"
 
-GEOM_SCALE = 40.0   # Å — terminus distance scale for geometry bonus
+def score_rows(rows):
+    result, seen = [], set()
+    for row in rows:
+        pair = row['pair']
+        if pair in seen:
+            raise ValueError(f'Duplicate pair: {pair}')
+        seen.add(pair)
+        if row['both_selective'] not in ('True', 'False'):
+            raise ValueError('both_selective must be an explicit True/False historical flag')
+        if row['both_selective'] != 'True':
+            continue
+        values = {}
+        for key in ['pair_iptm', 'sox2_correct_iptm', 'sox2_wrong_iptm', 'sox9_correct_iptm', 'sox9_wrong_iptm', 'terminus_dist_A']:
+            value = float(row[key])
+            if not math.isfinite(value) or value < 0 or (key != 'terminus_dist_A' and value > 1):
+                raise ValueError(f'{pair}: invalid {key}')
+            values[key] = value
+        for key in ['sox2_wrong_iptm', 'sox9_wrong_iptm']:
+            if values[key] == 0:
+                raise ValueError(f'{pair}: zero confidence denominator; ratio ranking undefined')
+        s2 = values['sox2_correct_iptm'] / values['sox2_wrong_iptm']
+        s9 = values['sox9_correct_iptm'] / values['sox9_wrong_iptm']
+        geometry = math.exp(-values['terminus_dist_A'] / 40)
+        score = values['pair_iptm'] * s2 * s9 * geometry
+        if not math.isfinite(score):
+            raise ValueError(f'{pair}: nonfinite composite score')
+        result.append({**row, 'sox2_sel_ratio': s2, 'sox9_sel_ratio': s9,
+                       'geometry_bonus': geometry, 'composite_score': score})
+    if not result:
+        raise ValueError('No rows passed the recorded historical filter')
+    return sorted(result, key=lambda row: (-row['composite_score'], row['pair']))
+
 
 def main():
-    df1 = pd.read_csv(STAGE1, sep="\t")
-    df3 = pd.read_csv(STAGE3, sep="\t")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--input', required=True, type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        with args.input.open() as handle:
+            rows = score_rows(list(csv.DictReader(handle, delimiter='\t')))
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        with args.output.open('x', newline='') as handle:
+            writer = csv.DictWriter(handle, fieldnames=['rank', *rows[0]], delimiter='\t')
+            writer.writeheader()
+            writer.writerows({'rank': rank, **row} for rank, row in enumerate(rows, 1))
+    except (OSError, ValueError, KeyError) as exc:
+        parser.exit(1, f'Ranking failed: {exc}\n')
+    print(f'Recorded heuristic ranking: {len(rows)} pairs -> {args.output}')
 
-    sel = df3[df3["both_selective"] == True].copy()
-    print(f"=== Stage 4: Composite ranking ===")
-    print(f"  Selective pairs to rank: {len(sel)}")
 
-    # Selectivity ratios (correct / wrong — higher = more specific)
-    sel["sox2_sel_ratio"] = sel["sox2_correct_iptm"] / sel["sox2_wrong_iptm"]
-    sel["sox9_sel_ratio"] = sel["sox9_correct_iptm"] / sel["sox9_wrong_iptm"]
-
-    # Geometry bonus: closer termini = better for caspase reconstitution
-    sel["geometry_bonus"] = np.exp(-sel["terminus_dist_A"] / GEOM_SCALE)
-
-    # Composite score
-    sel["composite_score"] = (
-        sel["pair_iptm"]
-        * sel["sox2_sel_ratio"]
-        * sel["sox9_sel_ratio"]
-        * sel["geometry_bonus"]
-    )
-
-    sel = sel.sort_values("composite_score", ascending=False).reset_index(drop=True)
-    sel.index += 1  # 1-based rank
-
-    out_path = BASE / "selection" / "stage4_results.tsv"
-    sel.to_csv(out_path, sep="\t", index_label="rank")
-
-    print(f"\n{'Rank':<5} {'SOX2 binder':<42} {'SOX9 binder':<18} {'pair_ipTM':<11} {'term(Å)':<9} {'S2_ratio':<10} {'S9_ratio':<10} {'geom':<7} {'SCORE'}")
-    print("-" * 130)
-    for rank, row in sel.iterrows():
-        print(f"{rank:<5} {row['sox2_name']:<42} {row['sox9_name']:<18} "
-              f"{row['pair_iptm']:<11.3f} {row['terminus_dist_A']:<9.1f} "
-              f"{row['sox2_sel_ratio']:<10.2f} {row['sox9_sel_ratio']:<10.2f} "
-              f"{row['geometry_bonus']:<7.3f} {row['composite_score']:.4f}")
-
-    print(f"\nResults saved: {out_path}")
-    print(f"\n=== Top 5 for caspase geometry modelling ===")
-    for rank, row in sel.head(5).iterrows():
-        print(f"  {rank}. {row['sox2_name']} × {row['sox9_name']}")
-        print(f"     pair_ipTM={row['pair_iptm']:.3f}  term={row['terminus_dist_A']:.1f}Å  score={row['composite_score']:.4f}")
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

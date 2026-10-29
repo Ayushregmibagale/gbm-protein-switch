@@ -12,6 +12,9 @@ Flipped orientation:
 Results appended to: selection/stage5_ph_sox2_run18_results.tsv
 """
 
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+require_execution(__name__)
+
 import os, json, subprocess
 import numpy as np, pandas as pd
 from pathlib import Path
@@ -20,9 +23,9 @@ from Bio.PDB import PDBParser
 SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
 SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
 
-BASE      = Path("/mnt/d/gbm-protein-switch")
+BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 OUT_DIR   = BASE / "selection" / "stage5_ph_sox2_run18_outputs"
-BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 SOX2_NAME = "ph_sox2_run18"
 SOX2_SEQ  = "SRLEELVDHIVDSMEEANQGGLTDEAREMIRNNLLEDLLDVNPNVEAELDAASDAEFAELLAGVDRIIREGTTSDLLGFLEALAEGGVAGALAELAK"
@@ -36,7 +39,7 @@ pdb_parser = PDBParser(QUIET=True)
 
 
 def get_casp_halves() -> tuple[str, str]:
-    cache = BASE / "selection" / "stage5_caspase_outputs" / "P55211.fasta"
+    cache = Path(__file__).resolve().parents[1] / "inputs/reference/P55211.fasta"
     seq = "".join(cache.read_text().strip().split("\n")[1:])
     return seq[139:315], seq[315:416]
 

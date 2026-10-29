@@ -112,7 +112,7 @@ def audit(root):
             'limitations': ['Frames are correlated, not independent replicates.',
                             'Contact occupancy is not evidence of conditional caspase activity.',
                             'ipTM is structural confidence, not affinity or measured specificity.',
-                            'Raw trajectories and Track 1 sources are absent from this checkout.'],
+                            'Raw trajectories are external; recovered Track 1 sources have a recovery manifest.'],
             'inputs': inputs}
 
 

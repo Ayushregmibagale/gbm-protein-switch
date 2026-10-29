@@ -5,7 +5,8 @@ Unbound-state MD for both leads — leakiness check.
 Tests whether caspase halves spontaneously reconstitute when binders are NOT
 bound to their SOX2/SOX9 targets.
 
-Pass criterion (non-leaky): inter-half CA distance > 25 Å in ≥ 95% of frames.
+Descriptive distance criterion: inter-half CA distance >25 Å in ≥95% of frames.
+This does not establish biological leakiness or safety.
 
 Track 1 (two-binder split-caspase):
   Chain A: mpnn17(71aa) + GGS + CaspN(176aa)  = 250 aa
@@ -21,20 +22,21 @@ Pipeline (resumable):
   → PROD_DONE → ANALYSIS_DONE
 
 Usage:
-  python run_unbound_md.py track1       # run Track 1 unbound
-  python run_unbound_md.py track2       # run Track 2 unbound
+  python run_unbound_md.py track1 --execute  # explicitly run/resume
+  python run_unbound_md.py track2 --execute  # explicitly run/resume
   python run_unbound_md.py --status     # print both states
 """
 
-import os, sys, json, subprocess, argparse
+import os, sys, json, subprocess, argparse, shlex
 import numpy as np
 from pathlib import Path
+from workflow_support import read_state, write_state, run_gmx, production, periodic_analysis
 
-BASE    = Path("/mnt/d/gbm-protein-switch")
+BASE    = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 MD_DIR  = BASE / "md" / "unbound"
 MDP_DIR = BASE / "md" / "mdp"
-BOLTZ   = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
-GMX     = "/home/ayushregmibagale/.conda/envs/gromacs/bin/gmx"
+BOLTZ   = Path(os.environ.get("BOLTZ_BIN", "boltz"))
+GMX     = os.environ.get("GMX_BIN", "gmx")
 PYTHON  = "/home/ayushregmibagale/.conda/envs/gromacs/bin/python3"
 
 # ── Sequences ─────────────────────────────────────────────────────────────────
@@ -43,7 +45,9 @@ MPNN17      = "PYEIPEEDKEWDEYSFAMVEVHERLMEAERQLRLLSPEEEEKKRELEEEIERARKELEEVHKRGE
 PH_SOX9_R18 = "MEEVRELLERARELEEKVRELEDDPSKREERERLLEEAERLREEALDLLVEQIREPLLQWMREEGLL"
 BRIDGE_48   = "GAAAAAAAEAAAAAAAAAAAAAAAAAAAAEAARAAAAAAAAAAAAAAAAAAQAAAAQAYLAQAQAAAAA"
 
-_casp = "".join(open(BASE/"selection"/"stage5_caspase_outputs"/"P55211.fasta").read().strip().split("\n")[1:])
+_casp = "".join((Path(__file__).resolve().parents[1] / "inputs/reference/P55211.fasta").read_text().splitlines()[1:])
+if len(_casp) != 416 or _casp[314:316] != "DA":
+    raise ValueError("Unexpected reference sequence length or split identity")
 CASP_N = _casp[139:315]   # aa140-315, 176 aa
 CASP_C = _casp[315:416]   # aa316-416, 101 aa
 
@@ -79,22 +83,17 @@ TRACKS = {
 
 # ── Utilities ─────────────────────────────────────────────────────────────────
 
-def get_state(d: Path) -> str:
-    f = d / "state.txt"
-    return f.read_text().strip() if f.exists() else "PENDING"
+def get_state(d):
+    return read_state(d)
 
-def set_state(d: Path, s: str):
-    (d / "state.txt").write_text(s)
 
-def gmx(cmd: str, log: Path, cwd: Path):
-    full = f"{GMX} {cmd}"
-    with open(log, "w") as fh:
-        r = subprocess.run(full, shell=True, cwd=str(cwd),
-                           stdout=fh, stderr=subprocess.STDOUT)
-    if r.returncode != 0:
-        print(f"  ERROR running: {full}")
-        print(open(log).read()[-500:])
-        sys.exit(1)
+def set_state(d, s):
+    write_state(d, s)
+
+
+def gmx(cmd, log, cwd):
+    run_gmx(GMX, cmd, log, cwd)
+
 
 
 # ── Stage: predict structure with Boltz-2 ─────────────────────────────────────
@@ -127,13 +126,20 @@ def stage_structure(md_dir: Path, cfg: dict):
              "--sampling_steps", "200", "--output_format", "pdb",
              "--no_kernels", "--seed", str(seed)],
             capture_output=True, text=True, env=env)
-        conf = list(run_dir.rglob("confidence_*.json"))
-        if not conf:
+        if r.returncode != 0:
+            print(f"    seed {seed}: inference failed; ignoring any stale outputs")
+            continue
+        conf = sorted(run_dir.rglob("confidence_*model_0.json"))
+        if len(conf) != 1:
             print(f"    seed {seed}: FAILED")
             continue
         with open(conf[0]) as f: c = json.load(f)
-        iptm = c.get("iptm", c.get("protein_iptm", 0))
-        pdb  = list(run_dir.rglob("*.pdb"))
+        iptm = c.get("iptm", c.get("protein_iptm"))
+        if not isinstance(iptm, (int, float)) or not np.isfinite(iptm) or not 0 <= iptm <= 1:
+            raise ValueError(f"Invalid ipTM for seed {seed}")
+        pdb  = sorted(conf[0].parent.glob("*_model_0.pdb"))
+        if len(pdb) != 1:
+            raise ValueError(f"Expected exactly one model_0 structure for seed {seed}")
         print(f"    seed {seed}: ipTM={iptm:.3f}")
         if iptm > best_iptm and pdb:
             best_iptm, best_pdb = iptm, pdb[0]
@@ -156,20 +162,16 @@ def stage_topology(md_dir: Path):
         md_dir / "editconf.log", md_dir)
     gmx(f"solvate -cp boxed.gro -cs spc216.gro -o solvated.gro -p topol.top",
         md_dir / "solvate.log", md_dir)
-    gmx(f"grompp -f {MDP_DIR}/em.mdp -c solvated.gro -p topol.top "
-        f"-o ions.tpr -maxwarn 2",
+    gmx(f"grompp -f {shlex.quote(str(MDP_DIR / 'em.mdp'))} -c solvated.gro -p topol.top "
+        f"-o ions.tpr ",
         md_dir / "grompp_ions.log", md_dir)
-    r = subprocess.run(f"echo 'SOL' | {GMX} genion -s ions.tpr -o ions.gro "
-                       f"-p topol.top -pname NA -nname CL -neutral",
-                       shell=True, cwd=str(md_dir),
-                       capture_output=True, text=True)
-    (md_dir / "genion.log").write_text(r.stdout + r.stderr)
+    run_gmx(GMX, ['genion', '-s', 'ions.tpr', '-o', 'ions.gro', '-p', 'topol.top', '-pname', 'NA', '-nname', 'CL', '-neutral'], md_dir / 'genion.log', md_dir, 'SOL\n')
     set_state(md_dir, "TOPOLOGY_DONE")
 
 
 def stage_em(md_dir: Path):
     print("  Energy minimisation...")
-    gmx(f"grompp -f {MDP_DIR}/em.mdp -c ions.gro -p topol.top -o em.tpr -maxwarn 2",
+    gmx(f"grompp -f {shlex.quote(str(MDP_DIR / 'em.mdp'))} -c ions.gro -p topol.top -o em.tpr ",
         md_dir / "grompp_em.log", md_dir)
     gmx("mdrun -v -deffnm em -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu",
         md_dir / "mdrun_em.log", md_dir)
@@ -178,8 +180,8 @@ def stage_em(md_dir: Path):
 
 def stage_nvt(md_dir: Path):
     print("  NVT equilibration (200 ps)...")
-    gmx(f"grompp -f {MDP_DIR}/nvt.mdp -c em.gro -r em.gro -p topol.top "
-        f"-o nvt.tpr -maxwarn 2",
+    gmx(f"grompp -f {shlex.quote(str(MDP_DIR / 'nvt.mdp'))} -c em.gro -r em.gro -p topol.top "
+        f"-o nvt.tpr ",
         md_dir / "grompp_nvt.log", md_dir)
     gmx("mdrun -v -deffnm nvt -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu -pme gpu -bonded gpu",
         md_dir / "mdrun_nvt.log", md_dir)
@@ -188,77 +190,29 @@ def stage_nvt(md_dir: Path):
 
 def stage_npt(md_dir: Path):
     print("  NPT equilibration (500 ps)...")
-    gmx(f"grompp -f {MDP_DIR}/npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt "
-        f"-p topol.top -o npt.tpr -maxwarn 2",
+    gmx(f"grompp -f {shlex.quote(str(MDP_DIR / 'npt.mdp'))} -c nvt.gro -r nvt.gro -t nvt.cpt "
+        f"-p topol.top -o npt.tpr ",
         md_dir / "grompp_npt.log", md_dir)
     gmx("mdrun -v -deffnm npt -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu -pme gpu -bonded gpu",
         md_dir / "mdrun_npt.log", md_dir)
     set_state(md_dir, "NPT_DONE")
 
 
-def stage_prod(md_dir: Path):
-    print("  Production MD (20 ns)...")
-    gmx(f"grompp -f {MDP_DIR}/prod_20ns.mdp -c npt.gro -t npt.cpt "
-        f"-p topol.top -o prod.tpr -maxwarn 2",
-        md_dir / "grompp_prod.log", md_dir)
-    gmx("mdrun -v -deffnm prod -ntmpi 1 -ntomp 8 -gpu_id 0 -nb gpu -pme gpu -bonded gpu",
-        md_dir / "mdrun_prod.log", md_dir)
-    set_state(md_dir, "PROD_DONE")
+def stage_prod(md_dir):
+    prepare = ['grompp', '-f', str(MDP_DIR / 'prod_20ns.mdp'), '-c', 'npt.gro', '-t', 'npt.cpt', '-p', 'topol.top', '-o', 'prod.tpr']
+    production(GMX, md_dir, prepare, 'production_checked')
+    set_state(md_dir, 'PROD_DONE')
 
 
-def stage_analysis(md_dir: Path, cterm_res: int, nterm_res: int, label: str):
-    print("  Analysing inter-half distance...")
-    try:
-        import MDAnalysis as mda
-    except ImportError:
-        print("  MDAnalysis not found"); sys.exit(1)
 
-    u = mda.Universe(str(md_dir/"prod.tpr"), str(md_dir/"prod.xtc"))
-    c_sel = u.select_atoms(f"resid {cterm_res} and name CA")
-    n_sel = u.select_atoms(f"resid {nterm_res} and name CA")
-
-    if len(c_sel) != 1 or len(n_sel) != 1:
-        print(f"  ERROR: cterm={len(c_sel)}, nterm={len(n_sel)} atoms found")
-        print(f"  Available resids: {sorted(set(u.atoms.resids))[:20]} ...")
-        sys.exit(1)
-
-    dists = []
-    for _ in u.trajectory:
-        dists.append(float(np.linalg.norm(c_sel.positions[0] - n_sel.positions[0])))
-
-    arr = np.array(dists)
-    pct_gt25 = float(np.mean(arr > 25.0) * 100)
-    pct_gt15 = float(np.mean(arr > 15.0) * 100)
-    passed   = pct_gt25 >= 95.0
-
-    metrics = {
-        "label":        label,
-        "n_frames":     int(len(arr)),
-        "mean_dist_A":  round(float(arr.mean()), 2),
-        "std_dist_A":   round(float(arr.std()),  2),
-        "min_dist_A":   round(float(arr.min()),  2),
-        "max_dist_A":   round(float(arr.max()),  2),
-        "pct_gt_25A":   round(pct_gt25, 1),
-        "pct_gt_15A":   round(pct_gt15, 1),
-        "pass_nonleaky": passed,
-    }
-    (md_dir / "metrics.json").write_text(json.dumps(metrics, indent=2))
-    np.savetxt(md_dir / "interhalfdist.txt",
-               np.column_stack([np.arange(len(arr)) * u.trajectory.dt / 1000, arr]),
-               header="time_ns  dist_A", fmt="%.3f  %.3f")
-
-    print(f"\n  {'='*50}")
-    print(f"  {label} — UNBOUND STATE")
-    print(f"  Inter-half: {metrics['mean_dist_A']:.1f} ± {metrics['std_dist_A']:.1f} Å")
-    print(f"  Min: {metrics['min_dist_A']:.1f} Å  Max: {metrics['max_dist_A']:.1f} Å")
-    print(f"  % frames > 25 Å: {pct_gt25:.1f}%  (pass ≥ 95%)")
-    print(f"  % frames > 15 Å: {pct_gt15:.1f}%")
-    verdict = "NON-LEAKY ✓" if passed else "LEAKY — REDESIGN LINKER"
-    print(f"  Verdict: {verdict}")
-    print(f"  {'='*50}\n")
-
-    set_state(md_dir, "ANALYSIS_DONE")
+def stage_analysis(md_dir, cterm_res, nterm_res, label):
+    metrics = periodic_analysis(md_dir, f'resid {cterm_res} and name CA', f'resid {nterm_res} and name CA', label, 'far')
+    temporary = md_dir / 'metrics.json.tmp'
+    temporary.write_text(json.dumps(metrics, indent=2) + '\n')
+    temporary.replace(md_dir / 'metrics.json')
+    set_state(md_dir, 'ANALYSIS_DONE')
     return metrics
+
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -293,12 +247,12 @@ def run_track(track_key: str):
         if state == "ANALYSIS_DONE":
             print("Done.")
             m = json.loads((md_dir / "metrics.json").read_text())
-            print(f"  Non-leaky: {m['pass_nonleaky']} | "
+            print(f"  Distance criterion: {m.get('distance_criterion_met', 'LEGACY')} | "
                   f"mean={m['mean_dist_A']:.1f}Å | "
-                  f"%>25Å={m['pct_gt_25A']:.1f}%")
+                  f"%>25Å={m.get('pct_above_25A', float('nan')):.1f}%")
             break
         if state not in stages:
-            print(f"Unknown state: {state}"); break
+            raise ValueError(f"Unknown state: {state}")
         fn, fn_args, _ = stages[state]
         fn(*fn_args)
 
@@ -308,9 +262,13 @@ def main():
     parser.add_argument("track", nargs="?", choices=["track1","track2","both"],
                         default="both", help="Which track to run")
     parser.add_argument("--status", action="store_true")
+    parser.add_argument('--execute', action='store_true', help='Run or resume stages; otherwise only report status')
     args = parser.parse_args()
+    if not args.execute:
+        args.status = True
 
-    MD_DIR.mkdir(parents=True, exist_ok=True)
+    if args.execute:
+        MD_DIR.mkdir(parents=True, exist_ok=True)
 
     if args.status:
         for key, cfg in TRACKS.items():
@@ -319,7 +277,7 @@ def main():
             print(f"{cfg['label']}: {state}")
             if state == "ANALYSIS_DONE" and (d/"metrics.json").exists():
                 m = json.loads((d/"metrics.json").read_text())
-                print(f"  mean={m['mean_dist_A']:.1f}Å  %>25Å={m['pct_gt_25A']:.1f}%  pass={m['pass_nonleaky']}")
+                print(f"  mean={m['mean_dist_A']:.1f}Å  %>25Å={m.get('pct_above_25A', float('nan')):.1f}%  pass={m.get('distance_criterion_met', 'LEGACY')}")
         return
 
     keys = ["track1","track2"] if args.track == "both" else [args.track]

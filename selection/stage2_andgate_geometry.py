@@ -9,6 +9,9 @@ Usage:
   python stage2_andgate_geometry.py
 """
 
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+require_execution(__name__)
+
 import os, json, subprocess, itertools
 import numpy as np
 import pandas as pd
@@ -18,10 +21,10 @@ from Bio.PDB import PDBParser
 SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
 SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
 
-BASE      = Path("/mnt/d/gbm-protein-switch")
-STAGE1    = BASE / "selection" / "stage1_results.tsv"
+BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
+STAGE1    = Path(os.environ.get("GBM_STAGE1_TABLE", BASE / "selection" / "stage1_results.tsv"))
 OUT_DIR   = BASE / "selection" / "stage2_boltz_outputs"
-BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 TERM_DIST_THRESH = 40.0   # Å — caspase reconstitution geometry
 PAIR_IPTM_THRESH = 0.60   # pair-level ipTM
@@ -102,6 +105,7 @@ def main():
     results_path = BASE / "selection" / "stage2_results.tsv"
 
     df1 = pd.read_csv(STAGE1, sep="\t")
+    validate_recorded_candidates(df1, BASE)
     sox2 = df1[(df1["target"] == "SOX2") & (df1["pass_stage1"] == True)]
     sox9 = df1[(df1["target"] == "SOX9") & (df1["pass_stage1"] == True)]
 

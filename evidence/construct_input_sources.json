@@ -1,0 +1,12 @@
+[
+  {
+    "input": "inputs/track1_bound.yaml",
+    "source": "/mnt/d/gbm-protein-switch/selection/stage5_flipped_outputs/flip_n17_model2_ph_sox9_run18_GGS1_s2/input.yaml",
+    "sha256": "0f8cc1551c94df43d2a015dc1c9eb8732c3553d4980f25685aa10e18df9b102e"
+  },
+  {
+    "input": "inputs/track1_unbound.yaml",
+    "source": "/mnt/d/gbm-protein-switch/md/unbound/Track1_unbound/boltz_pred/input.yaml",
+    "sha256": "e14dc10b1d7ede38ca8c34a99353c2e8571a232ec81fc3ab79e1e6bb318fc0ec"
+  }
+]

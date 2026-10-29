@@ -9,6 +9,9 @@ Usage:
   python bridge_linker_screen.py
 """
 
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+require_execution(__name__)
+
 import os, json, subprocess
 import numpy as np
 from pathlib import Path
@@ -17,9 +20,9 @@ from Bio.PDB import PDBParser
 SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
 SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
 
-BASE     = Path("/mnt/d/gbm-protein-switch")
+BASE     = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 OUT_DIR  = BASE / "selection" / "bridge_linker_outputs"
-BOLTZ    = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+BOLTZ    = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 # Top selective pairs from stage 3 (both_selective=True, sorted by pair_ipTM)
 PAIRS = [
@@ -43,7 +46,6 @@ PAIRS = [
 LINKERS = ["GGS", "GGSGGS", "GGSGGSGGS"]
 
 pdb_parser = PDBParser(QUIET=True)
-OUT_DIR.mkdir(parents=True, exist_ok=True)
 results = []
 
 
@@ -183,6 +185,7 @@ def screen_pair(pair: dict):
 
 if __name__ == "__main__":
     import csv
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     for pair in PAIRS:
         screen_pair(pair)

@@ -10,6 +10,9 @@ Linker sweep: n = 1,2,3,4 (3,6,9,12 aa linkers).
 Checks: inter-half distance < 15 Å, pair_iptm of full assembly.
 """
 
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+require_execution(__name__)
+
 import os, json, subprocess, urllib.request
 import numpy as np, pandas as pd
 from pathlib import Path
@@ -18,11 +21,11 @@ from Bio.PDB import PDBParser
 SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
 SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
 
-BASE      = Path("/mnt/d/gbm-protein-switch")
-STAGE1    = BASE / "selection" / "stage1_results.tsv"
+BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
+STAGE1    = Path(os.environ.get("GBM_STAGE1_TABLE", BASE / "selection" / "stage1_results.tsv"))
 STAGE4    = BASE / "selection" / "stage4_results.tsv"
 OUT_DIR   = BASE / "selection" / "stage5_caspase_outputs"
-BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 INTER_HALF_THRESH = 15.0   # Å — caspase half proximity for reconstitution
 LINKER_REPEATS    = [1, 2, 3, 4]   # GGS × n
@@ -32,16 +35,7 @@ pdb_parser = PDBParser(QUIET=True)
 
 def fetch_casp9_halves() -> tuple[str, str]:
     """Fetch P55211 from UniProt and extract N-half (140-315) and C-half (316-416)."""
-    cache = OUT_DIR / "P55211.fasta"
-    if cache.exists():
-        fasta = cache.read_text()
-    else:
-        url = "https://rest.uniprot.org/uniprotkb/P55211.fasta"
-        with urllib.request.urlopen(url, timeout=30) as r:
-            fasta = r.read().decode()
-        OUT_DIR.mkdir(parents=True, exist_ok=True)
-        cache.write_text(fasta)
-    seq = "".join(fasta.strip().split("\n")[1:])
+    seq = reference_sequence()
     print(f"  P55211 length: {len(seq)} aa")
     # aa 140-315 (1-based → 0-based: 139:315)
     n_half = seq[139:315]
@@ -137,6 +131,7 @@ def main():
 
     df4 = pd.read_csv(STAGE4, sep="\t")
     df1 = pd.read_csv(STAGE1, sep="\t")
+    validate_recorded_candidates(df1, BASE)
     seq_lookup = dict(zip(df1["name"], df1["binder_seq"]))
 
     top5 = df4.head(5)
