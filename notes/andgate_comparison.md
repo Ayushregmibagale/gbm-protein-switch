@@ -1,5 +1,7 @@
 # gbm-ANDGATE vs gbm-protein-switch: Project Comparison
 
+> Evidence status (2026-10-29): this document records design intentions and historical interpretations. See [the robustness review](../ROBUSTNESS_REVIEW.md) for verified results, corrected periodic distances, and unresolved controls. Activity, specificity, and safety have not been established by these computations.
+
 *Written 2026-10-28*
 
 ## Relationship
@@ -51,7 +53,7 @@ with a different payload**.
 - Boltz-2 AND-gate: zero leakage in NO_A / NO_B single-component controls
 - Aim 2 / 2b MPNN junction optimization: exhausted — GGS3 linker is load-bearing; original v1 optimal
 
-Both computationally complete. Both ready for lab.
+Computational observations require an evidence review before any readiness decision. The protein-switch unbound-control completion claim is not supported by the available analysis outputs; ANDGATE has not been audited in this review.
 
 ---
 
@@ -82,7 +84,7 @@ Projects diverge only at the payload assay:
 | Fragment size (cargo efficiency) | Larger (277 aa total) | Smaller (76 aa total) |
 | Safety concern | Caspase-9 leakage = apoptosis | BRD4 leakage = partial transcriptional effect |
 | MD confidence | 81.4% frames | 100% frames |
-| AND-gate leakage test | Not yet done (MD of unbound state done: termini >25 Å, 95% frames) | Done: 0.000 leakage (Boltz-2) |
+| AND-gate leakage test | Not established; local unbound state is NPT_DONE with no completed metrics verified | Done: 0.000 leakage (Boltz-2) |
 
 Both are strong candidates. Recommended approach: run shared sensing-apparatus experiments
 in parallel, then diverge at the payload assay to compare both actuators head-to-head in GSCs.

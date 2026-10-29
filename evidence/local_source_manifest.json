@@ -1,0 +1,32 @@
+{
+  "source_root": "/mnt/d/gbm-protein-switch",
+  "github_base_commit": "f4482d680ea03ef605fadfafb99eec689590c49c",
+  "inspected_sources": [
+    {
+      "path": "md/run_lead_md.py",
+      "bytes": 12463,
+      "sha256": "677c4f5604ecc2dff0d205fcb9f440bc69b1ebe8349eecd911f5c0ac50f4604d"
+    },
+    {
+      "path": "md/run_replicates.py",
+      "bytes": 6966,
+      "sha256": "b3336b048f94dcf07b418ae9798b3549724c2d3bccb264896a3ce1beb06125ec"
+    },
+    {
+      "path": "md/run_unbound_md.py",
+      "bytes": 13460,
+      "sha256": "57cc95d7828e7422a330f1dd628f79df2a9297523d514be6ef80dc6026aa24a0"
+    },
+    {
+      "path": "md/unbound/run_analysis_after_prod.sh",
+      "bytes": 1575,
+      "sha256": "a23bf8124770dd3894fb76866c477082f4ba6a5bb07c6dfab57416e1220cad1e"
+    },
+    {
+      "path": "md/unbound/Track1_unbound/state.txt",
+      "bytes": 8,
+      "sha256": "9e60efd89c7426c14a74c9d047266837c2ce489fb267994212c307a24139e959"
+    }
+  ],
+  "unbound_state": "NPT_DONE"
+}

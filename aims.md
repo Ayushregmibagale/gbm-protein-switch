@@ -1,5 +1,7 @@
 # GBM Protein Switch — Project Aims
 
+> Evidence status (2026-10-29): this document records design intentions and historical interpretations. See [the robustness review](ROBUSTNESS_REVIEW.md) for verified results, corrected periodic distances, and unresolved controls. Activity, specificity, and safety have not been established by these computations.
+
 ## One-line concept
 Design a dual-selectivity AAV therapy that kills glioblastoma stem cells (GSCs) via a protein coincidence detector (split-caspase-9) and activates durable immune memory (IL-12), both locked to the SOX2/SOX9 co-complex that defines the GSC state.
 

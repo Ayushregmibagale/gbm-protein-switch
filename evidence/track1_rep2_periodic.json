@@ -1,0 +1,25 @@
+{
+  "source_directory": "/mnt/d/gbm-protein-switch/md/rep2",
+  "selections": [
+    "resnum 419 and name CA",
+    "resnum 420 and name CA"
+  ],
+  "selected_atoms": [
+    "<Atom 6738: CA of type CT of resname ASP, resid 419 and segid seg_2_Protein_chain_C>",
+    "<Atom 6753: CA of type CT of resname ALA, resid 420 and segid seg_3_Protein_chain_D>"
+  ],
+  "topology_sha256": "13110dd1531dbbd4e0a81d02dce03de59dfd40a5259e7b1b0aeca76f4929c6e1",
+  "trajectory_bytes": 665633756,
+  "trajectory_mtime_ns": 1788483416721426900,
+  "trajectory_identity_note": "Size and mtime only; not a content hash.",
+  "timeseries_sha256": "57921fae584908306342ebbcd50759738941fa88cd6d679464f11c4c00afbc84",
+  "MDAnalysis_version": "2.10.0",
+  "numpy_version": "2.4.6",
+  "n_frames": 2001,
+  "elapsed_ns": 20.0,
+  "raw_pct_below_15A": 80.10994502748626,
+  "minimum_image_pct_below_15A": 100.0,
+  "raw_mean_A": 25.74799025386408,
+  "minimum_image_mean_A": 5.972414128958639,
+  "interpretation": "Endpoint proximity only. Does not establish catalytic geometry, activity, or safety."
+}

@@ -1,0 +1,27 @@
+{
+  "source_directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_48_s01",
+  "definition": "Fraction of bridge CA atoms within strictly less than 8 A of target CA; dual state uses strictly greater than fraction threshold; minimum-image PBC",
+  "inputs": [
+    {
+      "path": "start.pdb",
+      "bytes": 147027,
+      "mtime_ns": 1789162223405308700,
+      "sha256": "570b938329cfdef9481323fb82bb86e942a812f1b646754f88dd67045add2404"
+    },
+    {
+      "path": "prod.tpr",
+      "bytes": 2558152,
+      "mtime_ns": 1789162431049282900,
+      "sha256": "973a1ac764ff7efd26a5effa80c98353cd75c8c83b597dcc1da376a097a8fa36"
+    },
+    {
+      "path": "prod.xtc",
+      "bytes": 497535648,
+      "mtime_ns": 1789168492183728000
+    }
+  ],
+  "outputs": {
+    "dual_contact_results.tsv": "6fd1fbf93661e32c8789c08123d951625dd97ba7f1e4690f2a7c623cdeb7c966",
+    "bridge_48_s01_dual_contact_timeseries.txt": "848b8837a4243821ddae190f25e06bcedb18a98d9c85b0d67d9daa48a5fffad3"
+  }
+}

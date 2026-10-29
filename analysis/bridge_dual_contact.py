@@ -14,11 +14,12 @@ Output: analysis/dual_contact_results.tsv  +  per-design time series .txt files
 """
 
 import sys
+import argparse
 import numpy as np
 import json
 from pathlib import Path
 
-BASE    = Path("/mnt/d/gbm-protein-switch")
+BASE    = Path(__file__).resolve().parents[1]
 MD_ROOT = BASE / "md" / "bridge_binder_md"
 OUT_DIR = BASE / "analysis"
 
@@ -40,14 +41,13 @@ PASSING_DESIGNS = [
 
 def infer_bridge_len(md_dir: Path) -> int:
     """Count residues in chain C of start.pdb."""
-    last_resnum = 0
-    for ln in (md_dir / "start.pdb").read_text().splitlines():
-        if ln.startswith("ATOM") and len(ln) > 22 and ln[21] == "C" and " CA " in ln:
-            try:
-                last_resnum = int(ln[22:26].strip())
-            except ValueError:
-                pass
-    return last_resnum - (CHAIN_A_RES + CHAIN_B_RES)
+    residues = set()
+    for line in (md_dir / "start.pdb").read_text().splitlines():
+        if line.startswith("ATOM  ") and line[21:22] == "C" and line[12:16].strip() == "CA":
+            residues.add((line[22:26], line[26:27]))
+    if not residues:
+        raise ValueError(f"{md_dir}: chain C has no CA residues")
+    return len(residues)
 
 
 def analyse_design(design: str) -> dict | None:
@@ -55,8 +55,7 @@ def analyse_design(design: str) -> dict | None:
     tpr = md_dir / "prod.tpr"
     xtc = md_dir / "prod.xtc"
     if not (tpr.exists() and xtc.exists()):
-        print(f"  {design}: missing tpr/xtc, skipping")
-        return None
+        raise FileNotFoundError(f"{design}: missing tpr/xtc; no complete report issued")
 
     bridge_len = infer_bridge_len(md_dir)
     c_start = CHAIN_A_RES + CHAIN_B_RES + 1
@@ -77,20 +76,27 @@ def analyse_design(design: str) -> dict | None:
 
     print(f"    SOX2={len(sox2_sel)} CA, SOX9={len(sox9_sel)} CA, bridge={len(bridge_sel)} CA")
 
-    s2_fracs, s9_fracs = [], []
+    if (len(sox2_sel), len(sox9_sel), len(bridge_sel)) != (CHAIN_A_RES, CHAIN_B_RES, bridge_len):
+        raise ValueError(f"{design}: CA selections do not match expected residue counts")
+    from MDAnalysis.lib.distances import distance_array
+    s2_fracs, s9_fracs, times = [], [], []
 
     for ts in u.trajectory:
         b_pos  = bridge_sel.positions
         s2_pos = sox2_sel.positions
         s9_pos = sox9_sel.positions
 
-        if len(b_pos) == 0:
-            continue
-
-        s2_f = sum(np.linalg.norm(s2_pos - bca, axis=1).min() < CONTACT_CUTOFF
-                   for bca in b_pos) / len(b_pos)
-        s9_f = sum(np.linalg.norm(s9_pos - bca, axis=1).min() < CONTACT_CUTOFF
-                   for bca in b_pos) / len(b_pos)
+        box = ts.dimensions
+        if box is None or not np.isfinite(box).all() or np.any(box[:3] <= 0) or np.any(box[3:] <= 0) or np.any(box[3:] >= 180):
+            raise ValueError(f"{design}: missing or invalid periodic box")
+        if not all(np.isfinite(x).all() for x in (b_pos, s2_pos, s9_pos)):
+            raise ValueError(f"{design}: nonfinite coordinates")
+        time = float(ts.time / 1000)
+        if times and time <= times[-1]:
+            raise ValueError(f"{design}: non-increasing trajectory times")
+        times.append(time)
+        s2_f = float(np.mean(distance_array(b_pos, s2_pos, box=box).min(axis=1) < CONTACT_CUTOFF))
+        s9_f = float(np.mean(distance_array(b_pos, s9_pos, box=box).min(axis=1) < CONTACT_CUTOFF))
         s2_fracs.append(s2_f)
         s9_fracs.append(s9_f)
 
@@ -98,11 +104,13 @@ def analyse_design(design: str) -> dict | None:
     s9 = np.array(s9_fracs)
     n  = len(s2)
 
+    if not n:
+        raise ValueError(f"{design}: empty trajectory")
+
     # Save per-frame time series
-    dt = u.trajectory.dt / 1000  # ns per frame
     ts_file = OUT_DIR / f"{design}_dual_contact_timeseries.txt"
     np.savetxt(ts_file,
-               np.column_stack([np.arange(n) * dt, s2, s9]),
+               np.column_stack([times, s2, s9]),
                header="time_ns  sox2_frac  sox9_frac", fmt="%.4f  %.4f  %.4f")
 
     result = {
@@ -128,15 +136,25 @@ def analyse_design(design: str) -> dict | None:
 
 
 def main():
+    global MD_ROOT, OUT_DIR
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--md-root', type=Path, default=MD_ROOT)
+    parser.add_argument('--out-dir', type=Path, required=True,
+                        help='Use a new directory to preserve historical results')
+    parser.add_argument('--designs', nargs='+', default=PASSING_DESIGNS)
+    args = parser.parse_args()
+    MD_ROOT, OUT_DIR = args.md_root, args.out_dir
+    if len(set(args.designs)) != len(args.designs) or any(Path(x).name != x for x in args.designs):
+        parser.error('Design names must be unique directory basenames')
     try:
         import MDAnalysis  # noqa
     except ImportError:
         print("ERROR: MDAnalysis not installed"); sys.exit(1)
 
-    OUT_DIR.mkdir(exist_ok=True)
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     results = []
 
-    for design in PASSING_DESIGNS:
+    for design in args.designs:
         print(f"\n[{design}]")
         r = analyse_design(design)
         if r:

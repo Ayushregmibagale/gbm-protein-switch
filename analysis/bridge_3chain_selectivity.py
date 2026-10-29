@@ -18,8 +18,8 @@ Tests (replace SOX9 with off-target):
   SOX2   + HMGB1 + bridge
   SOX2   + SRY   + bridge
 
-Pass criterion (selective): 3-chain ipTM < 0.35
-(= <75% of on-target ipTM 0.471; meaningful drop indicates specificity)
+Historical heuristic: 3-chain ipTM < 0.35.
+This is structural confidence, not a validated specificity or affinity threshold.
 
 Seeds: 3 per condition to capture Boltz-2 stochasticity.
 
@@ -27,10 +27,11 @@ Output: analysis/bridge_3chain_selectivity_results.tsv
 """
 
 import os, json, subprocess
+import argparse
 import pandas as pd
 from pathlib import Path
 
-BASE      = Path("/mnt/d/gbm-protein-switch")
+BASE      = Path(__file__).resolve().parents[1]
 OUT_DIR   = BASE / "analysis" / "bridge_3chain_selectivity_outputs"
 BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
 
@@ -43,7 +44,7 @@ SOX11_HMG  = "IKRPMNAFMVWSKIERRKIMEQSPDMHNAEISKRLGKRWKMLKDSEKIPFIREAERLRLKHMADYP
 HMGB1_HMG  = "PRGKMSSYAFFVQTCREEHKKKHPDASVNFSEFSKKCSERWKTMSAKEKGKFEDMAKADKARYEREMKTYI" # P09429 aa9-79
 SRY_HMG    = "VKRPMNAFIVWSRDQRRKMALENPRMRNSEISKQLGYQWKMLTEAEKWPFFQEAQKLQAMHREKYPNYK"   # Q05066 aa60-128
 
-ON_TARGET_IPTM = 0.471  # cached boltz_01 result
+
 
 # Each condition: (label, chain_A_seq, chain_B_seq)
 # Chain A = position-1 target, Chain B = position-2 target, Chain C = bridge
@@ -101,11 +102,19 @@ def run_boltz_3chain(seqA: str, seqB: str, seqC: str, run_dir: Path, seed: int) 
 
 
 def main():
+    global BASE, OUT_DIR, BOLTZ_BIN
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--base', type=Path, default=BASE)
+    parser.add_argument('--boltz', type=Path, default=Path(os.environ.get('BOLTZ_BIN', 'boltz')))
+    args = parser.parse_args()
+    BASE = args.base
+    OUT_DIR = BASE / 'analysis' / 'bridge_3chain_selectivity_outputs'
+    BOLTZ_BIN = args.boltz
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     print(f"=== Bridge_48_s01 — 3-chain selectivity screen ===")
-    print(f"On-target baseline (cached): SOX2+SOX9+bridge ipTM = {ON_TARGET_IPTM:.3f}")
-    print(f"Pass threshold (selective): ipTM < {PASS_THRESHOLD} (<75% of on-target)\n")
+    print("On-target baseline will be estimated from the same seeds as off-targets.")
+    print(f"Descriptive confidence threshold: {PASS_THRESHOLD}; not a specificity test.\n")
 
     rows = []
     total = len(CONDITIONS) * len(SEEDS)
@@ -132,21 +141,17 @@ def main():
             rows.append({"condition": label, "seed": seed, "iptm": iptm})
 
         valid = [x for x in iptms if x is not None]
-        if valid:
-            mean_iptm = sum(valid) / len(valid)
-            is_on = label == "SOX2+SOX9"
-            if is_on:
-                verdict = f"ON-TARGET (baseline)"
-            else:
-                drop = ON_TARGET_IPTM - mean_iptm
-                pct  = drop / ON_TARGET_IPTM * 100
-                verdict = (f"SELECTIVE (drop={drop:.3f}, {pct:.0f}%)" if mean_iptm < PASS_THRESHOLD
-                           else f"CROSS-REACTIVE (drop={drop:.3f}, {pct:.0f}%)")
-            print(f"  → {label}: mean={mean_iptm:.3f}  [{verdict}]\n")
+        print(f"  {label}: completed {len(valid)}/{len(SEEDS)} seeds")
 
     df = pd.DataFrame(rows)
     out_path = BASE / "analysis" / "bridge_3chain_selectivity_results.tsv"
     df.to_csv(out_path, sep="\t", index=False)
+
+    if df['iptm'].isna().any():
+        raise RuntimeError(f"Incomplete screen; recorded partial results at {out_path}. No comparison issued.")
+    baseline = float(df.loc[df['condition'] == 'SOX2+SOX9', 'iptm'].mean())
+    print(f"Measured matched-seed on-target mean: {baseline:.3f}")
+    print("ipTM is structural confidence; these comparisons do not establish specificity.")
 
     summary = df.groupby("condition").agg(
         mean_iptm=("iptm", "mean"), min_iptm=("iptm", "min"), max_iptm=("iptm", "max")
@@ -157,13 +162,13 @@ def main():
     print(f"  {'-'*70}")
     for _, row in summary.iterrows():
         is_on  = row["condition"] == "SOX2+SOX9"
-        drop   = ON_TARGET_IPTM - row["mean_iptm"]
-        pct    = drop / ON_TARGET_IPTM * 100
+        drop   = baseline - row["mean_iptm"]
+        pct    = drop / baseline * 100 if baseline else float("nan")
         if is_on:
             verdict = "ON-TARGET"
             drop_str = "—"
         else:
-            verdict  = "SELECTIVE" if row["mean_iptm"] < PASS_THRESHOLD else "CROSS-REACTIVE"
+            verdict  = "LOWER CONFIDENCE (heuristic)" if row["mean_iptm"] < PASS_THRESHOLD else "REVIEW STRUCTURE"
             drop_str = f"-{drop:.3f} ({pct:.0f}%)"
         print(f"  {row['condition']:<15} {row['mean_iptm']:>10.3f} {row['min_iptm']:>7.3f} "
               f"{row['max_iptm']:>7.3f}  {drop_str:>18}  {verdict}")
