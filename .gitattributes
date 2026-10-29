@@ -1,0 +1,2 @@
+# Trailing empty TSV fields and preserved source line endings are data.
+*.tsv whitespace=-blank-at-eol
