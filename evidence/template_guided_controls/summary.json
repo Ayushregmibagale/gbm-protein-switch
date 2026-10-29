@@ -1,0 +1,32 @@
+{
+  "template": "/home/ayushregmibagale/gbm-protein-switch/evidence/track1_bound_10ns_template.pdb",
+  "template_split_dist_A": 9.54,
+  "endpoint_chain_C_res": 250,
+  "endpoint_chain_D_res": 1,
+  "cutoff_A": 15.0,
+  "seeds": [
+    {
+      "seed": 0,
+      "iptm": 0.7823392152786255,
+      "endpoint_dist_A": 9.17722387217398,
+      "halves_close": true,
+      "pdb": "/home/ayushregmibagale/gbm-protein-switch/evidence/template_guided_controls/seed0/boltz_results_seed0_input/predictions/seed0_input/seed0_input_model_0.pdb"
+    },
+    {
+      "seed": 1,
+      "iptm": 0.7867813110351562,
+      "endpoint_dist_A": 9.651531950939187,
+      "halves_close": true,
+      "pdb": "/home/ayushregmibagale/gbm-protein-switch/evidence/template_guided_controls/seed1/boltz_results_seed1_input/predictions/seed1_input/seed1_input_model_0.pdb"
+    },
+    {
+      "seed": 2,
+      "iptm": 0.7823559641838074,
+      "endpoint_dist_A": 11.178829142624913,
+      "halves_close": true,
+      "pdb": "/home/ayushregmibagale/gbm-protein-switch/evidence/template_guided_controls/seed2/boltz_results_seed2_input/predictions/seed2_input/seed2_input_model_0.pdb"
+    }
+  ],
+  "n_close": 3,
+  "interpretation": "assembly retained"
+}
