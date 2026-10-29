@@ -1,0 +1,209 @@
+{
+  "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_136_s01_rep2",
+  "n_frames": 2001,
+  "elapsed_ns": 20.0,
+  "sequences": [
+    "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG",
+    "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+    "ALAALQRAEELLLQAQQLRLQAEALRQQAAALLAAGQEAAAAQALAQAAALEAQAEELEAAAAALRAATEAAL"
+  ],
+  "sensitivity": [
+    {
+      "discard_ns": 0,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.05,
+      "n_frames": 2001,
+      "dual_pct": 80.25987006496752
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.1,
+      "n_frames": 2001,
+      "dual_pct": 0.09995002498750624
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.15,
+      "n_frames": 2001,
+      "dual_pct": 0.0
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.05,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.1,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.15,
+      "n_frames": 2001,
+      "dual_pct": 88.55572213893053
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.05,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.1,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.15,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.05,
+      "n_frames": 1501,
+      "dual_pct": 77.01532311792138
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.1,
+      "n_frames": 1501,
+      "dual_pct": 0.13324450366422386
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.15,
+      "n_frames": 1501,
+      "dual_pct": 0.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.05,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.1,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.15,
+      "n_frames": 1501,
+      "dual_pct": 88.67421718854096
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.05,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.1,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.15,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.05,
+      "n_frames": 1001,
+      "dual_pct": 79.32067932067932
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.1,
+      "n_frames": 1001,
+      "dual_pct": 0.1998001998001998
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.15,
+      "n_frames": 1001,
+      "dual_pct": 0.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.05,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.1,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.15,
+      "n_frames": 1001,
+      "dual_pct": 85.01498501498502
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.05,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.1,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.15,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    }
+  ],
+  "topology_sha256": "7b4ad8948bc89225a47c7355bc2c4466afe2475173a3389e7eff1a2ed08b34a3",
+  "trajectory_sha256": "e2845ef75836cb8d406f8ea2c8b0767beafa063ac659404a4aea3335602df783",
+  "trajectory_bytes": 548018172,
+  "timeseries_sha256": "5afdb282cc4baa19964da8e5229b4adad5418d6605ce0b5d9c89fac14b7d0c1f",
+  "software": {
+    "MDAnalysis": "2.10.0",
+    "numpy": "2.4.6"
+  }
+}

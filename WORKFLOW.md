@@ -39,7 +39,8 @@ deliberate splice can retain old frames through 4.57 ns and resumed frames from
 Do not concatenate the overlapping files blindly or substitute only the resumed
 part. Do not run this against a file that is still being written.
 
-After the existing writer has finished, validate the complete fragments with:
+The completed fragments were validated with the following command (choose a new
+output directory for another audit):
 
 ```bash
 python analysis/audit_control.py \
@@ -109,3 +110,28 @@ python analysis/audit_candidate_identity.py --output /tmp/candidate-identities.j
 New Stage 1 inference requires `--execute --run-dir NEW_DIRECTORY --results NEW_TABLE`.
 Its `--dry_run` only collects designs and creates no output directories. Changing
 candidate sequences requires new predictions; renaming existing scores is invalid.
+
+
+## Fresh prediction campaigns and archived launchers
+
+Supported prediction commands require fresh output directories. Legacy Python
+campaigns additionally require a new `GBM_RUN_ROOT`; their results and predictions
+are redirected there, preserving historical tables and caches. Existing directories
+are rejected. The 31 historical shell launchers are inactive unless
+`GBM_ALLOW_LEGACY_CAMPAIGNS=1` is deliberately set. They remain archived workflows,
+not supported alternatives to the repaired commands.
+
+The corrected-candidate and matched-control prediction protocols are recorded in
+`analysis/repair_candidate_predictions.py` and `analysis/predict_existing_controls.py`.
+Their manifests record exact commands, model checkpoint identity, seeds and
+protocol settings. Predictions use existing sequences, empty MSAs, three recycling
+steps and 200 sampling steps. Fresh outputs are checked against requested sequence
+identities before scores are accepted. The evidence exports include inputs,
+confidence files, PDB models and result tables. Inference runtimes are separate
+from the analysis environment; see `evidence/prediction_environment.json` and the
+batch manifests.
+
+`selection/repaired_stage1_candidates.tsv` contains only the 23 re-predicted
+candidates, with mean confidence, between-seed SD and an all-seed confidence
+heuristic. It is not silently merged with historical scores or treated as an
+affinity/activity ranking.

@@ -1,0 +1,209 @@
+{
+  "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_48_s01_rep2",
+  "n_frames": 2001,
+  "elapsed_ns": 20.0,
+  "sequences": [
+    "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG",
+    "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+    "GAAAAAAAEAAAAAAAAAAAAAAAAAAAAEAARAAAAAAAAAAAAAAAAAAQAAAAQAYLAQAQAAAAA"
+  ],
+  "sensitivity": [
+    {
+      "discard_ns": 0,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.05,
+      "n_frames": 2001,
+      "dual_pct": 73.41329335332334
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.1,
+      "n_frames": 2001,
+      "dual_pct": 23.738130934532734
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.15,
+      "n_frames": 2001,
+      "dual_pct": 0.04997501249375312
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.05,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.1,
+      "n_frames": 2001,
+      "dual_pct": 99.85007496251875
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.15,
+      "n_frames": 2001,
+      "dual_pct": 87.85607196401799
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.05,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.1,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 0,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.15,
+      "n_frames": 2001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.05,
+      "n_frames": 1501,
+      "dual_pct": 86.27581612258494
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.1,
+      "n_frames": 1501,
+      "dual_pct": 31.645569620253166
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.15,
+      "n_frames": 1501,
+      "dual_pct": 0.06662225183211193
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.05,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.1,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.15,
+      "n_frames": 1501,
+      "dual_pct": 96.0692871419054
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.05,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.1,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 5,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.15,
+      "n_frames": 1501,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.05,
+      "n_frames": 1001,
+      "dual_pct": 99.1008991008991
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.1,
+      "n_frames": 1001,
+      "dual_pct": 47.45254745254745
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 6,
+      "fraction_threshold": 0.15,
+      "n_frames": 1001,
+      "dual_pct": 0.0999000999000999
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.05,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.1,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 8,
+      "fraction_threshold": 0.15,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.05,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.1,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    },
+    {
+      "discard_ns": 10,
+      "cutoff_A": 10,
+      "fraction_threshold": 0.15,
+      "n_frames": 1001,
+      "dual_pct": 100.0
+    }
+  ],
+  "topology_sha256": "a5b6114f25fd0d0137d1cd391b8de7eb15007e2e7f5f577842888bd5e98fbfca",
+  "trajectory_sha256": "2265d3693e6084ba53e2b152e78ab10a811716ba2a4fde25240b8997903edbd9",
+  "trajectory_bytes": 497560204,
+  "timeseries_sha256": "abd489dfd3a6c1257d40603202dfcdff7d67fc4a84f881516b5f45c986af4d3f",
+  "software": {
+    "MDAnalysis": "2.10.0",
+    "numpy": "2.4.6"
+  }
+}

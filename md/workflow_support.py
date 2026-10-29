@@ -4,6 +4,25 @@ import os
 from pathlib import Path
 import shlex
 import subprocess
+import hashlib
+
+
+def recorded_control_audit(directory):
+    """Recognise the validated control without trusting a stale legacy state flag."""
+    path=Path(__file__).resolve().parents[1]/'evidence/unbound_control/metrics.json'
+    if not path.exists():return None
+    report=json.loads(path.read_text())
+    topology=directory/'prod.tpr'
+    if not topology.exists() or topology.resolve()!=Path(report['topology_path']).resolve():return None
+    if hashlib.sha256(topology.read_bytes()).hexdigest()!=report['topology_sha256']:return None
+    for source in report['sources']:
+        candidate=Path(source['path'])
+        if not candidate.exists():return None
+        stat=candidate.stat()
+        if stat.st_size!=source['bytes'] or stat.st_mtime_ns!=source['mtime_ns']:return None
+    series=path.parent/'distances.tsv'
+    if hashlib.sha256(series.read_bytes()).hexdigest()!=report['timeseries_sha256']:return None
+    return report
 
 STAGE_OUTPUTS = {
     'STRUCTURE_DONE': ['start.pdb'],

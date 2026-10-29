@@ -9,7 +9,7 @@ Usage:
   python stage2_andgate_geometry.py
 """
 
-from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates, campaign_output, campaign_table
 require_execution(__name__)
 
 import os, json, subprocess, itertools
@@ -23,7 +23,7 @@ SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKK
 
 BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 STAGE1    = Path(os.environ.get("GBM_STAGE1_TABLE", BASE / "selection" / "stage1_results.tsv"))
-OUT_DIR   = BASE / "selection" / "stage2_boltz_outputs"
+OUT_DIR   = campaign_output(BASE / "selection" / "stage2_boltz_outputs")
 BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 TERM_DIST_THRESH = 40.0   # Å — caspase reconstitution geometry
@@ -102,7 +102,7 @@ def run_boltz_quartet(yaml_path: Path, out_dir: Path) -> tuple[dict | None, Path
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    results_path = BASE / "selection" / "stage2_results.tsv"
+    results_path = campaign_table(BASE / "selection" / "stage2_results.tsv")
 
     df1 = pd.read_csv(STAGE1, sep="\t")
     validate_recorded_candidates(df1, BASE)

@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # Master launcher for bridge binder rescue.
 # GPU tasks are run sequentially; linker screen runs in parallel on CPU.
 # Phase 1: RFdiffusion bridge both chains (~30-60 min)

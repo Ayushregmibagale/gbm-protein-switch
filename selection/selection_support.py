@@ -1,5 +1,7 @@
 """Configuration and explicit execution gate for recovered prediction campaigns."""
 import argparse
+import os
+import json
 import sys
 from pathlib import Path
 
@@ -13,8 +15,22 @@ def require_execution(module_name):
         add_help=True)
     parser.add_argument('--execute', action='store_true', help='Explicitly run the legacy campaign')
     args, remaining = parser.parse_known_args()
-    if not args.execute and '--dry_run' not in remaining:
+    dry_run = Path(sys.argv[0]).name == 'stage1_reprediction.py' and '--dry_run' in remaining
+    if not args.execute and not dry_run:
         parser.error('Use --execute to launch inference, or stage1 --dry_run to inspect inputs')
+    if args.execute and Path(sys.argv[0]).name != 'stage1_reprediction.py':
+        root = os.environ.get('GBM_RUN_ROOT')
+        if not root:
+            parser.error('Set GBM_RUN_ROOT to a new campaign directory; historical caches cannot be reused implicitly')
+        output = Path(root).resolve()
+        if output.exists():
+            parser.error(f'Campaign directory already exists: {output}. Choose a new directory.')
+        output.mkdir(parents=True)
+        (output/'campaign.json').write_text(json.dumps({'script':str(Path(sys.argv[0]).resolve()),
+            'arguments':sys.argv[1:],'data_root':os.environ.get('GBM_ROOT'),
+            'stage1_table':os.environ.get('GBM_STAGE1_TABLE'),
+            'cache_policy':'fresh outputs; no implicit historical cache reuse'},indent=2)+'\n')
+        os.environ['GBM_ACTIVE_RUN_DIR']=str(output)
     sys.argv = [sys.argv[0], *remaining]
 
 
@@ -46,3 +62,13 @@ def validate_recorded_candidates(frame, root):
     if invalid:
         raise ValueError(f'{len(invalid)} candidate identities disagree with binder chain B. '
                          'Regenerate Stage 1 from explicit binder chains before downstream inference: ' + ', '.join(invalid))
+
+
+def campaign_output(default):
+    root = os.environ.get('GBM_ACTIVE_RUN_DIR')
+    return Path(root)/'predictions' if root else default
+
+
+def campaign_table(default):
+    root = os.environ.get('GBM_ACTIVE_RUN_DIR')
+    return Path(root)/Path(default).name if root else default

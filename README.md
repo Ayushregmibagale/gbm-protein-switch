@@ -1,7 +1,7 @@
 # GBM protein switch
 
 Exploratory computational research on SOX2/SOX9 sensing and a split-caspase actuator.
-The repository contains design outputs and analysis scripts. Conditional activity,
+The repository contains design outputs, repaired workflows and versioned evidence. Conditional activity,
 normal-cell specificity, and safety remain unestablished.
 
 Start with [the robustness review](ROBUSTNESS_REVIEW.md) and the [operating instructions](WORKFLOW.md). [aims.md](aims.md) describes
@@ -50,3 +50,14 @@ It can launch expensive inference jobs; it is separate from the read-only audit.
 Recovered MD runners use `GBM_ROOT`, `GMX_BIN`, and `BOLTZ_BIN`, default to status,
 and require `--execute` to run. See `WORKFLOW.md` for checkpoint handling and
 strict control validation. Historical shell launchers remain workstation records.
+
+
+## Recorded computational closure
+
+The review branch includes the validated 20 ns unbound control, all 15 available
+bridge trajectory reanalyses, reference-fold diagnostics, a 972-run cache audit,
+69 corrected-binder predictions and 12 matched presence/absence predictions.
+Consult `COMPUTATIONAL_STATUS.json` for outcomes and evidence paths. Passing code
+checks do not make the structural observations positive: bridge_90 has substantial
+replicate instability, and the current caspase-core models disagree with the
+experimental reference fold.

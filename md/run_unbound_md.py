@@ -30,7 +30,7 @@ Usage:
 import os, sys, json, subprocess, argparse, shlex
 import numpy as np
 from pathlib import Path
-from workflow_support import read_state, write_state, run_gmx, production, periodic_analysis
+from workflow_support import read_state, write_state, run_gmx, production, periodic_analysis, recorded_control_audit
 
 BASE    = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 MD_DIR  = BASE / "md" / "unbound"
@@ -220,6 +220,11 @@ def stage_analysis(md_dir, cterm_res, nterm_res, label):
 def run_track(track_key: str):
     cfg     = TRACKS[track_key]
     md_dir  = MD_DIR / cfg["label"]
+    recorded = recorded_control_audit(md_dir)
+    if recorded is not None:
+        print(f"Validated 0–20 ns audit already exists for {cfg['label']}; no production restart.")
+        print(json.dumps(recorded, indent=2))
+        return
     md_dir.mkdir(parents=True, exist_ok=True)
 
     stages = {
@@ -274,7 +279,10 @@ def main():
         for key, cfg in TRACKS.items():
             d = MD_DIR / cfg["label"]
             state = get_state(d)
-            print(f"{cfg['label']}: {state}")
+            print(f"{cfg['label']}: legacy state {state}")
+            recorded = recorded_control_audit(d)
+            if recorded is not None:
+                print(f"  Validated complete trajectory audit: {recorded['n_frames']} frames, {recorded['elapsed_ns']} ns; distance criterion {recorded['distance_criterion_met']}")
             if state == "ANALYSIS_DONE" and (d/"metrics.json").exists():
                 m = json.loads((d/"metrics.json").read_text())
                 print(f"  mean={m['mean_dist_A']:.1f}Å  %>25Å={m.get('pct_above_25A', float('nan')):.1f}%  pass={m.get('distance_criterion_met', 'LEGACY')}")

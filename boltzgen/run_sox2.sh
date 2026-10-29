@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # BoltzGen SOX2 binder design
 # Target: SOX2 HMG domain (6WX8 chain B, 2.3 Å)
 # Hotspots: label_seq_id 24,32,36,43 (auth 62,70,74,81)

@@ -23,13 +23,17 @@ Pass criterion (non-cross-reactive): ipTM < 0.40
 Output: analysis/offtarget_selectivity_results.tsv
 """
 
+import sys
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parents[1] / 'selection'))
+from selection_support import require_execution, campaign_output, campaign_table
+require_execution(__name__)
 import os, json, subprocess
 import pandas as pd
 from pathlib import Path
 
-BASE      = Path("/mnt/d/gbm-protein-switch")
-OUT_DIR   = BASE / "analysis" / "offtarget_selectivity_outputs"
-BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
+OUT_DIR   = campaign_output(BASE / "analysis" / "offtarget_selectivity_outputs")
+BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 BRIDGE_SEQ = "GAAAAAAAEAAAAAAAAAAAAAAAAAAAAEAARAAAAAAAAAAAAAAAAAAQAAAAQAYLAQAQAAAAA"
 
@@ -130,12 +134,15 @@ def main():
         if valid:
             mean_iptm = sum(valid) / len(valid)
             passes = mean_iptm < 0.40
-            flag = "ON-TARGET" if target_name in ("SOX2","SOX9") else ("PASS (non-reactive)" if passes else "FAIL (cross-reactive!)")
+            flag = "ON-TARGET" if target_name in ("SOX2","SOX9") else ("LOW CONFIDENCE (heuristic)" if passes else "REVIEW STRUCTURE")
             print(f"  → {target_name}: mean ipTM={mean_iptm:.3f}  [{flag}]\n")
 
     df = pd.DataFrame(rows)
-    out_path = BASE / "analysis" / "offtarget_selectivity_results.tsv"
+    out_path = campaign_table(BASE / "analysis" / "offtarget_selectivity_results.tsv")
     df.to_csv(out_path, sep="\t", index=False)
+
+    if df["iptm"].isna().any():
+        raise RuntimeError("Incomplete screen; no full comparison issued")
 
     # Summary
     summary = df.groupby("target").agg(
@@ -148,7 +155,7 @@ def main():
     print(f"  {'-'*63}")
     for _, row in summary.iterrows():
         verdict = ("ON-TARGET" if row["is_on_target"]
-                   else ("PASS" if row["mean_iptm"] < 0.40 else "FAIL — CROSS-REACTIVE"))
+                   else ("LOW CONFIDENCE (heuristic)" if row["mean_iptm"] < 0.40 else "REVIEW STRUCTURE"))
         print(f"  {row['target']:<8} {row['mean_iptm']:>10.3f} {row['min_iptm']:>7.3f} {row['max_iptm']:>7.3f}  {verdict}")
     print(f"{'='*65}")
     print(f"\nResults saved to {out_path}")

@@ -2,9 +2,9 @@
 
 Scope: this project only. Recovered sources were read from
 `/mnt/d/gbm-protein-switch`; the WSL home checkout is the intended source-code
-location. Large simulation data remain on D:. No new inference campaign or MD
-production was launched during this review. The externally resumed unbound run
-was left undisturbed. See [WORKFLOW.md](WORKFLOW.md) for operating instructions.
+location. Large simulation data remain on D:. Identity-corrected and matched-control predictions were run in fresh seeded
+batches. No new MD production was launched; the externally resumed unbound run
+was allowed to finish. See [WORKFLOW.md](WORKFLOW.md) for operating instructions.
 
 ## Current findings
 
@@ -30,8 +30,10 @@ identities. An explicit `GBM_STAGE1_TABLE` can select the quarantined table.
 The Stage 1 source also compared fractional Boltz pLDDT with a threshold of 70.
 It now converts the fractional score to percent for that comparison and records
 both scales. Inference now requires new run/result paths to avoid reusing old
-predictions after changing candidate identities. Corrected predictions for the
-excluded binders have not been run.
+predictions after changing candidate identities. The 23 corrected binders were re-predicted using three seeds each; see
+`evidence/corrected_candidate_predictions/` for the inputs, models, confidence
+files, commands, software versions and checkpoint identity. Historical scores
+remain unchanged; new results are not silently mixed into historical rankings.
 
 ### Periodic boundaries change the bound distance result
 
@@ -69,29 +71,55 @@ at the historical fraction threshold of strictly greater than 0.10:
 | bridge_90_s01 | 99.8% | 100.0% |
 
 `evidence/bridge_periodic/` contains new time series, summaries, and SHA-256 hashes
-of the source PDB/TPR/XTC files. Historical tables are preserved. Additional bridge
-replicate trajectories have not been reanalysed. Frames are correlated; 2001 frames
+of the source PDB/TPR/XTC files. Historical tables are preserved. All 15 available trajectories (three per design) have additionally been audited
+under 27 cutoff/fraction/window combinations each; see
+`evidence/bridge_replicate_cohort/`. At 8 Å / fraction >0.10, replicate occupancies
+are 99.6/99.9/100% for bridge_48, 100/99.3/100% for bridge_73,
+97.1/100/99.8% for bridge_136, 100/100/100% for bridge_101, and
+100/99.5/**15.7%** for bridge_90. The last design has substantial replicate
+instability and must not be labelled consistently stable. Frames are correlated; 2001 frames
 are not 2001 independent experiments. Contact occupancy does not establish AND logic.
 
-### The unbound control remains unfinished
+### The complete unbound control passes its distance heuristic
 
-The state file reads `NPT_DONE`, while the resumed production log and trajectory
-are actively advancing. No completed control metrics were verified. The old
-trajectory has valid frames through 5.47 ns and an incomplete frame at 5.48 ns.
-`gmx check` reports this warning but returns zero. The resumed run begins from a
-checkpoint at 4.5726 ns and overlaps the surviving old trajectory.
+The resumed production reached 20 ns. Validation retained old frames through
+4.57 ns and resumed frames from 4.58 ns, excluding the corrupt and overlapping old
+tail. The audit verified 2001 frames spanning exactly 0–20 ns at 10 ps cadence,
+with source hashes and no gap or duplicated frame times.
 
-The legacy completion launcher ignores concatenation failure and can substitute
-only the resumed portion. Its output must not be accepted without coverage and
-integrity checks. The new `analysis/audit_control.py` checks exact frame times,
-gaps, overlaps, corruption in the retained portion, atom counts, periodic boxes,
-input stability and full expected coverage. It writes no completed metrics for
-partial data. `WORKFLOW.md` documents an explicit, provenance-recorded splice at
-4.57/4.58 ns after the writer finishes. A snapshot is recorded in
-`evidence/unbound_integrity_status.json`.
+Periodic endpoint distances have mean 44.58 Å, minimum 34.53 Å and maximum
+58.45 Å. Every frame exceeds 25 Å and none is below 15 Å. The specified distance
+criterion is met. This single trajectory does not establish enzymatic non-leakiness
+or normal-cell safety. `evidence/unbound_control/` contains the validated metrics,
+complete endpoint series and the exact splice/source provenance.
 
-There is currently no verified “non-leaky” result. Even meeting the >25 Å/95%
-distance heuristic would not establish absence of enzymatic leakiness.
+The legacy state file remains `NPT_DONE`; the repaired status command recognises
+the validated report after verifying topology identity, exported-series hash, and
+source sizes/mtimes. It refuses an unnecessary restart of this audited control. The old log watcher searched the console log for a completion marker
+that is actually in `prod.part0002.log`. Repaired analysis uses trajectory coverage
+instead of that log-marker assumption. Historical corrupted files and logs were
+preserved.
+
+### Caspase-core reference geometry raises a mechanistic concern
+
+The recorded bound actuator is compared with both sequence-aligned caspase-9
+conformations in experimental PDB 1JXQ. Missing reference residues are excluded;
+each simulated half is reconstructed through consecutive CA minimum-image vectors.
+The reference was chosen as an experimental structural comparison, not an activity
+classifier. [Experimental entry and primary citation](https://www.rcsb.org/structure/1JXQ)
+
+Across the three bound trajectories, mean assembly CA RMSDs are about 17.6–17.7 Å
+against chain A and 16.5–16.7 Å against chain B. Mean retention of reference
+inter-half CA contacts is only about 4–7%. Individually fitted halves also have
+large deviations. These observations raise a substantial concern about the
+predicted fold and assembly, even though endpoint proximity is high. They do not
+support a native-like catalytic-core claim. See `evidence/native_geometry/`.
+
+The experimental study concerns dimer-associated activation. Inference: the one
+large/small fragment pair represented here is a single catalytic core, so its
+proximity metric does not establish the functional oligomeric context. More MD
+of the same questionable starting fold would not validate that missing mechanism.
+[1JXQ primary-study record](https://www.rcsb.org/structure/1JXQ)
 
 ### Construct identities are reconciled against simulation inputs
 
@@ -137,22 +165,49 @@ specificity, or cellular selectivity.
   command failures, checkpoint preservation, artifact hashes and binder identity.
   GitHub Actions checks both dependency-free audit code and the MD analysis environment.
 
-## Remaining evidence requirements
+## Cache integrity and matched controls
 
-1. Let the existing unbound writer finish, then validate full coverage and compute
-   corrected control metrics. No partial trajectory should be substituted.
-2. Review individual-input and target-absent controls, productive catalytic geometry,
-   starting-state bias, replicate dependence and trajectory-window sensitivity before
-   claiming AND-gate activity. The current observations cannot answer those questions.
-3. Re-run excluded Stage 1 candidates only if needed, using the corrected identities,
-   normalized confidence scale, new output directories and recorded provenance.
-4. Archive complete external data durably. The new bridge results have full raw-input
-   content hashes; older Track 1 periodic exports identify trajectories by size/mtime
-   plus topology hashes and still need complete trajectory archival manifests.
-5. Review primary literature and experimental evidence for mechanism, normal-cell
-   specificity, delivery and immune-payload claims. These were not independently
-   established by this code/data review. Historical shell launchers and inference
-   caches are preserved records, not fully validated campaign infrastructure.
+The historical-cache audit covered 972 runs. All inspected model_0 structures
+match their submitted protein input sequences and have valid confidence files.
+This includes internally consistent caches whose submitted candidate identity was
+wrong; cache consistency does not repair the 23 Stage 1 mistakes. Historical
+caches lack complete verified software/checkpoint/seed provenance and are not
+promoted to trusted reusable predictions. New legacy inference requires a fresh
+`GBM_RUN_ROOT`, so historical caches and result tables cannot be reused or replaced
+implicitly. `evidence/historical_cache_audit.json` records every inspected run.
 
-The repository now has recovered sources, stronger execution checks and auditable
-analysis. Biological function, non-leakiness and treatment readiness remain unproven.
+Twelve fresh predictions examine BOTH, SOX2_ONLY, SOX9_ONLY and NEITHER using the
+same recorded actuator sequences and seed set 0/1/2. These are structural-confidence
+and endpoint-distance controls, not cellular activity or leakage assays. Inputs,
+models and raw confidence files are recorded under `evidence/matched_controls/`.
+In the three BOTH predictions, endpoint distances are 49.7, 30.4 and 42.1 Å;
+none meets the historical <15 Å proximity cutoff. Global ipTM is 0.221–0.236,
+and C-to-D actor-pair ipTM is about 0.141–0.144. These fresh predictions do not
+independently reproduce the selected MD starting assembly. Across conditions,
+global ipTM is not directly an activity metric; directional actor-pair confidence
+is reported separately. A seed label does not imply identical
+random noise for inputs with different shapes.
+
+`evidence/external_artifacts.json` identifies all external production trajectories
+used here by content hashes. Their data remain on D:, rather than in Git. The
+manifest is not an off-machine data backup.
+
+## Remaining scientific limits
+
+- The current caspase-core models have substantial reference-fold disagreement.
+  A structurally supported assembly and its relevant oligomeric context are needed
+  before further production MD could strengthen a mechanism claim. No parameter
+  choice in this analysis makes a failed structural observation a positive result.
+- Presence/absence predictions and one unbound MD trajectory do not establish
+  enzymatic leakiness, cellular AND logic or normal-cell specificity. These remain
+  unsupported rather than passed by computational substitution.
+- Delivery, immune activation and treatment readiness are not established by the
+  available structure/trajectory data. The cited SSE study does not validate this
+  protein actuator; see `notes/literature_scope_review.md`.
+- Suitable independent functional labels are absent. Training an ML activity
+  predictor on these heuristic scores would not independently validate activity.
+- The 31 historical shell launchers are archived and inactive by default. Repaired
+  entry points and explicit fresh-output protocols are the supported routes.
+
+The branch records reproducible computations, repaired workflow behavior, failed
+observations and evidence limits. It does not assert biological function or safety.

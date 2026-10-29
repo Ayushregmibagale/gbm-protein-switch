@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # Watchdog: SOX2 groove binding site (H1/L1/H2 junction, hotspots B59,B61,B62,B63,B70)
 # Run after current SOX2 campaign completes or GPU is free
 export XLA_PYTHON_CLIENT_PREALLOCATE=false

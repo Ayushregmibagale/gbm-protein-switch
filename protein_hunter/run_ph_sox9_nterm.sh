@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # Protein Hunter — SOX9 N-terminal face binder design.
 # contact_residues 5,10,15,19,25 = label_seq_id for auth 107,112,117,121,127.
 # These are the N-terminal half of the SOX9 HMG domain.

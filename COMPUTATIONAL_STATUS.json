@@ -1,0 +1,61 @@
+{
+  "branch": "robustness/evidence-audit",
+  "scope": "Available-data computational robustness audit and repair; results are not all positive",
+  "completed": [
+    {
+      "task": "Source recovery and provenance",
+      "outcome": "66 missing source/input/result files recovered",
+      "evidence": "evidence/recovery_manifest.json"
+    },
+    {
+      "task": "Corrected candidate predictions",
+      "outcome": "69 predictions; 23 candidates \u00d7 3 seeds; 19 candidates meet confidence heuristic in all seeds",
+      "evidence": "evidence/corrected_candidate_predictions/"
+    },
+    {
+      "task": "Matched target-presence controls",
+      "outcome": "12 predictions complete; BOTH endpoints fail to reproduce <15 A proximity in all three fresh predictions",
+      "evidence": "evidence/matched_controls/"
+    },
+    {
+      "task": "Bridge replicate and metric sensitivity audit",
+      "outcome": "15 trajectories; 27 metric/window settings each; bridge_90 has major replicate instability",
+      "evidence": "evidence/bridge_replicate_cohort/"
+    },
+    {
+      "task": "Unbound control integrity and periodic distances",
+      "outcome": "Validated full 20 ns; >25 A endpoint distance in 100% frames; distance heuristic met",
+      "evidence": "evidence/unbound_control/"
+    },
+    {
+      "task": "Bound reference-fold audit",
+      "outcome": "Large CA RMSD and low native contact retention raise a mechanistic concern",
+      "evidence": "evidence/native_geometry/"
+    },
+    {
+      "task": "Historical cache identity and integrity",
+      "outcome": "972 caches checked; no submitted-input/PDB identity mismatch; historical full provenance remains unverified",
+      "evidence": "evidence/historical_cache_audit.json"
+    },
+    {
+      "task": "External raw-data identity",
+      "outcome": "Content hashes recorded for all 19 production datasets used; raw files remain on D:",
+      "evidence": "evidence/external_artifacts.json"
+    },
+    {
+      "task": "Execution reliability",
+      "outcome": "Fresh inference outputs required; 31 legacy shell launchers inactive by default; completed control recognised without restarting",
+      "evidence": "WORKFLOW.md"
+    }
+  ],
+  "active_jobs": [],
+  "scientific_limits": [
+    "Current predicted caspase cores are not supported as native-like assemblies by the reference comparison.",
+    "Presence/absence predictions do not support a reproducible close-endpoint BOTH assembly.",
+    "One unbound trajectory passing a distance heuristic does not establish enzymatic non-leakiness.",
+    "Activity, normal-cell specificity, delivery and immune-payload function require evidence absent from these data.",
+    "No independent functional labels exist to validate an ML activity predictor.",
+    "Further MD of the questionable starting fold is not a substitute for a structurally supported mechanistic model."
+  ],
+  "recording": "Code, raw prediction inputs/models/confidences, validated analyses, and negative findings are versioned on this branch. Main is preserved."
+}

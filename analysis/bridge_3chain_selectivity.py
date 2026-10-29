@@ -26,14 +26,18 @@ Seeds: 3 per condition to capture Boltz-2 stochasticity.
 Output: analysis/bridge_3chain_selectivity_results.tsv
 """
 
+import sys
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parents[1] / 'selection'))
+from selection_support import require_execution, campaign_output, campaign_table
+require_execution(__name__)
 import os, json, subprocess
 import argparse
 import pandas as pd
 from pathlib import Path
 
 BASE      = Path(__file__).resolve().parents[1]
-OUT_DIR   = BASE / "analysis" / "bridge_3chain_selectivity_outputs"
-BOLTZ_BIN = Path("/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz")
+OUT_DIR   = campaign_output(BASE / "analysis" / "bridge_3chain_selectivity_outputs")
+BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 BRIDGE_SEQ = "GAAAAAAAEAAAAAAAAAAAAAAAAAAAAEAARAAAAAAAAAAAAAAAAAAQAAAAQAYLAQAQAAAAA"
 SOX2_HMG   = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
@@ -108,7 +112,7 @@ def main():
     parser.add_argument('--boltz', type=Path, default=Path(os.environ.get('BOLTZ_BIN', 'boltz')))
     args = parser.parse_args()
     BASE = args.base
-    OUT_DIR = BASE / 'analysis' / 'bridge_3chain_selectivity_outputs'
+    OUT_DIR = campaign_output(BASE / 'analysis' / 'bridge_3chain_selectivity_outputs')
     BOLTZ_BIN = args.boltz
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -144,7 +148,7 @@ def main():
         print(f"  {label}: completed {len(valid)}/{len(SEEDS)} seeds")
 
     df = pd.DataFrame(rows)
-    out_path = BASE / "analysis" / "bridge_3chain_selectivity_results.tsv"
+    out_path = campaign_table(BASE / "analysis" / "bridge_3chain_selectivity_results.tsv")
     df.to_csv(out_path, sep="\t", index=False)
 
     if df['iptm'].isna().any():

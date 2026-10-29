@@ -9,7 +9,7 @@ Usage:
   python bridge_linker_screen.py
 """
 
-from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates, campaign_output, campaign_table
 require_execution(__name__)
 
 import os, json, subprocess
@@ -21,7 +21,7 @@ SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMK
 SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
 
 BASE     = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
-OUT_DIR  = BASE / "selection" / "bridge_linker_outputs"
+OUT_DIR  = campaign_output(BASE / "selection" / "bridge_linker_outputs")
 BOLTZ    = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 # Top selective pairs from stage 3 (both_selective=True, sorted by pair_ipTM)

@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # BindCraft bridge binder — no hotspot constraint, very relaxed filters.
 # Rationale: with pinned hotspots (A193,A199,B466,B505,B508) the AF2 optimizer
 # achieves i_pTM ~0.12-0.16 and never passes the base AF2 filter (233 trajectories, 0 accepted).

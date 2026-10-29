@@ -1,2 +1,3 @@
 # Trailing empty TSV fields and preserved source line endings are data.
 *.tsv whitespace=-blank-at-eol
+*.pdb whitespace=-blank-at-eol,-blank-at-eof

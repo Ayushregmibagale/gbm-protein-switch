@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # BoltzGen SOX9 N-terminal face binder design.
 # Hotspots on the N-terminal half of HMG: label_seq 5,10,15,19,25 (auth 107,112,117,121,127).
 # Goal: binders whose N-terminus is on the SOX2-proximal face for CaspC+GGS+BinderSOX9 fusion.

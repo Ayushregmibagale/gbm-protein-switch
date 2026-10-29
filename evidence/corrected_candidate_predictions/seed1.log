@@ -1,0 +1,63 @@
+Seed set to 1
+Checking input data.
+Processing 23 inputs with 1 threads.
+  0%|          | 0/23 [00:00<?, ?it/s]Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+ 22%|██▏       | 5/23 [00:00<00:00, 49.98it/s]Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+ 48%|████▊     | 11/23 [00:00<00:00, 50.00it/s]Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+ 70%|██████▉   | 16/23 [00:00<00:00, 49.83it/s]Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+ 91%|█████████▏| 21/23 [00:00<00:00, 49.23it/s]Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+Empty MSA found; using single sequence mode.
+100%|██████████| 23/23 [00:00<00:00, 49.52it/s]
+Using bfloat16 Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+/home/ayushregmibagale/miniconda3/envs/boltz2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+Running structure prediction for 23 inputs.
+/home/ayushregmibagale/miniconda3/envs/boltz2/lib/python3.10/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+You are using a CUDA device ('NVIDIA GeForce RTX 5090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/ayushregmibagale/miniconda3/envs/boltz2/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/home/ayushregmibagale/miniconda3/envs/boltz2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:425: The 'predict_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=23` in the `DataLoader` to improve performance.
+Predicting: |          | 0/? [00:00<?, ?it/s]Predicting:   0%|          | 0/23 [00:00<?, ?it/s]Predicting DataLoader 0:   0%|          | 0/23 [00:00<?, ?it/s]Predicting DataLoader 0:   4%|▍         | 1/23 [00:03<01:21,  0.27it/s]Predicting DataLoader 0:   9%|▊         | 2/23 [00:08<01:32,  0.23it/s]Predicting DataLoader 0:  13%|█▎        | 3/23 [00:14<01:33,  0.21it/s]Predicting DataLoader 0:  17%|█▋        | 4/23 [00:19<01:30,  0.21it/s]Predicting DataLoader 0:  22%|██▏       | 5/23 [00:24<01:26,  0.21it/s]Predicting DataLoader 0:  26%|██▌       | 6/23 [00:29<01:22,  0.20it/s]Predicting DataLoader 0:  30%|███       | 7/23 [00:32<01:14,  0.21it/s]Predicting DataLoader 0:  35%|███▍      | 8/23 [00:37<01:10,  0.21it/s]Predicting DataLoader 0:  39%|███▉      | 9/23 [00:42<01:06,  0.21it/s]Predicting DataLoader 0:  43%|████▎     | 10/23 [00:47<01:02,  0.21it/s]Predicting DataLoader 0:  48%|████▊     | 11/23 [00:52<00:57,  0.21it/s]Predicting DataLoader 0:  52%|█████▏    | 12/23 [00:57<00:53,  0.21it/s]Predicting DataLoader 0:  57%|█████▋    | 13/23 [01:01<00:47,  0.21it/s]Predicting DataLoader 0:  61%|██████    | 14/23 [01:06<00:42,  0.21it/s]Predicting DataLoader 0:  65%|██████▌   | 15/23 [01:11<00:38,  0.21it/s]Predicting DataLoader 0:  70%|██████▉   | 16/23 [01:16<00:33,  0.21it/s]Predicting DataLoader 0:  74%|███████▍  | 17/23 [01:21<00:28,  0.21it/s]Predicting DataLoader 0:  78%|███████▊  | 18/23 [01:26<00:24,  0.21it/s]Predicting DataLoader 0:  83%|████████▎ | 19/23 [01:31<00:19,  0.21it/s]Predicting DataLoader 0:  87%|████████▋ | 20/23 [01:35<00:14,  0.21it/s]Predicting DataLoader 0:  91%|█████████▏| 21/23 [01:40<00:09,  0.21it/s]Predicting DataLoader 0:  96%|█████████▌| 22/23 [01:45<00:04,  0.21it/s]Predicting DataLoader 0: 100%|██████████| 23/23 [01:50<00:00,  0.21it/s]Number of failed examples: 0
+Predicting DataLoader 0: 100%|██████████| 23/23 [01:50<00:00,  0.21it/s]

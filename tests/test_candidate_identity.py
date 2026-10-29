@@ -36,3 +36,12 @@ class CandidateTests(unittest.TestCase):
         result = subprocess.run([sys.executable,str(ROOT/'selection/stage5_flipped.py')],capture_output=True,text=True)
         self.assertNotEqual(result.returncode,0)
         self.assertIn('Use --execute',result.stderr)
+
+    def test_legacy_inference_requires_fresh_campaign_root(self):
+        import os
+        env=os.environ.copy()
+        env.pop('GBM_RUN_ROOT',None)
+        result=subprocess.run([sys.executable,str(ROOT/'selection/stage5_flipped.py'),'--execute'],
+                              capture_output=True,text=True,env=env)
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('Set GBM_RUN_ROOT',result.stderr)

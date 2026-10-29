@@ -1,0 +1,49 @@
+{
+  "label": "Track1_unbound",
+  "scope": "Descriptive endpoint distances; biological activity and safety are untested",
+  "n_frames": 2001,
+  "start_ns": 0.0,
+  "end_ns": 20.0,
+  "elapsed_ns": 20.0,
+  "cadence_ns": 0.01,
+  "mean_dist_A": 44.58161823628867,
+  "std_dist_A": 5.060453979103481,
+  "min_dist_A": 34.528703449975794,
+  "max_dist_A": 58.451423434557405,
+  "pct_below_15A": 0.0,
+  "pct_above_25A": 100.0,
+  "distance_criterion": ">25 A in >=95% frames",
+  "distance_criterion_met": true,
+  "first_fragment_end_ns": 4.57,
+  "topology_path": "/mnt/d/gbm-protein-switch/md/unbound/Track1_unbound/prod.tpr",
+  "topology_sha256": "0fa878d1b1baf658f3af3d495f946ffa7b77554bc9a78403d1e597a471bff4eb",
+  "selections": [
+    "resid 250 and name CA",
+    "resid 251 and name CA"
+  ],
+  "atoms": [
+    "<Atom 3837: CA of type CT of resname ASP, resid 250 and segid seg_0_Protein_chain_A>",
+    "<Atom 3852: CA of type CT of resname ALA, resid 251 and segid seg_1_Protein_chain_B>"
+  ],
+  "sources": [
+    {
+      "path": "/mnt/d/gbm-protein-switch/md/unbound/Track1_unbound/prod_partial_corrupted.xtc",
+      "bytes": 188522496,
+      "mtime_ns": 1789486603550686300,
+      "sha256": "24c1891fa40ff389f72d4ee129b9fb79a1eb505fe56324d2bf0e51f43367d1b3",
+      "accepted_frames": 458
+    },
+    {
+      "path": "/mnt/d/gbm-protein-switch/md/unbound/Track1_unbound/prod.part0002.xtc",
+      "bytes": 530820224,
+      "mtime_ns": 1793276333461128600,
+      "sha256": "9763e17148a8460639fdf57428e02f8565699d22ddead924865fbdc0c84ee33f",
+      "accepted_frames": 1543
+    }
+  ],
+  "software": {
+    "MDAnalysis": "2.10.0",
+    "numpy": "2.4.6"
+  },
+  "timeseries_sha256": "e78633d85e7e9039e21f6ea37de7e1700b619c557a5c74112adb3e1bc70d090a"
+}

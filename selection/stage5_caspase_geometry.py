@@ -10,7 +10,7 @@ Linker sweep: n = 1,2,3,4 (3,6,9,12 aa linkers).
 Checks: inter-half distance < 15 Å, pair_iptm of full assembly.
 """
 
-from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates, campaign_output, campaign_table
 require_execution(__name__)
 
 import os, json, subprocess, urllib.request
@@ -24,7 +24,7 @@ SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKK
 BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 STAGE1    = Path(os.environ.get("GBM_STAGE1_TABLE", BASE / "selection" / "stage1_results.tsv"))
 STAGE4    = BASE / "selection" / "stage4_results.tsv"
-OUT_DIR   = BASE / "selection" / "stage5_caspase_outputs"
+OUT_DIR   = campaign_output(BASE / "selection" / "stage5_caspase_outputs")
 BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 INTER_HALF_THRESH = 15.0   # Å — caspase half proximity for reconstitution
@@ -205,7 +205,7 @@ def main():
 
     df5 = pd.DataFrame(rows).sort_values(["pass_geometry", "inter_half_dist_A"],
                                           ascending=[False, True])
-    out_path = BASE / "selection" / "stage5_results.tsv"
+    out_path = campaign_table(BASE / "selection" / "stage5_results.tsv")
     df5.to_csv(out_path, sep="\t", index=False)
 
     passed = df5[df5["pass_geometry"] == True]

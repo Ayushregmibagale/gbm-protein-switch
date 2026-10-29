@@ -12,7 +12,7 @@ Flipped orientation:
 Results appended to: selection/stage5_ph_sox2_run18_results.tsv
 """
 
-from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates, campaign_output, campaign_table
 require_execution(__name__)
 
 import os, json, subprocess
@@ -24,7 +24,7 @@ SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMK
 SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY"
 
 BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
-OUT_DIR   = BASE / "selection" / "stage5_ph_sox2_run18_outputs"
+OUT_DIR   = campaign_output(BASE / "selection" / "stage5_ph_sox2_run18_outputs")
 BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 SOX2_NAME = "ph_sox2_run18"
@@ -146,7 +146,7 @@ def main():
                          "recon_dist_A": dist, "iptm": iptm, "pass": passed})
 
     df = pd.DataFrame(rows)
-    out_path = BASE / "selection" / "stage5_ph_sox2_run18_results.tsv"
+    out_path = campaign_table(BASE / "selection" / "stage5_ph_sox2_run18_results.tsv")
     df.to_csv(out_path, sep="\t", index=False)
 
     print(f"\n=== Results: {SOX2_NAME} × {SOX9_NAME} ===")

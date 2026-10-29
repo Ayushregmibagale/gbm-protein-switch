@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # Protein Hunter — SOX9 binder design
 # Target: SOX9 HMG domain only (72 aa, auth 103-174), hotspots 66,67,69,70,71 (= auth 168,169,171,172,173)
 # Using HMG-only to avoid VRAM pressure from full-length 509 aa sequence

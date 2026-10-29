@@ -1,0 +1,311 @@
+{
+  "status": "complete",
+  "checkpoint": "/home/ayushregmibagale/.boltz/boltz2_conf.ckpt",
+  "checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+  "model": "boltz2",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "recycling_steps": 3,
+  "sampling_steps": 200,
+  "candidates": [
+    {
+      "name": "SOX9_mini_l90_s672683_mpnn19_model2",
+      "target": "SOX9",
+      "binder_length": 90,
+      "input_sha256": "a170d889a3b89e60c8262c35c4880a4ffa6ab2b4b00f1bae5f74caf5a22a17e5",
+      "binder_sequence": "SKGEEALKKLEEMREIADSWLLMLEEQKREWPEFMKPEELEMYEKAKKAVEEIAELVKKPPSEEHVEKLEEFEKIYKELEEFMKENDYFW",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "9188898fb3a4108766325caa6ccb209791a135b8bdf0993633987e77aec5c26a"
+    },
+    {
+      "name": "SOX9_mini_l98_s354252_mpnn3_model1",
+      "target": "SOX9",
+      "binder_length": 98,
+      "input_sha256": "e94f90f09b59e179cd32ae755a4fc0f9b8bde833e4839ab1908e2b178b1646a6",
+      "binder_sequence": "KPMSLEELEEWLFAQMDTLYEFFTVYAPLVGKSTDDLWEEWEYDFWDIMEGDWSEEEIREFFKRFAEELEELRKKLPEEHTELKKKIDEVIEKFRELA",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "5179e8e9c891ce29c0a9042b564a1fb0c9ae69f2946c15c219946b81b7fa0bdb"
+    },
+    {
+      "name": "SOX9_mini_l96_s785852_mpnn19_model1",
+      "target": "SOX9",
+      "binder_length": 96,
+      "input_sha256": "818c9db4bb35b9e084058b3a782209517c19e24f76a15ab3d345619ff23b5521",
+      "binder_sequence": "DVWYHFDWEFMELMEPYWAREDELERKLRESADPAERRRAAEEIVELWREPVREYIEKLRENPEYDPEDVAEMERALNAEVESYGEWRRRRVRELE",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "dddbe4254454089c3d0aef299a795aad69829f115d15f003d3fc4f41996683c8"
+    },
+    {
+      "name": "SOX9_mini_l100_s993709_mpnn1_model2",
+      "target": "SOX9",
+      "binder_length": 100,
+      "input_sha256": "5cd6f0dcdc2ed4f88358f29f058d73be57efb557123838d58a45cac094aca960",
+      "binder_sequence": "SEEVIKKLEELIPKIKEEPEKFKKELEELMKKASEKEKKLLEKIMKVFEEIYWTYKMYWDFAYYDDDPEEMEEAERYFKEELEKVEEVAKEVIEKLKNNE",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "ba7bc4407aed6059076bed95a355155c8433d8c8291e0bf084036897b16ff962"
+    },
+    {
+      "name": "SOX9_mini_l95_s269993_mpnn9_model1",
+      "target": "SOX9",
+      "binder_length": 95,
+      "input_sha256": "3b94e78a5a1a1956e1f6ca853f887f7006ed96c7285ad415ec2a01ba8067145a",
+      "binder_sequence": "MLSPLERNKKLLEETKKKIKESGGDKEKIKEILESTLKEAATTVHRMIMAPEDDPNLYPSVKVVEELLELTKEYAPEFYKEIDEKGEKEMENGYW",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "7c33e405e252feccb0520711c66dd9f2e88d8f02722f06ed84816f4e1cab7e7e"
+    },
+    {
+      "name": "SOX9_mini_l100_s929959_mpnn1_model2",
+      "target": "SOX9",
+      "binder_length": 100,
+      "input_sha256": "0bdb40437ee53425197e8a053af66212c53f46db2e934a1f4f8d0738bca7f9de",
+      "binder_sequence": "WDDSQYDIPPEVDEKIDKDFEEALEFAELVKKLLAAGEPDSPEVKELLEEIKEKYKEMSPHAYIMATWILLRSHYSSLEEVWEEMERLKFDPLKFVEEKL",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "8a44c9e61fcaaf30ba4c99ec196bbef559d8d87400cc7e731e151060ded7514e"
+    },
+    {
+      "name": "SOX9_mini_l97_s33457_mpnn4_model1",
+      "target": "SOX9",
+      "binder_length": 97,
+      "input_sha256": "43bbf4313b1e483ae5917d0832d54e1433f60f9f6c97c8e91acffbabab8af5f0",
+      "binder_sequence": "SEREIEDLKWQIKEAHDMFMNVMDDPESRKNKDEWDFMWGFIESLKEDIEAYLKKNPEDEELKKLYEEFMKFFVEEASKVYSKDGPEKLKEVLKEYE",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "8f76105f6c9d896262d380b76aa6d8d72578137ef9f11643299e0cd0a29cc2e0"
+    },
+    {
+      "name": "SOX9_mini_l100_s993709_mpnn2_model2",
+      "target": "SOX9",
+      "binder_length": 100,
+      "input_sha256": "514c0d44860bee6b727ace9782dc2b2f59a04ea774dd7e3165465779fd116690",
+      "binder_sequence": "SEKVIKKLKELLPKIKEDPEKFKKELEKLMKEASEEEKKLLEEIKKKFDEIYWTYKMYWDFAYYDDNPEEMEEAKKYFEEELEKVIEIAKEVIKKLENNE",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "860e70e56a2134860d55c8ad3358348f015827c1907727280dd00f960326aa58"
+    },
+    {
+      "name": "SOX9_mini_l98_s354252_mpnn6_model2",
+      "target": "SOX9",
+      "binder_length": 98,
+      "input_sha256": "368e4975257af4d4dbfbad2a9c0fae9b24e3233ddbff37a51d4cf54a9c196ccf",
+      "binder_sequence": "KPMSLEELEEKLFAYMDTLYEFFKVYAPLVGKSTDDLWEEWEYDFWDIMEGDWSEEEIREFFKRAAKELDELRKKLPEEHKELKEKIGEVIEWFKSQA",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "44ed8c633d09f1383e20991aff77a41df67e43db17fbf14ab78e9f9118b43812"
+    },
+    {
+      "name": "SOX9_mini_l97_s33457_mpnn10_model1",
+      "target": "SOX9",
+      "binder_length": 97,
+      "input_sha256": "7762829e24b0c83dbae9bbe1cf36bcee103f5549d3baa4d74dd07b7ccbd8bad6",
+      "binder_sequence": "SKREIEDLKWQIDEAHDMFMNYMDDPESAKNKDELDFMWGFYESLKEDIKEYLEKNPEDEELKKLYEEFVKFLAEKLEEKYKENGPEWLKDFLKEVE",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "af9af19fb9a3bdac83cdb4095413bae24c693a67f12e8c60c1c5f74d8588bd38"
+    },
+    {
+      "name": "SOX9_mini_l94_s688538_mpnn18_model1",
+      "target": "SOX9",
+      "binder_length": 94,
+      "input_sha256": "2c10a0fc0ac10671456907899fb773b29e0050d6ab71d90d03b7fd36ea3f1f74",
+      "binder_sequence": "MPPLTEEEREAIIDEFIEEYNKIHIESETMSYEEWWKKYKEVVTEFAERMFGDPSKAEELIKILDEFGWWYLDTEEEKAFHQGMLLWIVEDLEK",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "0546515decb405893c7efcc37b4a8cd83c690547e4fa7590158ef5744b74d8ad"
+    },
+    {
+      "name": "SOX9_mini_l72_s907566_mpnn4_model2",
+      "target": "SOX9",
+      "binder_length": 72,
+      "input_sha256": "034b7e727daf2c3514f705a4088e4f3a6aebf378cfff569d4ce80b191b99bf32",
+      "binder_sequence": "SWSEEEEEIMREVFERRREERRRFGPEPVPHIEDIENWPEEHIEKRRAETEWMTDWVMDTLGEALAIIAERR",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "0232481f219ed34f0e5f3e35cb8c9639ecf0064de909c56271047a4923ee0997"
+    },
+    {
+      "name": "SOX9_mini_l97_s684734_mpnn3_model2",
+      "target": "SOX9",
+      "binder_length": 97,
+      "input_sha256": "aec662147615f69a2f63abd9bc678cb51b7f3a3baf1cbbfbd23c555d46f05196",
+      "binder_sequence": "MSEYEKFEKKKHEVMMELEEMLMHPRTWEERRENLERFKKIMEEEGDIPEEVREELEELMKVGKDDDAEYWELDDRFWEVMFKFWDYLDEKLKKLKE",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "14c85a16068451d4202952f300e6d7e8ade22f656c9da083005868512008ef03"
+    },
+    {
+      "name": "SOX2_mini_l90_s538724_mpnn3_model2",
+      "target": "SOX2",
+      "binder_length": 90,
+      "input_sha256": "de8dde93139b034305a2b8e99c80450599f243c42e5b2b5ddbc7b53c34a4f524",
+      "binder_sequence": "SAFRERVEREAPAFIEELVERSLELLREGYTERVVRQFAEGMIWMFLDWVRWEYPDDGVSNEEIDELGRELLEEFFRRFEERLEEERRRL",
+      "target_sequence": "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG",
+      "accepted_pdb_sha256": "91417316e75a0da3074ec94d1ce7404be3fe35e51fe161de86168bc9789ed60c"
+    },
+    {
+      "name": "SOX2_mini_l88_s823247_mpnn7_model1",
+      "target": "SOX2",
+      "binder_length": 88,
+      "input_sha256": "9720bde91fdfac2c93ac727127d5d016dbcd379888f787e213a408625955d342",
+      "binder_sequence": "MSEEELEELRRRYEEALRELEEISWHPEKYEKEKIEEVAMEVADTLVALGPPSLHEQWWLWMHFDVIWDHMDIEKSLEIEDKLDEAFG",
+      "target_sequence": "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG",
+      "accepted_pdb_sha256": "3dec1e4a5be3ab2051bcf64afdb7e75f985604b9c96bd9b30fb5840719776932"
+    },
+    {
+      "name": "SOX9_mini_l94_s688538_mpnn15_model1",
+      "target": "SOX9",
+      "binder_length": 94,
+      "input_sha256": "fe83bb1a8966a1eb227b8fdd78887567635e58c980836845eb77f2fbb41da0f7",
+      "binder_sequence": "RPPLSEEERKAIIDEFIAKYNEVHIKSETMSYEEWWKEVNDVVTWFAEQIFGDKSLAEPLKEKLDEFGWWYLDTDEEIAFHQGMLEWLVEDLEK",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "b381f16eab50f7c8286f0f7a85ca1ac7576a52edf3fc29eeeb42c8a44bed4b20"
+    },
+    {
+      "name": "SOX2_mini_l94_s203787_mpnn13_model2",
+      "target": "SOX2",
+      "binder_length": 94,
+      "input_sha256": "fefcfa5c94182671916a7b7b862372a959e229c03e5813601cce4aa0ebafbcfd",
+      "binder_sequence": "SREELEKLVRDFFLELREKKLKGEPVSWDEKIILRAPLEESLPEWYRDFYVDLAMTEFQKYYKEKTGKEITDPEEMRYLDELLEREYIRILNKP",
+      "target_sequence": "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG",
+      "accepted_pdb_sha256": "c1db396fd825e92d08c5235422124185c1048c4176961c5f00a143f2de24cb90"
+    },
+    {
+      "name": "SOX9_mini_l96_s785852_mpnn6_model1",
+      "target": "SOX9",
+      "binder_length": 96,
+      "input_sha256": "ddbab0175b346ddd83157374d750a95a0b7ee2b7ce25ad084f1347d006fd43a0",
+      "binder_sequence": "DVWYHFDWEFMELLEPYWEEEDELERKLRESKDREERRKAAEEITELWEKPVEEYIEKLEKNPEYDPKDVERMKKELFEEVESYRKWREEEVEKLE",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "fbb52a366c63c31b66aa618eae8ccfedc01fc9a832de40d0d7770a30f077815a"
+    },
+    {
+      "name": "SOX9_mini_l72_s907566_mpnn7_model2",
+      "target": "SOX9",
+      "binder_length": 72,
+      "input_sha256": "ad3d077329323c5c13ae2265f327d143bf98ee8ebd8914884cfc56dcd98ba5db",
+      "binder_sequence": "SWSEEEEEVMREVFERRREERRRFGPEPVPHIEDIENWPEEHIEARRAETEWMTDWVMDTLGEALKKIEALR",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "fe37f2af3bafe3074852b91242368f42b846ccf453614089c7daf4eb5b5aec95"
+    },
+    {
+      "name": "SOX9_mini_l97_s684734_mpnn17_model1",
+      "target": "SOX9",
+      "binder_length": 97,
+      "input_sha256": "5b64f49112a6e48e7c7e82c71b5b9afafb390d9ef3b0314800f7548236226a62",
+      "binder_sequence": "MSEAEKFRKKKHEVMMELERMHMHPRTWEERYENLERFRKVMEELGDVPEEVRKELDEILAISRDEPAEYWEIDDRFWEVMFKVWDYMDEKLAELEK",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "7a8bd5f83c5705098fdba9d9b6ace4faf10ac0c164abde5b43a76dfe39fda1df"
+    },
+    {
+      "name": "SOX9_mini_l100_s929959_mpnn3_model1",
+      "target": "SOX9",
+      "binder_length": 100,
+      "input_sha256": "46ba044d3b99b997a15f426b054825558f969d02ff185336bc93bab5e163c39a",
+      "binder_sequence": "WDDSQYDIPPEEDEKIDKDFEEALEFAELVERLLEAGEPESPEVRRLLEEVRRRYEKMSPHAYIMATWILARKHYKSLDEVWELMEKIKFDPLKLVEELL",
+      "target_sequence": "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKKDHPDYKY",
+      "accepted_pdb_sha256": "3ceb6932edd1cb78017526aa3722e04013168e508ffa1817cbc88141f4ce33b9"
+    },
+    {
+      "name": "SOX2_mini_l82_s14072_mpnn7_model2",
+      "target": "SOX2",
+      "binder_length": 82,
+      "input_sha256": "70592cbb2204f63c20fe29d7e83990aee1ac6724938827fd7a69ce2eec1cf28e",
+      "binder_sequence": "SAELAELERRAEEARRRFEEAQARFHEAGEEMVRWDWHPEGRGKPLPKEIDDRLAEASYELFEAWMEYTRLEREVEALRRAA",
+      "target_sequence": "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG",
+      "accepted_pdb_sha256": "301dbb5b750a0df0c68a21481ac81f66d225bb2b7c0676de104109deea09a90e"
+    },
+    {
+      "name": "SOX2_mini_l94_s203787_mpnn9_model2",
+      "target": "SOX2",
+      "binder_length": 94,
+      "input_sha256": "1e9682f976c95e99cd898444d0cdfb0f0435c3251d8616734508ee5f63549f15",
+      "binder_sequence": "SKEELEELVREFFLELRERKENGEPVSWDEKIILRAPLTDDLPEWYRDFYVDLAMTEFMKWYEKKTGKKITDPETMRYLDELLEREYKEILNAP",
+      "target_sequence": "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG",
+      "accepted_pdb_sha256": "b4dec3470ce5137ba3d5eadb8fd712691aca3f61026dfca4a27c60235e0fe8b1"
+    }
+  ],
+  "scope": "Corrections to recorded binder identity, not a new design campaign",
+  "software": {
+    "boltz": "2.2.1",
+    "torch": "2.10.0+cu128",
+    "numpy": "1.26.4",
+    "pytorch-lightning": "2.5.0"
+  },
+  "commands": [
+    [
+      "/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz",
+      "predict",
+      "/tmp/gbm-corrected-predictions-final-20261029/inputs",
+      "--out_dir",
+      "/tmp/gbm-corrected-predictions-final-20261029/seed0",
+      "--cache",
+      "/home/ayushregmibagale/.boltz",
+      "--checkpoint",
+      "/home/ayushregmibagale/.boltz/boltz2_conf.ckpt",
+      "--model",
+      "boltz2",
+      "--recycling_steps",
+      "3",
+      "--sampling_steps",
+      "200",
+      "--seed",
+      "0",
+      "--output_format",
+      "pdb",
+      "--no_kernels",
+      "--num_workers",
+      "0",
+      "--preprocessing-threads",
+      "1"
+    ],
+    [
+      "/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz",
+      "predict",
+      "/tmp/gbm-corrected-predictions-final-20261029/inputs",
+      "--out_dir",
+      "/tmp/gbm-corrected-predictions-final-20261029/seed1",
+      "--cache",
+      "/home/ayushregmibagale/.boltz",
+      "--checkpoint",
+      "/home/ayushregmibagale/.boltz/boltz2_conf.ckpt",
+      "--model",
+      "boltz2",
+      "--recycling_steps",
+      "3",
+      "--sampling_steps",
+      "200",
+      "--seed",
+      "1",
+      "--output_format",
+      "pdb",
+      "--no_kernels",
+      "--num_workers",
+      "0",
+      "--preprocessing-threads",
+      "1"
+    ],
+    [
+      "/home/ayushregmibagale/miniconda3/envs/boltz2/bin/boltz",
+      "predict",
+      "/tmp/gbm-corrected-predictions-final-20261029/inputs",
+      "--out_dir",
+      "/tmp/gbm-corrected-predictions-final-20261029/seed2",
+      "--cache",
+      "/home/ayushregmibagale/.boltz",
+      "--checkpoint",
+      "/home/ayushregmibagale/.boltz/boltz2_conf.ckpt",
+      "--model",
+      "boltz2",
+      "--recycling_steps",
+      "3",
+      "--sampling_steps",
+      "200",
+      "--seed",
+      "2",
+      "--output_format",
+      "pdb",
+      "--no_kernels",
+      "--num_workers",
+      "0",
+      "--preprocessing-threads",
+      "1"
+    ]
+  ],
+  "completed_seeds": 3,
+  "n_predictions": 69
+}

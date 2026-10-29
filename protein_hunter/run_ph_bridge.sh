@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # Protein Hunter — SOX2/SOX9 interface bridging binder (truncated fragments)
 # Target: SOX2 aa175-215 (41aa) chain B + SOX9 aa450-509 (60aa) chain C
 # Hotspots in fragment coords: SOX2 pos 19,25 | SOX9 pos 17,56,59

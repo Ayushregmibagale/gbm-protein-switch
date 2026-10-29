@@ -1,4 +1,10 @@
 #!/bin/bash
+# Historical campaign launcher: explicit opt-in is required.
+if [[ "${GBM_ALLOW_LEGACY_CAMPAIGNS:-0}" != "1" ]]; then
+    echo "Archived campaign launcher. See WORKFLOW.md for supported entry points." >&2
+    echo "For deliberate legacy execution set GBM_ALLOW_LEGACY_CAMPAIGNS=1." >&2
+    exit 2
+fi
 # RFdiffusion: SOX9 binders with hotspots biased to the N-terminal half of the HMG fragment.
 # Goal: produce binders whose N-terminus is on the SOX2-proximal face,
 # enabling CaspC + GGS + BinderSOX9 N-terminal caspase fusion.

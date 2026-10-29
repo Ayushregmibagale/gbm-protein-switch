@@ -10,7 +10,7 @@ SOX9 binders tested vs SOX2 HMG.
 Output: stage3_results.tsv — one row per pair, with selectivity annotations.
 """
 
-from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates, campaign_output, campaign_table
 require_execution(__name__)
 
 import os, json, subprocess
@@ -23,7 +23,7 @@ SOX9_TARGET = "PHVKRPMNAFMVWAQAARRKLADQYPHLHNAELSKTLGKLWRLLNESEKRPFVEEAERLRVQHKK
 BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
 STAGE1    = Path(os.environ.get("GBM_STAGE1_TABLE", BASE / "selection" / "stage1_results.tsv"))
 STAGE2    = BASE / "selection" / "stage2_results.tsv"
-OUT_DIR   = BASE / "selection" / "stage3_boltz_outputs"
+OUT_DIR   = campaign_output(BASE / "selection" / "stage3_boltz_outputs")
 BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 WRONG_IPTM_MAX = 0.40   # binder vs wrong target must be below this
@@ -160,7 +160,7 @@ def main():
         })
 
     df3 = pd.DataFrame(rows).sort_values("pair_iptm", ascending=False)
-    out_path = BASE / "selection" / "stage3_results.tsv"
+    out_path = campaign_table(BASE / "selection" / "stage3_results.tsv")
     df3.to_csv(out_path, sep="\t", index=False)
 
     sel = df3[df3["both_selective"] == True]

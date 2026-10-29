@@ -1,0 +1,129 @@
+{
+  "scope": "Content identities for external production data. Data remain on D:; this manifest is not an off-machine backup.",
+  "production_datasets": [
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_73_s09",
+      "topology_sha256": "ad2b4fe5b76a6f53beff77e2be4b5994b68c8bf4bd660016ae3eaee4c3434885",
+      "trajectory_sha256": "c1349cb8218debd53cfec3728f104bcf421a7d6a1ac19dc69f53623e840a2cf7",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_73_s09/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_90_rep3",
+      "topology_sha256": "663d590716903fb0e43a9cbc905c113603b4c711a8133f47c9e05f251ebb26ee",
+      "trajectory_sha256": "87383449d3a432f7d590e45fd9e4e8192bf490a6c4205424d4b0e35d4a474d92",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_90_rep3/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_48_s01_rep2",
+      "topology_sha256": "a5b6114f25fd0d0137d1cd391b8de7eb15007e2e7f5f577842888bd5e98fbfca",
+      "trajectory_sha256": "2265d3693e6084ba53e2b152e78ab10a811716ba2a4fde25240b8997903edbd9",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_48_s01_rep2/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_136_s01",
+      "topology_sha256": "05ec8614443bc8e6798cc126863ce6519ec3a24881a5278bdc3c4d5eb119ecec",
+      "trajectory_sha256": "5ebadcb7cea51d0e6e1727b2e6f8e8d2aeed71804fe0902103f82c427c801ef3",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_136_s01/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_101_s06",
+      "topology_sha256": "ab6c7837c6abeaee772f611f9b9fe58f29e3eaea331f05193f977b88319614ad",
+      "trajectory_sha256": "a58c19a90f4d6e980a76624493881eb556f2d6c99fe2c8be23bc7ba33888a0a7",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_101_s06/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_48_s01",
+      "topology_sha256": "973a1ac764ff7efd26a5effa80c98353cd75c8c83b597dcc1da376a097a8fa36",
+      "trajectory_sha256": "e3462f7b78c32840db5f5c61943097648641e4c0683ea2b44113a0d7a5759fcc",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_48_s01/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_73_s09_rep3",
+      "topology_sha256": "889000d7663dcf1d2c6ef506b38c15b88a94daf9c132f6371b8cd889d1779c2b",
+      "trajectory_sha256": "8c30027e1bce4954968c25d7e18271f159865a4390746d38c81f6b58a7324c21",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_73_s09_rep3/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_136_s01_rep2",
+      "topology_sha256": "7b4ad8948bc89225a47c7355bc2c4466afe2475173a3389e7eff1a2ed08b34a3",
+      "trajectory_sha256": "e2845ef75836cb8d406f8ea2c8b0767beafa063ac659404a4aea3335602df783",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_136_s01_rep2/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_90_s01",
+      "topology_sha256": "a1ee005bc83d24e4701e5f71c49b9e74b17b28c46309c37053e321727832be63",
+      "trajectory_sha256": "f73d3bca388bb38851172000084966b07335fd67ada818bc1bb39e3c8faa61c4",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_90_s01/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_90_rep2",
+      "topology_sha256": "abd379182cf3da224d7742c5689e625e9089b91d7d49deca34d50f212718d73e",
+      "trajectory_sha256": "aa79b965cef181b7ac440ed0cda0f75d1c7171bedfe8efe48729bef3ccc4157d",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_90_rep2/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_136_s01_rep3",
+      "topology_sha256": "e987fb9212103b5d6e9d93c4fd1bc2bc335833a4a2948f3c1b23b28e88141440",
+      "trajectory_sha256": "eb2ba817209e83422dc06f8ef2e34eeb5d58bdbcbd757293315e6d39ff283cc2",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_136_s01_rep3/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_101_s06_rep2",
+      "topology_sha256": "3a3e4670084f6bf08f1e328c5c89c4b5f51e4554ef1bdf71b49d9eb30a17b26b",
+      "trajectory_sha256": "4e5f223bec3d1c9037071fed98de055448625f2b537aa06aa56ea5552346f59d",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_101_s06_rep2/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_48_s01_rep3",
+      "topology_sha256": "2d1afeef7e08946d8608916ead22985fbde89451b61aa3d4f7c000f76bc15eba",
+      "trajectory_sha256": "3e06288891b408dbcf08c8fb8dc4e7e91fad2a075283efefef43df8a0dd6c398",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_48_s01_rep3/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_101_s06_rep3",
+      "topology_sha256": "882aa8b51ad5c8479a3d6eff327f654de33ee3375b31dc9daf7c6459cf7804df",
+      "trajectory_sha256": "b9fe5206990514a55c020142fe9e5dd2376cb14dce7e5cbb60092a4631989169",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_101_s06_rep3/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/bridge_binder_md/bridge_73_s09_rep2",
+      "topology_sha256": "a40753091a45b3972859a7848d0c42867f77fdebbf7547474696ac661f2b9064",
+      "trajectory_sha256": "05b7907327effea342c121e96757e2705cf88dead936fd9482bc67159356ca7b",
+      "evidence_file": "evidence/bridge_replicate_cohort/bridge_73_s09_rep2/metrics.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/lead_construct",
+      "topology_sha256": "386ce35c3a02ca1b44a6c268b68912e02dfbaefea25287bd36650caad5683dba",
+      "trajectory_sha256": "d13256ba8380fe3596387b77b3c26810191f1f38c385c024e7a9d0625c3395f0",
+      "evidence_file": "evidence/native_geometry/lead_construct/geometry.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/rep2",
+      "topology_sha256": "13110dd1531dbbd4e0a81d02dce03de59dfd40a5259e7b1b0aeca76f4929c6e1",
+      "trajectory_sha256": "b45cdca5568539383f0313454468b02534cfe6cc9024a0cc839dbff1b24ecc39",
+      "evidence_file": "evidence/native_geometry/rep2/geometry.json"
+    },
+    {
+      "directory": "/mnt/d/gbm-protein-switch/md/rep3",
+      "topology_sha256": "edc45b8f2dd1d07996863502c2594513b0a7cf70c0a5bcaa5686b964c481b344",
+      "trajectory_sha256": "54c300efd4b763d77510722548a78fd3a9ba0085b693e8a24ed785fbdea7df86",
+      "evidence_file": "evidence/native_geometry/rep3/geometry.json"
+    }
+  ],
+  "unbound_control_fragments": [
+    {
+      "path": "/mnt/d/gbm-protein-switch/md/unbound/Track1_unbound/prod_partial_corrupted.xtc",
+      "bytes": 188522496,
+      "mtime_ns": 1789486603550686300,
+      "sha256": "24c1891fa40ff389f72d4ee129b9fb79a1eb505fe56324d2bf0e51f43367d1b3",
+      "accepted_frames": 458
+    },
+    {
+      "path": "/mnt/d/gbm-protein-switch/md/unbound/Track1_unbound/prod.part0002.xtc",
+      "bytes": 530820224,
+      "mtime_ns": 1793276333461128600,
+      "sha256": "9763e17148a8460639fdf57428e02f8565699d22ddead924865fbdc0c84ee33f",
+      "accepted_frames": 1543
+    }
+  ]
+}

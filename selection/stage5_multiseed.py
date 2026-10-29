@@ -8,7 +8,7 @@ Reports distribution of reconstitution distances.
 Pass criterion: ≥3/5 seeds give recon dist < 15 Å.
 """
 
-from selection_support import require_execution, reference_sequence, validate_recorded_candidates
+from selection_support import require_execution, reference_sequence, validate_recorded_candidates, campaign_output, campaign_table
 require_execution(__name__)
 
 import os, json, subprocess, urllib.request
@@ -17,7 +17,7 @@ from pathlib import Path
 from Bio.PDB import PDBParser
 
 BASE      = Path(os.environ.get("GBM_ROOT", Path(__file__).resolve().parents[1]))
-OUT_DIR   = BASE / "selection" / "stage5_multiseed_outputs"
+OUT_DIR   = campaign_output(BASE / "selection" / "stage5_multiseed_outputs")
 BOLTZ_BIN = Path(os.environ.get("BOLTZ_BIN", "boltz"))
 
 SOX2_TARGET = "DRVKRPMNAFMVWSRGQRRKMAQENPKMHNSEISKRLGAEWKLLSETEKRPFIDEAKRLRALHMKEHPDYKYRPRRKTKTLMKKDKYTLPGGLLAPG"
@@ -155,7 +155,7 @@ def main():
         rows.append({"seed": seed, "recon_dist_A": dist, "iptm": iptm, "pass": passed})
 
     df = pd.DataFrame(rows)
-    out_path = BASE / "selection" / "stage5_multiseed_results.tsv"
+    out_path = campaign_table(BASE / "selection" / "stage5_multiseed_results.tsv")
     df.to_csv(out_path, sep="\t", index=False)
 
     n_pass = df["pass"].sum()
